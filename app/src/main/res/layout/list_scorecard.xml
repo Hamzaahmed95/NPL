@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+
+    android:paddingTop="10dp"
+    android:paddingLeft="10dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:paddingRight="10dp"
+    android:background="@color/lightBlack"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+<TextView
+    android:layout_width="wrap_content"
+    android:id="@+id/batsman"
+    android:textSize="15dp"
+    android:textColor="@color/darkMaroon"
+    android:fontFamily="sans-serif-condensed"
+
+    android:paddingTop="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:text="Hamza Ahmed"
+    android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/outType"
+        android:textSize="15dp"
+        android:textColor="@color/darkMaroon"
+        android:fontFamily="sans-serif-condensed"
+
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:text="c Safwan"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/outBy"
+        android:textSize="15dp"
+        android:textColor="@color/darkMaroon"
+        android:fontFamily="sans-serif-condensed"
+
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:text="Huzaifa"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/runs"
+        android:textSize="15dp"
+        android:textColor="@color/darkMaroon"
+        android:fontFamily="sans-serif-condensed"
+
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:text="50"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/balls"
+        android:textSize="15dp"
+        android:textColor="@color/darkMaroon"
+        android:fontFamily="sans-serif-condensed"
+        android:text="(15)"/>
+    </LinearLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff" />
+</LinearLayout>

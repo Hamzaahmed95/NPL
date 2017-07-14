@@ -241,7 +241,7 @@ public class ProfileActivity extends AppCompatActivity {
                 if(user!=null){
                     //user is signed in
                     onSignedInInitialize(user.getDisplayName());
-
+                    name.setText(user.getDisplayName());
                     Log.d("hamza here","this");
                     Log.d("check",user.getDisplayName().substring(2,3));
 

@@ -13,10 +13,10 @@ import java.util.UUID;
 public class MatchLab {
     private static MatchLab MatchLab;
     private final Integer Team1[] = {
-         R.drawable.p1,
-            R.drawable.p2,
+         R.drawable.p5,
             R.drawable.p1,
-            R.drawable.p4,
+            R.drawable.p1,
+            R.drawable.p2,
             R.drawable.p6,
             R.drawable.p4,
             R.drawable.p2,
@@ -25,10 +25,10 @@ public class MatchLab {
             R.drawable.p5,
     };
     private final Integer Team2[] = {
-            R.drawable.p3,
-            R.drawable.p3,
             R.drawable.p2,
+            R.drawable.p3,
             R.drawable.p5,
+            R.drawable.p4,
             R.drawable.p3,
             R.drawable.p1,
             R.drawable.p4,
@@ -38,10 +38,10 @@ public class MatchLab {
     };
 
     private final String MatchDate[] = {
-            "Today",
-            "Today",
-            "Today",
-            "Today",
+            "2nd July,2017",
+            "2nd July,2017",
+            "9th July 2017",
+            "9th July 2017",
             "Today",
             "Today",
             "Today",
@@ -50,10 +50,10 @@ public class MatchLab {
             "Today",
     };
     private final String MatchResult[] = {
-            "Team1 won by 10 wickets",
-            "Team1 won by 10 wickets",
-            "Team1 won by 10 wickets",
-            "Team1 won by 10 wickets",
+            "Nawait Janbaz won by 65 runs",
+            "Nawait Royals won by 45 runs",
+            "Nawait Janbaz won by 18 runs",
+            "Shan e Nawait won by 4 wickets",
             "Team1 won by 10 wickets",
             "Team1 won by 10 wickets",
             "Team1 won by 10 wickets",
@@ -62,6 +62,9 @@ public class MatchLab {
             "Team1 won by 10 wickets",
     };
     private final String MatchNo[] = {
+            "1st Match",
+            "2nd Match",
+            "3rd Match",
             "4th Match",
             "5th Match",
             "6th Match",
@@ -69,9 +72,6 @@ public class MatchLab {
             "8th Match",
             "9th Match",
             "10th Match",
-            "11th Match",
-            "12th Match",
-            "13th Match",
     };
     
     private List<Match> mMatch;

@@ -72,29 +72,49 @@
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
+                    android:id="@+id/livsScoreRuns1"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"
                     android:fontFamily="sans-serif-condensed"
                     android:textSize="40dp"
-                    android:text="317/"/>
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="40dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="/"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/livsScoreWicket1"
                     android:fontFamily="sans-serif-condensed"
                     android:textColor="@android:color/white"
                     android:textSize="40dp"
-                    android:text="6"/>
+                    />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
+                android:id="@+id/livsScoreOvers1"
                 android:fontFamily="sans-serif-condensed"
                 android:textColor="@android:color/white"
-                android:text="50 overs"
                 android:layout_marginLeft="10dp"/>
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@android:color/white"
+                    android:text=" overs"/>
+            </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -108,29 +128,67 @@
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
+                    android:id="@+id/livsScoreRuns2"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"
                     android:fontFamily="sans-serif-condensed"
                     android:textSize="40dp"
-                    android:text="197/"/>
-
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="40dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="/"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"
                     android:fontFamily="sans-serif-condensed"
+                    android:id="@+id/livsScoreWicket2"
                     android:textSize="40dp"
-                    android:text="6"/>
+                    />
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:layout_marginLeft="10dp"
+                android:id="@+id/livsScoreOvers2"
                 android:textColor="@android:color/white"
                 android:fontFamily="sans-serif-condensed"
-                android:text="32.5 overs"/>
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@android:color/white"
+                    android:text=" overs"/>
+            </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="runs-wicket-overs-team(1or2)"
+        android:id="@+id/scoreUpdate"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:textColor="@android:color/white"
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/scoreSendButton"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"

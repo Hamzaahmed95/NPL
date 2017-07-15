@@ -157,6 +157,9 @@
         android:background="@color/blue"
         android:textColor="@android:color/white"
         android:text="Show Teams!"/>
+
+
+</LinearLayout>
     <Button
         android:id="@+id/getStarted3"
         android:layout_width="wrap_content"
@@ -168,8 +171,6 @@
         android:background="@color/blue"
         android:textColor="@android:color/white"
         android:text="Recent matches"/>
-
-</LinearLayout>
     <Button
         android:id="@+id/LiveScore"
         android:layout_width="wrap_content"

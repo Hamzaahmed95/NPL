@@ -10,18 +10,39 @@ public class LiveScore {
     private float Overs;
     private Integer Ball;
     private Integer Team;
+    private Integer Balls;
+    private Integer BallNo;
     public LiveScore(){
 
     }
 
-    public LiveScore(Integer runs,Integer wicket,float overs, Integer ball,Integer team){
+    public LiveScore(Integer runs,Integer wicket,float overs, Integer ball,Integer team,Integer balls,Integer ballNo){
         Runs=runs;
         Wicket=wicket;
         Overs=overs;
         Ball=ball;
         Team=team;
+        Balls=balls;
+        BallNo=ballNo;
 
 
+
+    }
+
+    public Integer getBalls() {
+        return Balls;
+    }
+
+    public void setBalls(Integer balls) {
+        Balls = balls;
+    }
+
+    public Integer getBallNo() {
+        return BallNo;
+    }
+
+    public void setBallNo(Integer ballNo) {
+        BallNo = ballNo;
     }
 
     public Integer getTeam() {

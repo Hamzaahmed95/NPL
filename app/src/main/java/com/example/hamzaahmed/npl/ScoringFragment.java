@@ -43,6 +43,13 @@ public class ScoringFragment extends Fragment {
     private TextView Wicket1;
     private TextView Runs2;
     private TextView Overs2;
+    private TextView ball1;
+    private TextView ball2;
+    private TextView ball3;
+    private TextView ball4;
+    private TextView ball5;
+    private TextView ball6;
+
 
     private TextView Wicket2;
     private EditText scoreInput;
@@ -70,6 +77,15 @@ public class ScoringFragment extends Fragment {
         Runs1=(TextView)view.findViewById(R.id.livsScoreRuns1);
         scoreInput=(EditText)view.findViewById(R.id.scoreUpdate);
         SendButton = (Button)view.findViewById(R.id.scoreSendButton);
+        ball1=(TextView)view.findViewById(R.id.ball1);
+        ball2=(TextView)view.findViewById(R.id.ball2);
+        ball3=(TextView)view.findViewById(R.id.ball3);
+        ball4=(TextView)view.findViewById(R.id.ball4);
+        ball5=(TextView)view.findViewById(R.id.ball5);
+        ball6=(TextView)view.findViewById(R.id.ball6);
+
+
+
         mUsername = ANONYMOUS;
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -85,7 +101,9 @@ public class ScoringFragment extends Fragment {
                 String wicket=arr[1];
                 String overs = arr[2];
                 String team=arr[3];
-                LiveScore liveScore = new LiveScore(Integer.parseInt(runs),Integer.parseInt(wicket),Float.parseFloat(overs),1,Integer.parseInt(team));
+                String balls=arr[4];
+                String ballNo=arr[5];
+                LiveScore liveScore = new LiveScore(Integer.parseInt(runs),Integer.parseInt(wicket),Float.parseFloat(overs),1,Integer.parseInt(team),Integer.parseInt(balls),Integer.parseInt(ballNo));
                 mScoreDatabaseReference.push().setValue(liveScore);
                 scoreInput.setText("");
                 if(Integer.parseInt(team)==1){
@@ -98,6 +116,24 @@ public class ScoringFragment extends Fragment {
                     Runs2.setText(runs);
                     Wicket2.setText(wicket);
                     Overs2.setText(overs);
+                }
+                if(Integer.parseInt(ballNo)==1){
+                    ball1.setText(balls);
+                }
+                else if(Integer.parseInt(ballNo)==2){
+                    ball2.setText(balls);
+                }
+                else if(Integer.parseInt(ballNo)==3){
+                    ball3.setText(balls);
+                }
+                else if(Integer.parseInt(ballNo)==4){
+                    ball4.setText(balls);
+                }
+                else if(Integer.parseInt(ballNo)==5){
+                    ball5.setText(balls);
+                }
+                else if(Integer.parseInt(ballNo)==6){
+                    ball6.setText(balls);
                 }
 
 
@@ -201,6 +237,21 @@ public class ScoringFragment extends Fragment {
                             Runs2.setText(String.valueOf(liveScore.getRuns()));
                             Wicket2.setText(String.valueOf(liveScore.getWicket()));
                             Overs2.setText(String.valueOf(liveScore.getOvers()));
+                        }
+                      }
+                    if(liveScore.getBallNo()!=null) {
+                        if (liveScore.getBallNo() == 1) {
+                            ball1.setText(String.valueOf(liveScore.getBalls()));
+                        } else if (liveScore.getBallNo() == 2) {
+                            ball2.setText(String.valueOf(liveScore.getBalls()));
+                        } else if (liveScore.getBallNo() == 3) {
+                            ball3.setText(String.valueOf(liveScore.getBalls()));
+                        } else if (liveScore.getBallNo() == 4) {
+                            ball4.setText(String.valueOf(liveScore.getBalls()));
+                        } else if (liveScore.getBallNo() == 5) {
+                            ball5.setText(String.valueOf(liveScore.getBalls()));
+                        } else if (liveScore.getBallNo() == 6) {
+                            ball6.setText(String.valueOf(liveScore.getBalls()));
                         }
                     }
 

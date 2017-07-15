@@ -176,11 +176,11 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="runs-wicket-overs-team(1or2)"
+        android:hint="runs-wicket-overs-team(1or2)-ball-(ballno)"
         android:id="@+id/scoreUpdate"/>
         <Button
             android:layout_width="wrap_content"
@@ -194,61 +194,71 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
-            android:paddingTop="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@android:color/white"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image1"
-            android:paddingTop="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@android:color/white"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image2"
-            android:paddingTop="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@android:color/white"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image3"
-            android:paddingTop="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@android:color/holo_blue_light"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image4"
-            android:paddingTop="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@android:color/holo_red_dark"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image5"
-            android:paddingTop="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@android:color/white"
-
-            app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+        <TextView
+            android:layout_width="40dp"
+            android:id="@+id/ball1"
+            android:layout_height="40dp"
+            android:background="@drawable/back"
+            android:layout_margin="10dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/darkMaroon"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="40dp"
+            android:id="@+id/ball2"
+            android:layout_height="40dp"
+            android:textStyle="bold"
+            android:background="@drawable/back"
+            android:layout_margin="10dp"
+            android:textColor="@color/darkMaroon"
+            android:textSize="20dp"
+            android:gravity="center"
+            />
+        <TextView
+        android:layout_width="40dp"
+            android:id="@+id/ball3"
+        android:layout_height="40dp"
+            android:textStyle="bold"
+        android:background="@drawable/back"
+        android:layout_margin="10dp"
+        android:textSize="20dp"
+            android:textColor="@color/darkMaroon"
+        android:gravity="center"
+        />
+        <TextView
+            android:layout_width="40dp"
+            android:id="@+id/ball4"
+            android:layout_height="40dp"
+            android:textStyle="bold"
+            android:background="@drawable/back"
+            android:layout_margin="10dp"
+            android:textSize="20dp"
+            android:textColor="@color/darkMaroon"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="40dp"
+            android:id="@+id/ball5"
+            android:layout_height="40dp"
+            android:textStyle="bold"
+            android:background="@drawable/back"
+            android:layout_margin="10dp"
+            android:textSize="20dp"
+            android:textColor="@color/darkMaroon"
+            android:gravity="center" />
+        <TextView
+            android:layout_width="40dp"
+            android:id="@+id/ball6"
+            android:layout_height="40dp"
+            android:textStyle="bold"
+            android:background="@drawable/back"
+            android:layout_margin="10dp"
+            android:textSize="20dp"
+            android:textColor="@color/darkMaroon"
+            android:gravity="center"
+            />
     </LinearLayout>
 
     <View

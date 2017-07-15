@@ -157,6 +157,29 @@
         android:background="@color/blue"
         android:textColor="@android:color/white"
         android:text="Show Teams!"/>
+    <Button
+        android:id="@+id/getStarted3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:fontFamily="sans-serif-condensed"
+        android:background="@color/blue"
+        android:textColor="@android:color/white"
+        android:text="Recent matches"/>
+
 </LinearLayout>
+    <Button
+        android:id="@+id/LiveScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:fontFamily="sans-serif-condensed"
+        android:background="@color/blue"
+        android:textColor="@android:color/white"
+        android:text="Live Score"/>
 </LinearLayout>
     </ScrollView>

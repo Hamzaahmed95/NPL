@@ -148,7 +148,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent i = new Intent(ProfileActivity.this,MainActivity.class);
                 i.putExtra("editTextValue", "value_here");
                 setResult(RESULT_OK, i);
-                finish();
+
             }
         });
 
@@ -310,7 +310,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
             else if(resultCode == RESULT_CANCELED){
                 Toast.makeText(this,"Sign in cancelled",Toast.LENGTH_SHORT).show();
-                finish();
+
             }
 
 

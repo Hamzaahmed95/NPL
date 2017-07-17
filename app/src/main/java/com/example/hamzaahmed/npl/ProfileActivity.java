@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -40,6 +43,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -63,7 +67,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private ListView mMessageListView;
     private ListView mUserListView;
-
+    private LinearLayout l1;
     private TextView mTextView;
     private TextView name;
 
@@ -82,6 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
     };
 
     private MessageAdapter mMessageAdapter;
+    List notes = new ArrayList<>();
 
     private ImageView dp2;
     private String url2;
@@ -129,8 +134,9 @@ public class ProfileActivity extends AppCompatActivity {
         ArrayList<Image> Images = prepareData();
         ImagesAdapter adapter = new ImagesAdapter(this, Images);
         recyclerView.setAdapter(adapter);
+        l1=(LinearLayout)findViewById(R.id.rightLayout);
 
-
+        NAME=ANONYMOUS;
         SignOUt = (Button)findViewById(R.id.SignOut);
         Button =(ImageView) findViewById(R.id.backButton);
         mTextView = (TextView)findViewById(R.id.messageTextView);
@@ -145,9 +151,8 @@ public class ProfileActivity extends AppCompatActivity {
         Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ProfileActivity.this,MainActivity.class);
-                i.putExtra("editTextValue", "value_here");
-                setResult(RESULT_OK, i);
+                Intent i = new Intent(ProfileActivity.this,OptionsActivity.class);
+                startActivity(i);
 
             }
         });
@@ -172,10 +177,6 @@ public class ProfileActivity extends AppCompatActivity {
         mSendButton = (Button) findViewById(R.id.sendButton);
 
         // Initialize message ListView and its adapter
-        final List<FriendlyMessage> friendlyMessages = new ArrayList<>();
-        mMessageAdapter = new MessageAdapter(this, R.layout.item_message, friendlyMessages);
-        if(mMessageListView!=null)
-        mMessageListView.setAdapter(mMessageAdapter);
 
         // Initialize progress bar
         if(mProgressBar!=null)
@@ -241,9 +242,15 @@ public class ProfileActivity extends AppCompatActivity {
                 if(user!=null){
                     //user is signed in
                     onSignedInInitialize(user.getDisplayName());
-                    name.setText(user.getDisplayName());
+                    NAME =user.getDisplayName();
+                    name.setText(user.getDisplayName().toUpperCase());
+                    final List<FriendlyMessage> friendlyMessages = new ArrayList<>();
+                    mMessageAdapter = new MessageAdapter(ProfileActivity.this, R.layout.item_message, friendlyMessages,NAME,notes);
+                    if(mMessageListView!=null)
+                        mMessageListView.setAdapter(mMessageAdapter);
+
                     Log.d("hamza here","this");
-                    Log.d("check",user.getDisplayName().substring(2,3));
+                    Log.d("check",NAME);
 
                 }else{
                     //user is signed out
@@ -387,6 +394,23 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             };
             mMessageDatabaseReference.addChildEventListener(mChildEventListener);
+            mMessageDatabaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
+                        FriendlyMessage note = noteDataSnapshot.getValue(FriendlyMessage.class);
+                        Log.d("message ",""+note.getName());
+
+                        notes.add(note);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
     }
     private void detachDatabaseReadListener(){

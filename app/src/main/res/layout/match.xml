@@ -5,18 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center|top">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/lightBlue"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/backButton3"
+            android:src="@drawable/back2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textColor="@color/blue"
+        android:textColor="@android:color/white"
         android:textSize="25dp"
         android:fontFamily="sans-serif-condensed"
-        android:padding="10dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
         android:text="Recent Matches"/>
+    </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listOfMatches"
         android:layout_width="wrap_content"
+        android:padding="40dp"
         android:layout_height="wrap_content"
         xmlns:android="http://schemas.android.com/apk/res/android" />
 

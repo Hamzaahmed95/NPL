@@ -133,8 +133,7 @@
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:orientation="horizontal">
+    android:layout_margin="10dp">
     <Button
         android:id="@+id/getStarted"
         android:layout_width="wrap_content"
@@ -146,41 +145,7 @@
         android:background="@color/blue"
         android:textColor="@android:color/white"
         android:text="Get Started!"/>
-    <Button
-        android:id="@+id/getStarted2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:layout_margin="10dp"
-        android:fontFamily="sans-serif-condensed"
-        android:background="@color/blue"
-        android:textColor="@android:color/white"
-        android:text="Show Teams!"/>
-
 
 </LinearLayout>
-    <Button
-        android:id="@+id/getStarted3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:layout_margin="10dp"
-        android:fontFamily="sans-serif-condensed"
-        android:background="@color/blue"
-        android:textColor="@android:color/white"
-        android:text="Recent matches"/>
-    <Button
-        android:id="@+id/LiveScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:layout_margin="10dp"
-        android:fontFamily="sans-serif-condensed"
-        android:background="@color/blue"
-        android:textColor="@android:color/white"
-        android:text="Live Score"/>
-</LinearLayout>
+    </LinearLayout>
     </ScrollView>

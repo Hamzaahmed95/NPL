@@ -9,9 +9,20 @@
     <color name="darkgray">#50d3d3d3</color>
     <color name="darkgray2">#d3d3d3</color>
     <color name="lightBlack">#85ffffff</color>
+    <color name="redshades1">#907f0000</color>
+    <color name="blueshades1">#90001A33</color>
+    <color name="greenshades1">#90009900</color>
+    <color name="bluesh">#90478B75</color>
+    <color name="gold">#191500</color>
+    <color name="yellow">#90FFFF00</color>
+    <color name="orange1">#90FF6347</color>
+    <color name="violet">#908B475D</color>
+    <color name="goldshades">#90CDAD00</color>
     <color name="orange">#90fdbd33</color>
+    <color name="peach">#90FFDAB9</color>
     <color name="lightBlue">#9000AAFF</color>
     <color name="purple">#95400080</color>
+    <color name="pink1">#90FF0000</color>
     <color name="pink">#90FF4081</color>
 
 </resources>

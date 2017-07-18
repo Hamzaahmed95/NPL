@@ -3,31 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@drawable/sa"
-    android:gravity="center|top"
+    android:background="@drawable/sa2"
+    android:gravity="center"
+    android:padding="10dp"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:padding="20dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:fontFamily="sans-serif-condensed"
-        android:textColor="@android:color/white"
-        android:textSize="30dp"
-        android:id="@+id/optionUsername"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="150dp"
+            android:layout_width="180dp"
             android:id="@+id/layout1"
             android:gravity="center"
             android:orientation="vertical"
             android:background="@color/purple"
-            android:layout_height="240dp">
+            android:layout_height="100dp">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,20 +28,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:textColor="@android:color/white"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:fontFamily="sans-serif-condensed"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Chat"/>
 
         </LinearLayout>
+
         <LinearLayout
-            android:layout_width="150dp"
+            android:layout_width="102dp"
             android:id="@+id/layout2"
             android:gravity="center"
             android:background="@color/pink"
             android:orientation="vertical"
-            android:layout_height="240dp">
+            android:layout_height="100dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -57,7 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:textColor="@android:color/white"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:fontFamily="sans-serif-condensed"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -67,6 +61,81 @@
 
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="102dp"
+            android:id="@+id/layout5"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/bluesh"
+            android:layout_height="120dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/interviews"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Interview"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="180dp"
+            android:id="@+id/layout6"
+            android:gravity="center"
+            android:background="@color/redshades1"
+            android:orientation="vertical"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/table"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Points Table"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="282dp"
+            android:background="@color/gold"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_height="70dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:padding="10dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:id="@+id/optionUsername"/></LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -74,12 +143,12 @@
         android:gravity="center"
         android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="150dp"
+            android:layout_width="94dp"
             android:id="@+id/layout3"
-            android:background="@color/lightBlue"
+            android:background="@color/orange1"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_height="240dp">
+            android:layout_height="100dp">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,18 +157,18 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:fontFamily="sans-serif-condensed"
             android:layout_height="wrap_content"
             android:text="Matches"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="150dp"
+            android:layout_width="94dp"
             android:gravity="center"
             android:id="@+id/layout4"
             android:orientation="vertical"
-            android:background="@color/orange"
-            android:layout_height="240dp">
+            android:background="@color/lightBlue"
+            android:layout_height="100dp">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,13 +176,84 @@
         <TextView
             android:layout_width="wrap_content"
             android:textColor="@android:color/white"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:fontFamily="sans-serif-condensed"
             android:layout_gravity="center"
             android:layout_height="wrap_content"
-            android:text="Teams"/>
+            android:text="Teams"/></LinearLayout>
+            <LinearLayout
+                android:layout_width="94dp"
+                android:gravity="center"
+                android:id="@+id/layout7"
+                android:orientation="vertical"
+                android:background="@color/yellow"
+                android:layout_height="100dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sponsor"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="Sponsors"/>
 
 </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="180dp"
+            android:id="@+id/layout9"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/pink1"
+            android:layout_height="90dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mom"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Man of the Match"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="102dp"
+            android:id="@+id/layout8"
+            android:gravity="center"
+            android:background="@color/peach"
+            android:orientation="vertical"
+            android:layout_height="90dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/hash"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Hashtag"/>
+        </LinearLayout>
+
+
 
     </LinearLayout>
 

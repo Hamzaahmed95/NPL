@@ -38,6 +38,11 @@ public class OptionsFragment extends Fragment {
     private LinearLayout getScore;
     private LinearLayout getMatches;
     private LinearLayout getTeams;
+    private LinearLayout Chat1;
+    private LinearLayout getScore1;
+    private LinearLayout getMatches1;
+    private LinearLayout getTeams1;
+    private LinearLayout getTeams2;
     AnimatorSet set3;
     private FirebaseDatabase mFirebaseDatabase;
 
@@ -57,6 +62,11 @@ public class OptionsFragment extends Fragment {
 
 
     AnimatorSet set4;
+    AnimatorSet set5;
+    AnimatorSet set6;
+    AnimatorSet set7;
+    AnimatorSet set8;
+    AnimatorSet set9;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -64,6 +74,8 @@ public class OptionsFragment extends Fragment {
         View view = inflater.inflate(R.layout.options, container, false);
         Chat = (LinearLayout) view.findViewById(R.id.layout1);
         getScore = (LinearLayout) view.findViewById(R.id.layout2);
+        Chat1 = (LinearLayout) view.findViewById(R.id.layout5);
+        getScore1 = (LinearLayout) view.findViewById(R.id.layout6);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -80,6 +92,9 @@ public class OptionsFragment extends Fragment {
 
         getMatches = (LinearLayout) view.findViewById(R.id.layout3);
         getTeams = (LinearLayout) view.findViewById(R.id.layout4);
+        getMatches1 = (LinearLayout) view.findViewById(R.id.layout7);
+        getTeams1 = (LinearLayout) view.findViewById(R.id.layout8);
+        getTeams2 = (LinearLayout) view.findViewById(R.id.layout9);
 
         getTeams.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,6 +186,21 @@ public class OptionsFragment extends Fragment {
         set4.setTarget(getTeams);
         set3.start();
         set4.start();
+        set5 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip3);
+        set6 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip5);
+        set5.setTarget(Chat1);
+        set6.setTarget(getScore1);
+        set5.start();
+        set6.start();
+        set7 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip6);
+        set8 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip7);
+        set7.setTarget(getMatches1);
+        set8.setTarget(getTeams1);
+        set7.start();
+        set8.start();
+        set9 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip8);
+        set9.setTarget(getTeams2);
+        set9.start();
 
 
     }

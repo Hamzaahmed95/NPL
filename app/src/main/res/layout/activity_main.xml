@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
@@ -11,11 +7,11 @@
     android:gravity="center|top"
     android:layout_height="match_parent"
     tools:context="com.example.hamzaahmed.npl.MainActivity"
-    android:background="@drawable/ab">
+    android:background="@drawable/sa">
 
 <LinearLayout
     android:layout_width="wrap_content"
-    android:paddingTop="70dp"
+    android:paddingTop="35dp"
     android:orientation="vertical"
     android:layout_height="wrap_content">
     <TextView
@@ -50,6 +46,7 @@
             android:textSize="50dp"
             android:gravity="center_vertical"
             android:textStyle="bold"
+
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@android:color/white"
@@ -70,7 +67,7 @@
         android:paddingBottom="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/wb4"/>
+        android:src="@drawable/wb5"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -142,10 +139,10 @@
         android:padding="10dp"
         android:layout_margin="10dp"
         android:fontFamily="sans-serif-condensed"
-        android:background="@color/blue"
+        android:background="@android:color/black"
         android:textColor="@android:color/white"
         android:text="Get Started!"/>
 
 </LinearLayout>
     </LinearLayout>
-    </ScrollView>
+

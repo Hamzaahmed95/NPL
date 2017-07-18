@@ -37,17 +37,7 @@
             android:textColor="@android:color/white"
             android:layout_height="wrap_content"
             android:id="@+id/Uname"/>
-        <Button android:id="@+id/SignOut"
-            android:layout_height="50dp"
-            android:layout_width="100dp"
-            android:background="@android:color/white"
-            android:textColor="@color/purple"
-            android:layout_gravity="right"
-            android:fontFamily="sans-serif-condensed"
-            android:layout_alignParentRight="true"
-            android:text="Sign out">
 
-        </Button>
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/imagegallery"

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/photoImageView2"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:adjustViewBounds="true" />
+
+    <ImageButton
+        android:id="@+id/photoPickerButton2"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@android:drawable/ic_menu_gallery" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:textColor="@color/authui_colorAccent"
+        android:layout_height="wrap_content"
+        android:id="@+id/date2"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="type date update"
+        android:id="@+id/date1"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/send1"
+        android:text="@string/button_text_send"/>
+
+</LinearLayout>

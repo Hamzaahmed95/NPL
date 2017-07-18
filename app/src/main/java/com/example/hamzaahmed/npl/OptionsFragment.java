@@ -43,6 +43,8 @@ public class OptionsFragment extends Fragment {
     private LinearLayout getMatches1;
     private LinearLayout getTeams1;
     private LinearLayout getTeams2;
+    private ImageView signout;
+
     AnimatorSet set3;
     private FirebaseDatabase mFirebaseDatabase;
 
@@ -76,6 +78,8 @@ public class OptionsFragment extends Fragment {
         getScore = (LinearLayout) view.findViewById(R.id.layout2);
         Chat1 = (LinearLayout) view.findViewById(R.id.layout5);
         getScore1 = (LinearLayout) view.findViewById(R.id.layout6);
+        signout=(ImageView)view.findViewById(R.id.logout);
+
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -87,7 +91,12 @@ public class OptionsFragment extends Fragment {
         mUsersDatabaseReference = mFirebaseDatabase.getReference().child("users");
         Log.d("oncreate ",mMessageDatabaseReference.getDatabase().toString());
 
-
+        signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AuthUI.getInstance().signOut(getActivity());
+            }
+        });
 
 
         getMatches = (LinearLayout) view.findViewById(R.id.layout3);
@@ -119,6 +128,15 @@ public class OptionsFragment extends Fragment {
                 startActivity(i);
             }
         });
+        getScore1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),PointsTableActivity.class);
+                i.putExtra("username",name.getText());
+                startActivity(i);
+            }
+        });
+
 
 
         getMatches.setOnClickListener(new View.OnClickListener() {
@@ -147,8 +165,9 @@ public class OptionsFragment extends Fragment {
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()
                                     .setIsSmartLockEnabled(false)
+                                    .setTheme(R.style.FirebaseLoginTheme)
+                                    .setLogo(R.drawable.wb5)
                                     .setProviders(
-                                            AuthUI.EMAIL_PROVIDER,
                                             AuthUI.GOOGLE_PROVIDER
                                     ).build(),
                             RC_SIGN_IN);

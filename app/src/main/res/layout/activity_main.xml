@@ -4,7 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:gravity="center|top"
+    android:gravity="center"
     android:layout_height="match_parent"
     tools:context="com.example.hamzaahmed.npl.MainActivity"
     android:background="@drawable/sa">
@@ -43,11 +43,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="50dp"
+            android:textSize="30dp"
             android:gravity="center_vertical"
             android:textStyle="bold"
 
-            android:layout_marginTop="10dp"
+            android:layout_margin="0dp"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@android:color/white"
             android:text="MAKE " />
@@ -65,8 +65,8 @@
     <ImageView
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:src="@drawable/wb5"/>
     <LinearLayout
         android:layout_width="wrap_content"

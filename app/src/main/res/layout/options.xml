@@ -7,6 +7,12 @@
     android:gravity="center"
     android:padding="10dp"
     android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:paddingBottom="10dp"
+        android:id="@+id/logout"
+        android:src="@drawable/logout"/>
 
 
     <LinearLayout
@@ -72,7 +78,7 @@
             android:gravity="center"
             android:orientation="vertical"
             android:background="@color/bluesh"
-            android:layout_height="120dp">
+            android:layout_height="90dp">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -94,7 +100,7 @@
             android:gravity="center"
             android:background="@color/redshades1"
             android:orientation="vertical"
-            android:layout_height="120dp">
+            android:layout_height="90dp">
 
             <ImageView
                 android:layout_width="wrap_content"

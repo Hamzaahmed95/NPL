@@ -8,7 +8,7 @@ android:layout_width="wrap_content"
     <ImageView
         android:layout_width="500dp"
         android:layout_height="250dp"
-        android:background="@drawable/royal" />
+        android:background="@drawable/royal1" />
 
 
 

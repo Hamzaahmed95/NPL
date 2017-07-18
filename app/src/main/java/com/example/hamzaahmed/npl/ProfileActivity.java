@@ -103,7 +103,6 @@ public class ProfileActivity extends AppCompatActivity {
     private static final int RC_PHOTO_PICKER =  2;
 
     private String mUsername;
-    private Button SignOUt;
     private ImageView Button;
 
     private FirebaseDatabase mFirebaseDatabase;
@@ -124,6 +123,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate( final Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
@@ -137,23 +137,16 @@ public class ProfileActivity extends AppCompatActivity {
         l1=(LinearLayout)findViewById(R.id.rightLayout);
 
         NAME=ANONYMOUS;
-        SignOUt = (Button)findViewById(R.id.SignOut);
         Button =(ImageView) findViewById(R.id.backButton);
         mTextView = (TextView)findViewById(R.id.messageTextView);
         name = (TextView)findViewById(R.id.Uname);
 
-        SignOUt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AuthUI.getInstance().signOut(ProfileActivity.this);
-            }
-        });
         Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ProfileActivity.this,OptionsActivity.class);
                 startActivity(i);
-
+                finish();
             }
         });
 
@@ -260,16 +253,22 @@ public class ProfileActivity extends AppCompatActivity {
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()
                                     .setIsSmartLockEnabled(false)
+                                    .setTheme(R.style.FirebaseLoginTheme)
+                                    .setLogo(R.drawable.wb5)
                                     .setProviders(
                                             AuthUI.EMAIL_PROVIDER,
                                             AuthUI.GOOGLE_PROVIDER
                                     ).build(),
                             RC_SIGN_IN);
 
+
+
+
                 }
             };
         };
     }
+
     private ArrayList<Image> prepareData(){
 
         ArrayList<Image> theimage = new ArrayList<>();
@@ -298,6 +297,7 @@ public class ProfileActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }*/
+
     @Override
     protected void onPause(){
         super.onPause();

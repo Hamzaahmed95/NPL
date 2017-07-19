@@ -42,7 +42,7 @@ public class OptionsFragment extends Fragment {
     private LinearLayout getScore1;
     private LinearLayout getMatches1;
     private LinearLayout getTeams1;
-    private LinearLayout getTeams2;
+    private LinearLayout MOM;
     private ImageView signout;
 
     AnimatorSet set3;
@@ -103,7 +103,17 @@ public class OptionsFragment extends Fragment {
         getTeams = (LinearLayout) view.findViewById(R.id.layout4);
         getMatches1 = (LinearLayout) view.findViewById(R.id.layout7);
         getTeams1 = (LinearLayout) view.findViewById(R.id.layout8);
-        getTeams2 = (LinearLayout) view.findViewById(R.id.layout9);
+        MOM = (LinearLayout) view.findViewById(R.id.layout9);
+
+
+        MOM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),MOM.class);
+                i.putExtra("username",name.getText());
+                startActivity(i);
+            }
+        });
 
         getTeams.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -218,7 +228,7 @@ public class OptionsFragment extends Fragment {
         set7.start();
         set8.start();
         set9 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip8);
-        set9.setTarget(getTeams2);
+        set9.setTarget(MOM);
         set9.start();
 
 

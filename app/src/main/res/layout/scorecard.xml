@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sa"
+    android:background="@drawable/sa2"
     android:gravity="center|top">
     <Button
         android:layout_width="wrap_content"
@@ -180,6 +180,8 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white"
         android:hint="runs-wicket-overs-team(1or2)-ball-(ballno)"
         android:id="@+id/scoreUpdate"/>
         <Button
@@ -195,9 +197,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:id="@+id/ball1"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:background="@drawable/back"
             android:layout_margin="10dp"
             android:textSize="20dp"
@@ -206,9 +208,9 @@
             android:gravity="center"
             />
         <TextView
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:id="@+id/ball2"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:textStyle="bold"
             android:background="@drawable/back"
             android:layout_margin="10dp"
@@ -217,9 +219,9 @@
             android:gravity="center"
             />
         <TextView
-        android:layout_width="40dp"
+        android:layout_width="30dp"
             android:id="@+id/ball3"
-        android:layout_height="40dp"
+        android:layout_height="30dp"
             android:textStyle="bold"
         android:background="@drawable/back"
         android:layout_margin="10dp"
@@ -228,20 +230,20 @@
         android:gravity="center"
         />
         <TextView
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:id="@+id/ball4"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:textStyle="bold"
             android:background="@drawable/back"
-            android:layout_margin="10dp"
             android:textSize="20dp"
+            android:layout_margin="10dp"
             android:textColor="@color/darkMaroon"
             android:gravity="center"
             />
         <TextView
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:id="@+id/ball5"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:textStyle="bold"
             android:background="@drawable/back"
             android:layout_margin="10dp"
@@ -249,9 +251,9 @@
             android:textColor="@color/darkMaroon"
             android:gravity="center" />
         <TextView
-            android:layout_width="40dp"
+            android:layout_width="30dp"
             android:id="@+id/ball6"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:textStyle="bold"
             android:background="@drawable/back"
             android:layout_margin="10dp"

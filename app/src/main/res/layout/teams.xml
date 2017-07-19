@@ -1,30 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@color/redshades1"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    android:gravity="center|top">
+    android:background="@drawable/sa2"
+    android:layout_height="wrap_content"
+    android:gravity="center">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/waca1"/>
-
-    </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
-        android:textColor="@color/darkMaroon"
+        android:textColor="@android:color/white"
         android:textStyle="bold"
         android:textSize="25dp"
         android:layout_marginTop="10dp"
@@ -33,7 +18,8 @@
         android:text="Attan Khailun Dakhar!!"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -45,13 +31,27 @@
                 android:layout_width="100dp"
                 android:id="@+id/team1"
                 android:layout_margin="5dp"
-                android:layout_height="100dp"
-                android:src="@drawable/royal2" />
+                android:layout_height="100dp" />
+            <ImageView
+                android:layout_width="100dp"
+                android:id="@+id/team2"
+                android:layout_margin="5dp"
+                android:layout_height="100dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_margin="5dp"
+                android:id="@+id/team3"
+                android:layout_height="100dp"/>
             <ImageView
                 android:layout_width="100dp"
                 android:layout_margin="5dp"
                 android:layout_height="100dp"
-                android:src="@drawable/p2" />
+                android:id="@+id/team4"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -61,27 +61,12 @@
                 android:layout_width="100dp"
                 android:layout_margin="5dp"
                 android:layout_height="100dp"
-                android:src="@drawable/p3" />
+                android:id="@+id/team5"/>
             <ImageView
                 android:layout_width="100dp"
                 android:layout_margin="5dp"
                 android:layout_height="100dp"
-                android:src="@drawable/p4" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_margin="5dp"
-                android:layout_height="100dp"
-                android:src="@drawable/p5" />
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_margin="5dp"
-                android:layout_height="100dp"
-                android:src="@drawable/p6" />
+                android:id="@+id/team6" />
         </LinearLayout>
 </LinearLayout>
-</LinearLayout></ScrollView>
+</LinearLayout>

@@ -28,8 +28,14 @@
         android:layout_weight="0"
         android:textAppearance="?android:attr/textAppearanceSmall"
         tools:text="Name" />
+        <ProgressBar
+            android:id="@+id/progress"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
 
-    <TextView
+
+        <TextView
         android:id="@+id/messageTextView"
 
         android:layout_width="wrap_content"

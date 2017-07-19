@@ -2,7 +2,11 @@ package com.example.hamzaahmed.npl;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -10,11 +14,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.facebook.share.widget.SendButton;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +34,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by Hamza Ahmed on 16-Jul-17.
@@ -69,6 +80,8 @@ public class OptionsFragment extends Fragment {
     AnimatorSet set7;
     AnimatorSet set8;
     AnimatorSet set9;
+    Dialog dialog;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -156,10 +169,21 @@ public class OptionsFragment extends Fragment {
                 startActivity(i);
             }
         });
+
+
+        if (isFirstTime()) {
+
+            Log.d("firsttime"," ");
+            showDialog();
+            // show dialog
+        }
+
+
         mAuthStateListner = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
+
                 if(user!=null){
                     //user is signed in
                     onSignedInInitialize(user.getDisplayName());
@@ -190,6 +214,58 @@ public class OptionsFragment extends Fragment {
 
 
     }
+    private boolean isFirstTime()
+    {
+        SharedPreferences preferences = getActivity().getPreferences(MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.commit();
+        }
+        return !ranBefore;
+    }
+
+    private void showDialog() {
+        // custom dialog
+        dialog = new Dialog(getActivity());
+        dialog.setContentView(R.layout.questions);
+
+        // set the custom dialog components - text, image and button
+
+        // Close Button
+
+        // Buy Button
+        EditText FavPlayer;
+        Spinner BestTeam;
+        FavPlayer = (EditText)dialog.findViewById(R.id.FavPlayer);
+        BestTeam = (Spinner) dialog.findViewById(R.id.favTeam);
+
+
+        String[] items = new String[]{"Nawait United", "Nawait Aces", "Nawait Royals", "Shan-e-Nawait", "Nawait Sultan", "Nawait Janbaz"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
+        Log.d("quantity",""+adapter);
+
+        BestTeam.setAdapter(adapter);
+
+        Button SendButtonQuestion;
+
+        SendButtonQuestion = (Button) dialog.findViewById(R.id.sendButtonQuesion);
+        SendButtonQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+            }
+        });
+
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.show();
+    }
+
     @Override
     public void onPause(){
         super.onPause();

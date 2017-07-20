@@ -8,18 +8,6 @@
     android:id="@+id/rightLayoutMOM"
     android:orientation="vertical">
 
-        <ProgressBar
-            style="?android:attr/progressBarStyleLarge"
-            android:padding="10dp"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:id="@+id/progressBar"
-            android:max="48"
-            android:progress="1"
-            android:progressDrawable="@drawable/circulr_screen"
-            android:layout_gravity="center_horizontal"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/nameTextViewMOM"
@@ -32,6 +20,7 @@
             android:fontFamily="sans-serif-condensed"
             android:layout_weight="0"
             tools:text="Name" />
+
 
         <TextView
             android:id="@+id/messageTextViewMOM"
@@ -49,6 +38,7 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
 
 
 </LinearLayout>

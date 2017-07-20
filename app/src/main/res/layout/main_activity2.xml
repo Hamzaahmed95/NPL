@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 
-    android:background="@drawable/chatback"
+    android:background="@android:color/white"
     android:layout_height="match_parent"
     tools:showIn="@layout/main_activity">
 
@@ -42,7 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/shape3"
+            android:background="@color/blue1"
             android:padding="12dp"
             android:singleLine="true"
             android:fontFamily="sans-serif-condensed"

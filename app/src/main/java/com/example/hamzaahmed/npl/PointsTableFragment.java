@@ -83,7 +83,7 @@ public class PointsTableFragment extends Fragment {
             String url2 = extra.getString("username");
             Log.d("hamza: ",url2);
             send1=(Button)view.findViewById(R.id.send1);
-            if(!url2.equals("K142805 HAMZA AHMED")){
+            if(!url2.equals("K142805 Hamza Ahmed")){
                 send1.setVisibility(View.GONE);
                 date1.setVisibility(View.GONE);
                 mPhotoPickerButton.setVisibility(View.GONE);

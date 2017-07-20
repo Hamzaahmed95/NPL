@@ -29,6 +29,8 @@ public class MessageAdapter extends ArrayAdapter<FriendlyMessage> {
     String Name;
     private LinearLayout l1;
     List<FriendlyMessage> f2;
+    private TextView date1;
+
     ArrayList al = new ArrayList();
     public MessageAdapter(Context context, int resource, List<FriendlyMessage> objects,String name,List<FriendlyMessage> f1) {
         super(context, resource, objects);
@@ -45,9 +47,9 @@ public class MessageAdapter extends ArrayAdapter<FriendlyMessage> {
         ImageView photoImageView = (ImageView) convertView.findViewById(R.id.photoImageView);
         TextView messageTextView = (TextView) convertView.findViewById(R.id.messageTextView);
         final ProgressBar progressBar = (ProgressBar) convertView.findViewById(R.id.progress);
-
+        date1=(TextView)convertView.findViewById(R.id.Date1);
         TextView authorTextView = (TextView) convertView.findViewById(R.id.nameTextView);
-        l1=(LinearLayout)convertView.findViewById(R.id.rightLayout);
+      //  l1=(LinearLayout)convertView.findViewById(R.id.rightLayout);
         Log.d("position",""+getItem(position));
         FriendlyMessage message = getItem(position);
         FriendlyMessage m = new FriendlyMessage();
@@ -58,7 +60,7 @@ public class MessageAdapter extends ArrayAdapter<FriendlyMessage> {
             if(f2.get(i).getName().equals(Name)){
                 count++;
                 Log.d("adapt2",""+Name+""+f2.get(i).getName());
-                l1.setGravity(Gravity.RIGHT);
+               // l1.setGravity(Gravity.RIGHT);
                 Log.d("count = ",""+count);
             }
         }
@@ -67,6 +69,8 @@ public class MessageAdapter extends ArrayAdapter<FriendlyMessage> {
         boolean isPhoto = message.getPhotoUrl() != null;
         if (isPhoto) {
             messageTextView.setVisibility(View.GONE);
+            if(message.getDate1()!=null)
+            date1.setText(message.getDate1());
             photoImageView.setVisibility(View.VISIBLE);
             Glide.with(photoImageView.getContext())
                     .load(message.getPhotoUrl())
@@ -87,6 +91,8 @@ public class MessageAdapter extends ArrayAdapter<FriendlyMessage> {
         } else {
             messageTextView.setVisibility(View.VISIBLE);
             photoImageView.setVisibility(View.GONE);
+            if(message.getDate1()!=null)
+            date1.setText(message.getDate1());
             progressBar.setVisibility(View.GONE);
             messageTextView.setText(message.getText());
         }

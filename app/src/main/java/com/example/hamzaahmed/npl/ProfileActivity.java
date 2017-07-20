@@ -6,6 +6,7 @@ package com.example.hamzaahmed.npl;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -50,7 +51,9 @@ import com.google.firebase.storage.UploadTask;
 
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -87,7 +90,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     private MessageAdapter mMessageAdapter;
     List notes = new ArrayList<>();
-
+    private String currentDateTimeString;
+    private TextView date1;
     private ImageView dp2;
     private String url2;
     private ProgressBar mProgressBar;
@@ -104,6 +108,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private String mUsername;
     private ImageView Button;
+    private String time;
 
     private FirebaseDatabase mFirebaseDatabase;
 
@@ -134,13 +139,15 @@ public class ProfileActivity extends AppCompatActivity {
         ArrayList<Image> Images = prepareData();
         ImagesAdapter adapter = new ImagesAdapter(this, Images);
         recyclerView.setAdapter(adapter);
-        l1=(LinearLayout)findViewById(R.id.rightLayout);
+        //l1=(LinearLayout)findViewById(R.id.rightLayout);
 
         NAME=ANONYMOUS;
         Button =(ImageView) findViewById(R.id.backButton);
         mTextView = (TextView)findViewById(R.id.messageTextView);
         name = (TextView)findViewById(R.id.Uname);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Aller_Rg.ttf");
 
+        name.setTypeface(font);
         Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -218,7 +225,10 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: Send messages on click
-                FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText().toString(), mUsername, null,R.color.darkgray);
+                currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+                time=""+currentDateTimeString.substring(12,19)+" "+currentDateTimeString.substring(20,23).toUpperCase();
+
+                FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText().toString(), mUsername, null,time);
                 // Clear input box
                 mMessageDatabaseReference.push().setValue(friendlyMessage);
                 mMessageEditText.setText("");
@@ -236,7 +246,7 @@ public class ProfileActivity extends AppCompatActivity {
                     //user is signed in
                     onSignedInInitialize(user.getDisplayName());
                     NAME =user.getDisplayName();
-                    name.setText(user.getDisplayName().toUpperCase());
+                    name.setText(user.getDisplayName());
                     final List<FriendlyMessage> friendlyMessages = new ArrayList<>();
                     mMessageAdapter = new MessageAdapter(ProfileActivity.this, R.layout.item_message, friendlyMessages,NAME,notes);
                     if(mMessageListView!=null)
@@ -335,7 +345,7 @@ public class ProfileActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Uri downloadURL =taskSnapshot.getDownloadUrl();
-                            FriendlyMessage friendlyMessage = new FriendlyMessage(null,mUsername,downloadURL.toString(),R.color.darkgray);
+                            FriendlyMessage friendlyMessage = new FriendlyMessage(null,mUsername,downloadURL.toString(),time);
                             Log.d("Musername","here-> "+friendlyMessage.getName().substring(7));
                             mMessageDatabaseReference.push().setValue(friendlyMessage);
                         }

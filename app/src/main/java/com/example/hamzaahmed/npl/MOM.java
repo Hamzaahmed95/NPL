@@ -57,7 +57,7 @@ public class MOM extends AppCompatActivity {
     private ListView mmessageListViewMOM;
 
 
-
+    private ImageButton closeButton;
 
     private MOMAdapter mMOMAdapter;
     
@@ -91,6 +91,7 @@ public class MOM extends AppCompatActivity {
     private String name;
     private String runs;
 
+    ProgressBar mprogressBar;
 
     @Override
     protected void onCreate( final Bundle savedInstanceState) {
@@ -105,6 +106,8 @@ public class MOM extends AppCompatActivity {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
+
+        closeButton = (ImageButton) findViewById(R.id.closeButton);
 
         mMessageDatabaseReference =mFirebaseDatabase.getReference().child("mom");
         mChatPhotoStorageReference =firebaseStorage.getReference().child("mom_photos");
@@ -183,11 +186,19 @@ public class MOM extends AppCompatActivity {
 
                 }
             });
+
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mMessageDatabaseReference.removeValue();
+            }
+        });
         Bundle extra =getIntent().getExtras();
         if(extra!=null) {
             String url2 = extra.getString("username");
             Log.d("hamza: ",url2);
-            if(!url2.equals("K142805 HAMZA AHMED")){
+            if(!url2.equals("K142805 Hamza Ahmed")){
+                Log.d(TAG, ""+url2);
                 mSendButton.setVisibility(View.GONE);
                 mphotoPickerButtonMOM.setVisibility(View.GONE);
                 mmessageEditTextMOM.setVisibility(View.GONE);
@@ -206,6 +217,7 @@ public class MOM extends AppCompatActivity {
                     mMOMAdapter = new MOMAdapter(MOM.this, R.layout.item_message, momclasses);
                     if(mmessageListViewMOM!=null)
                         mmessageListViewMOM.setAdapter(mMOMAdapter);
+
 
 
                 }else{

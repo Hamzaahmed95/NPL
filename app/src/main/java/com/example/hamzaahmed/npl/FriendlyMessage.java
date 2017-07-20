@@ -11,15 +11,24 @@ public class FriendlyMessage {
     private String name;
     private String photoUrl;
     private int color;
-
+    private String date1;
 
     public FriendlyMessage() {
     }
 
-    public FriendlyMessage(String text, String name, String photoUrl,int color) {
+    public FriendlyMessage(String text, String name, String photoUrl,String date) {
         this.text = text;
         this.name = name;
         this.photoUrl = photoUrl;
+        this.date1=date;
+    }
+
+    public String getDate1() {
+        return date1;
+    }
+
+    public void setDate1(String date1) {
+        this.date1 = date1;
     }
 
     public String getText() {

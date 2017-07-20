@@ -8,6 +8,19 @@
     android:id="@+id/rightLayoutMOM"
     android:orientation="vertical">
 
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:padding="10dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:id="@+id/progressBar"
+            android:max="48"
+            android:progress="1"
+            android:progressDrawable="@drawable/circulr_screen"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
         <TextView
             android:id="@+id/nameTextViewMOM"
             android:layout_width="wrap_content"

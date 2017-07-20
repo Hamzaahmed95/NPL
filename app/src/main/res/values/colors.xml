@@ -21,9 +21,11 @@
     <color name="orange">#90fdbd33</color>
     <color name="peach">#90FFDAB9</color>
     <color name="lightBlue">#9000AAFF</color>
+    <color name="lightBlue2">#00AAFF</color>
     <color name="purple">#95400080</color>
     <color name="pink1">#90FF0000</color>
     <color name="pink">#90FF4081</color>
     <color name="darkPurple">#220a37</color>
+    <color name="blue1">#003366</color>
 
 </resources>

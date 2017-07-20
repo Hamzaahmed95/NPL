@@ -66,7 +66,7 @@ public class OptionsFragment extends Fragment {
     private ChildEventListener mChildEventListener;
     private String mUsername;
     private FirebaseAuth mFirebaseAuth;
-
+    private String UserName;
     private FirebaseAuth.AuthStateListener mAuthStateListner;
 
     private FirebaseStorage firebaseStorage;
@@ -77,6 +77,7 @@ public class OptionsFragment extends Fragment {
     AnimatorSet set4;
     AnimatorSet set5;
     AnimatorSet set6;
+    LinearLayout layout01;
     AnimatorSet set7;
     AnimatorSet set8;
     AnimatorSet set9;
@@ -92,6 +93,7 @@ public class OptionsFragment extends Fragment {
         Chat1 = (LinearLayout) view.findViewById(R.id.layout5);
         getScore1 = (LinearLayout) view.findViewById(R.id.layout6);
         signout=(ImageView)view.findViewById(R.id.logout);
+        layout01 = (LinearLayout)view.findViewById(R.id.layout01);
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -171,15 +173,54 @@ public class OptionsFragment extends Fragment {
         });
 
 
-        if (isFirstTime()) {
 
-            Log.d("firsttime"," ");
-            showDialog();
-            // show dialog
+        Bundle extra =getActivity().getIntent().getExtras();
+       if(extra!=null) {
+            String house = extra.getString("batch");
+       if(house.equals("green"))
+            //Log.d("house",house);
+             if(house.equals("green")){
+                 layout01.setBackgroundColor(getResources().getColor(R.color.greenshades1));
+
+                Log.d("hzma green","house");
+            }
+            else if(house.equals("lightBlue")){
+
+                 layout01.setBackgroundResource(R.color.lightBlue);
+                 layout01.setBackgroundColor(getResources().getColor(R.color.lightBlue));
+
+                Log.d("lightBlue ",house);
+
+            }
+            else if(house.equals("purple")){
+                 layout01.setBackgroundColor(getResources().getColor(R.color.purple));
+
+                Log.d("purple ",house);
+            }
+            else if(house.equals("red")){
+                 layout01.setBackgroundColor(getResources().getColor(R.color.redshades1));
+                Log.d("red ",house);
+
+            }
+            else if(house.equals("peach")){
+                 layout01.setBackgroundColor(getResources().getColor(R.color.peach));
+
+                Log.d("peach ",house);
+
+            }
+            else if(house.equals("yellow")){
+                 layout01.setBackgroundColor(getResources().getColor(R.color.yellow));
+
+                Log.d("yellow ",house);
+
+            }
+            else{
+
+            }
+
         }
 
-
-        mAuthStateListner = new FirebaseAuth.AuthStateListener() {
+            mAuthStateListner = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -187,7 +228,9 @@ public class OptionsFragment extends Fragment {
                 if(user!=null){
                     //user is signed in
                     onSignedInInitialize(user.getDisplayName());
-                    name.setText(user.getDisplayName().toUpperCase());
+                    name.setText(user.getDisplayName());
+
+                    //name.setText(user.getDisplayName().toUpperCase());
                     Log.d("hamza here","this");
                     Log.d("check",user.getDisplayName().substring(2,3));
 
@@ -213,57 +256,6 @@ public class OptionsFragment extends Fragment {
         return view;
 
 
-    }
-    private boolean isFirstTime()
-    {
-        SharedPreferences preferences = getActivity().getPreferences(MODE_PRIVATE);
-        boolean ranBefore = preferences.getBoolean("RanBefore", false);
-        if (!ranBefore) {
-            // first time
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putBoolean("RanBefore", true);
-            editor.commit();
-        }
-        return !ranBefore;
-    }
-
-    private void showDialog() {
-        // custom dialog
-        dialog = new Dialog(getActivity());
-        dialog.setContentView(R.layout.questions);
-
-        // set the custom dialog components - text, image and button
-
-        // Close Button
-
-        // Buy Button
-        EditText FavPlayer;
-        Spinner BestTeam;
-        FavPlayer = (EditText)dialog.findViewById(R.id.FavPlayer);
-        BestTeam = (Spinner) dialog.findViewById(R.id.favTeam);
-
-
-        String[] items = new String[]{"Nawait United", "Nawait Aces", "Nawait Royals", "Shan-e-Nawait", "Nawait Sultan", "Nawait Janbaz"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, items);
-        Log.d("quantity",""+adapter);
-
-        BestTeam.setAdapter(adapter);
-
-        Button SendButtonQuestion;
-
-        SendButtonQuestion = (Button) dialog.findViewById(R.id.sendButtonQuesion);
-        SendButtonQuestion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                dialog.dismiss();
-            }
-        });
-
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setCancelable(false);
-        dialog.show();
     }
 
     @Override

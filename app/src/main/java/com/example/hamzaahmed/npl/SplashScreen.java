@@ -3,6 +3,7 @@ package com.example.hamzaahmed.npl;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
@@ -34,15 +35,41 @@ public class SplashScreen extends Activity {
         anim.start();
 
         Handler handler = new Handler();
+        if (isFirstTime()) {
 
-        handler.postDelayed(new Runnable() {
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                    finish();
+
+                }
+            }, 3000);
+        }
+        else{ handler.postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                startActivity(new Intent(SplashScreen.this,MainActivity.class));
+                startActivity(new Intent(SplashScreen.this, OptionsActivity.class));
                 finish();
 
             }
-        },3000);
+        }, 0);
+
+        }
+    }
+    private boolean isFirstTime()
+    {
+        SharedPreferences preferences = this.getPreferences(MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.commit();
+        }
+        return !ranBefore;
     }
 }

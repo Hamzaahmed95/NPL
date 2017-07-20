@@ -56,6 +56,7 @@ public class MOMAdapter extends ArrayAdapter<MOMCLASS> {
                     .into(photoImageView);
             runsAndwicket.setText(message.getWicketsAndRuns());
             name.setText(message.getNAME());
+            if(mprogressBar!=null)
             mprogressBar.setVisibility(convertView.INVISIBLE);
 
         }

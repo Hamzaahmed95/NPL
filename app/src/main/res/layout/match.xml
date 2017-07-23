@@ -4,18 +4,20 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sa2"
     android:gravity="center|top">
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:background="@color/lightBlue"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="@color/orange1"
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/backButton3"
-            android:src="@drawable/back2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"/>
+            android:src="@drawable/left"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
     <TextView
         android:layout_width="match_parent"
         android:gravity="center"
@@ -23,7 +25,6 @@
         android:textColor="@android:color/white"
         android:textSize="25dp"
         android:fontFamily="sans-serif-condensed"
-        android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:text="Recent Matches"/>
     </LinearLayout>

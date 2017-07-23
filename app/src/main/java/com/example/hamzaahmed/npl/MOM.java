@@ -74,7 +74,7 @@ public class MOM extends AppCompatActivity {
 
     private String mUsername;
     private ImageView Button;
-
+    private List<String> notes;
     private FirebaseDatabase mFirebaseDatabase;
 
     private DatabaseReference mMessageDatabaseReference;
@@ -93,6 +93,7 @@ public class MOM extends AppCompatActivity {
 
     ProgressBar mprogressBar;
 
+
     @Override
     protected void onCreate( final Bundle savedInstanceState) {
 
@@ -101,7 +102,7 @@ public class MOM extends AppCompatActivity {
         
         NAME=ANONYMOUS;
 
-
+        notes = new ArrayList<String>();
         mUsername = ANONYMOUS;
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -136,6 +137,8 @@ public class MOM extends AppCompatActivity {
                     // TODO: Fire an intent to show an image picker
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.setType("image/jpeg");
+                    intent.setType("image/png");
+                    intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
                     intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
                     startActivityForResult(intent.createChooser(intent,"Complete action using"),RC_PHOTO_PICKER);
 
@@ -199,6 +202,7 @@ public class MOM extends AppCompatActivity {
             Log.d("hamza: ",url2);
             if(!url2.equals("K142805 Hamza Ahmed")){
                 Log.d(TAG, ""+url2);
+                closeButton.setVisibility(View.GONE);
                 mSendButton.setVisibility(View.GONE);
                 mphotoPickerButtonMOM.setVisibility(View.GONE);
                 mmessageEditTextMOM.setVisibility(View.GONE);
@@ -242,6 +246,8 @@ public class MOM extends AppCompatActivity {
                 }
             };
         };
+
+
     }
 
 
@@ -363,8 +369,21 @@ public class MOM extends AppCompatActivity {
 
                     for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
 
+                        MOMCLASS mom =noteDataSnapshot.getValue(MOMCLASS.class);
+                        String pictures[] = new String[100];
+                      //  Log.d("mom ",""+mom.getPICTURE());
+
+                        notes.add(mom.getPICTURE());
+                    }
+                    for (String s:notes){
+                        Log.d("hamza1234",s);
 
                     }
+
+
+
+
+
                 }
 
                 @Override

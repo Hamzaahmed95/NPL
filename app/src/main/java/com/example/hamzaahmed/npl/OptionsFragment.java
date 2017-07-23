@@ -32,6 +32,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -55,7 +57,8 @@ public class OptionsFragment extends Fragment {
     private LinearLayout getTeams1;
     private LinearLayout MOM;
     private ImageView signout;
-
+    private String Name;
+    String[] array;
     AnimatorSet set3;
     private FirebaseDatabase mFirebaseDatabase;
 
@@ -68,11 +71,13 @@ public class OptionsFragment extends Fragment {
     private FirebaseAuth mFirebaseAuth;
     private String UserName;
     private FirebaseAuth.AuthStateListener mAuthStateListner;
+    private ImageView showUsers;
 
     private FirebaseStorage firebaseStorage;
 
     private StorageReference mChatPhotoStorageReference;
 
+    private DatabaseReference mHouseDatabaseReference;
 
     AnimatorSet set4;
     AnimatorSet set5;
@@ -82,6 +87,7 @@ public class OptionsFragment extends Fragment {
     AnimatorSet set8;
     AnimatorSet set9;
     Dialog dialog;
+    int i;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -94,6 +100,24 @@ public class OptionsFragment extends Fragment {
         getScore1 = (LinearLayout) view.findViewById(R.id.layout6);
         signout=(ImageView)view.findViewById(R.id.logout);
         layout01 = (LinearLayout)view.findViewById(R.id.layout01);
+        showUsers=(ImageView)view.findViewById(R.id.showUsers);
+        array = new String[100];
+        i=0;
+        Name =ANONYMOUS;
+      //  mHouseDatabaseReference =mFirebaseDatabase.getReference().child("house");
+
+        showUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ii = new Intent(getActivity(),Users.class);
+                Bundle b=new Bundle();
+                b.putStringArray("users",array);
+                ii.putExtra("count",i);
+                ii.putExtras(b);
+                startActivity(ii);
+            }
+        });
+
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -113,6 +137,32 @@ public class OptionsFragment extends Fragment {
             }
         });
 
+        Query mHouseDatabaseReference2 =mFirebaseDatabase.getReference().child("house").orderByChild("username");
+
+        mHouseDatabaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // dataSnapshot is the "issue" node with all children with id 0
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                        // do something with the individual "issues"
+
+                        System.out.println(issue.child("username").getValue().equals(mUsername));
+                        array[i]=issue.child("username").getValue().toString();
+                        i++;
+
+                    }
+                    for(int j=0;j<i;j++){
+                        System.out.println(j+""+array[j]);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         getMatches = (LinearLayout) view.findViewById(R.id.layout3);
         getTeams = (LinearLayout) view.findViewById(R.id.layout4);
@@ -172,8 +222,12 @@ public class OptionsFragment extends Fragment {
             }
         });
 
-
-
+     /*   Bundle b=getActivity().getIntent().getExtras();
+        String[] array=b.getStringArray("users");
+        for(int j=0;j<array.length;j++){
+            System.out.println(j+""+array[j]);
+        }
+*/
         Bundle extra =getActivity().getIntent().getExtras();
        if(extra!=null) {
             String house = extra.getString("batch");
@@ -228,8 +282,13 @@ public class OptionsFragment extends Fragment {
                 if(user!=null){
                     //user is signed in
                     onSignedInInitialize(user.getDisplayName());
+                    Name=user.getDisplayName();
                     name.setText(user.getDisplayName());
+                    Log.d("Name:",Name);
+                    if(!Name.equals("K142805 Hamza Ahmed")){
 
+                        showUsers.setVisibility(View.GONE);
+                    }
                     //name.setText(user.getDisplayName().toUpperCase());
                     Log.d("hamza here","this");
                     Log.d("check",user.getDisplayName().substring(2,3));

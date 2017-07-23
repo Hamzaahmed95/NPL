@@ -21,12 +21,14 @@ public class MatchesFragment extends Fragment {
     private RecyclerView recyclerView;
     private MatchAdapter adapter;
     private ImageView backImageView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.match,container,false);
         backImageView =(ImageView)view.findViewById(R.id.backButton3);
-        
+
+
         backImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

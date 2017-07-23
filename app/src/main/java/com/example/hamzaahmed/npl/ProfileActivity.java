@@ -44,6 +44,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -63,6 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
     private static final String TAG = "ProfileActivity";
 
     public static final String ANONYMOUS = "anonymous";
+    private Query mHouseDatabaseReference2;
 
     public static final int DEFAULT_MSG_LENGTH_LIMIT = 1000;
 
@@ -122,16 +124,15 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthStateListner;
 
     private FirebaseStorage firebaseStorage;
-
+    FirebaseUser user;
     private StorageReference mChatPhotoStorageReference;
-
+    private String side2;
 
     @Override
     protected void onCreate( final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.imagegallery);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -226,9 +227,10 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // TODO: Send messages on click
                 currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
-                time=""+currentDateTimeString.substring(12,19)+" "+currentDateTimeString.substring(20,23).toUpperCase();
-
-                FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText().toString(), mUsername, null,time);
+                time=""+currentDateTimeString.substring(12,16)+" "+currentDateTimeString.substring(20,24).toUpperCase();
+                Log.d("saf123",time);
+                //System.out.println("side: "+side2);
+                FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText().toString(), mUsername, null,time,side2);
                 // Clear input box
                 mMessageDatabaseReference.push().setValue(friendlyMessage);
                 mMessageEditText.setText("");
@@ -277,6 +279,50 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             };
         };
+        mHouseDatabaseReference2 =mFirebaseDatabase.getReference().child("messages").orderByChild("names");
+        mHouseDatabaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // dataSnapshot is the "issue" node with all children with id 0
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                        // do something with the individual "issues"
+
+                        //System.out.println(user.getDisplayName().equals("K142805 Hamza Ahmed")+" "+issue.child("name").getValue().equals("K142805 Hamza Ahmed"));
+
+                        NAME =mFirebaseAuth.getCurrentUser().getDisplayName();
+                        //System.out.println("name"+issue.child("name").getValue());
+                        System.out.println(issue.child("name").getValue());
+                        if(NAME.equals(issue.child("name").getValue())){
+                            //System.out.println("in the box");
+                             side2="RIGHT";
+                            }
+                        else{
+                            side2="LEFT";
+                        }
+
+  /*                          messageTextView.setTextColor((Color.parseColor("#800000")));
+                            params.weight=1.0f;
+                            params.gravity=Gravity.START;
+                            l1.setLayoutParams(params);
+
+
+*/
+
+
+
+
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private ArrayList<Image> prepareData(){
@@ -345,8 +391,8 @@ public class ProfileActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Uri downloadURL =taskSnapshot.getDownloadUrl();
-                            FriendlyMessage friendlyMessage = new FriendlyMessage(null,mUsername,downloadURL.toString(),time);
-                            Log.d("Musername","here-> "+friendlyMessage.getName().substring(7));
+                            FriendlyMessage friendlyMessage = new FriendlyMessage(null,mUsername,downloadURL.toString(),time,side2);
+                            //System.out.println(side2);
                             mMessageDatabaseReference.push().setValue(friendlyMessage);
                         }
                     });
@@ -377,6 +423,8 @@ public class ProfileActivity extends AppCompatActivity {
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
                     String splited = friendlyMessage.getName();
+                    String name=friendlyMessage.getName();
+
 
                     mMessageAdapter.add(friendlyMessage);
 
@@ -409,10 +457,10 @@ public class ProfileActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
                     for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
-                        FriendlyMessage note = noteDataSnapshot.getValue(FriendlyMessage.class);
-                        Log.d("message ",""+note.getName());
+                       // FriendlyMessage note = noteDataSnapshot.getValue(FriendlyMessage.class);
+                        //Log.d("message ",""+note.getPhotoUrl());
 
-                        notes.add(note);
+                      //  notes.add(note);
                     }
                 }
 

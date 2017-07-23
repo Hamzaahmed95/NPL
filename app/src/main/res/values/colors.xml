@@ -12,7 +12,7 @@
     <color name="redshades1">#907f0000</color>
     <color name="blueshades1">#90001A33</color>
     <color name="greenshades1">#90009900</color>
-    <color name="bluesh">#90478B75</color>
+    <color name="bluesh">#478B75</color>
     <color name="gold">#191500</color>
     <color name="yellow">#90FFFF00</color>
     <color name="orange1">#90FF6347</color>
@@ -23,8 +23,8 @@
     <color name="lightBlue">#9000AAFF</color>
     <color name="lightBlue2">#00AAFF</color>
     <color name="purple">#95400080</color>
-    <color name="pink1">#90FF0000</color>
-    <color name="pink">#90FF4081</color>
+    <color name="pink1">#FF0000</color>
+    <color name="pink">#FF4081</color>
     <color name="darkPurple">#220a37</color>
     <color name="blue1">#003366</color>
     <color name="gray">#D3D3D3</color>

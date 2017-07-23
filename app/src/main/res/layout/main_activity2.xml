@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:background="@color/blue1"
+        android:background="@color/darkMaroon"
         android:layout_alignParentStart="true"
         android:orientation="horizontal">
 
@@ -42,7 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:background="@color/blue1"
+            android:background="@color/darkMaroon"
             android:padding="12dp"
             android:singleLine="true"
             android:fontFamily="sans-serif-condensed"
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/blue1"
+            android:background="@color/darkMaroon"
             android:textSize="20dp"
             android:fontFamily="serif-monospace"
             android:enabled="false"

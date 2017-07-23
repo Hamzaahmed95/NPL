@@ -3,14 +3,50 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:background="@drawable/sa2"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="top|center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="@color/blue1"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/backButton5"
+            android:src="@drawable/left"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingRight="10dp"
+            android:text="Points Table"/>
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/photoImageView2"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:adjustViewBounds="true" />
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:padding="10dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:id="@+id/progressBarPT"
+        android:max="48"
+        android:progress="1"
+        android:progressDrawable="@drawable/circulr_screen"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
 
     <ImageButton
         android:id="@+id/photoPickerButton2"

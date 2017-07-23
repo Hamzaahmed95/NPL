@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -25,8 +26,14 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.Map;
 
 import static com.example.hamzaahmed.npl.OptionsFragment.ANONYMOUS;
 
@@ -47,14 +54,14 @@ public class UsernameAndPasswordFragment extends Fragment {
     private FirebaseDatabase mFirebaseDatabase;
 
     private DatabaseReference mHouseDatabaseReference;
-
+    private DatabaseReference mHouseDatabaseReference2;
     private ChildEventListener mChildEventListener;
     private String mUsername;
-
+    private String array[];
     private String house;
     private String favouriteTeam;
     private String favouriteBatsman;
-
+    int i;
     private FirebaseAuth mFirebaseAuth;
 
     private FirebaseAuth.AuthStateListener mAuthStateListner;
@@ -68,10 +75,35 @@ public class UsernameAndPasswordFragment extends Fragment {
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
-
+        array = new String[100];
+        i=0;
         mHouseDatabaseReference =mFirebaseDatabase.getReference().child("house");
+        Query mHouseDatabaseReference2 =mFirebaseDatabase.getReference().child("house").orderByChild("username");
 
+        mHouseDatabaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // dataSnapshot is the "issue" node with all children with id 0
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                        // do something with the individual "issues"
 
+                        System.out.println(issue.child("username").getValue().equals(mUsername));
+                        array[i]=issue.child("username").getValue().toString();
+                        i++;
+
+                    }
+                    for(int j=0;j<i;j++){
+                        System.out.println(j+""+array[j]);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         mUsername = ANONYMOUS;
         
@@ -220,18 +252,34 @@ public class UsernameAndPasswordFragment extends Fragment {
                 Log.d("favourite player",favouriteBatsman);
                 Log.d("favourite team",favouriteTeam);
                 Log.d("house",house);
+
                 House house1 = new House(mUsername,favouriteBatsman,favouriteTeam,house);
                 mHouseDatabaseReference.push().setValue(house1);
                 
                 Intent i = new Intent(getActivity(),OptionsActivity.class);
+                Bundle b=new Bundle();
+                b.putStringArray("users",array);
                 i.putExtra("batch",house);
                 i.putExtra("username",mUsername);
+                i.putExtras(b);
                 getActivity().finish();
                 startActivity(i);
 
 
             }
         });
+        mHouseDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println("here ->"+dataSnapshot.getValue());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getMessage());
+            }
+        });
+
 
         mAuthStateListner = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -243,7 +291,7 @@ public class UsernameAndPasswordFragment extends Fragment {
                     //user is signed in
                     
                     onSignedInInitialize(user.getDisplayName());
-
+                    mUsername=user.getDisplayName();
 
                     Username.setText("Hi!\n "+user.getDisplayName().toUpperCase()+"\n\nWelcome to NPL 2017!");
                     Log.d("hamza here","this");
@@ -270,6 +318,21 @@ public class UsernameAndPasswordFragment extends Fragment {
 
 
         return view;
+    }
+    private void collectPhoneNumbers(Map<String,Object> users) {
+
+        ArrayList<Long> phoneNumbers = new ArrayList<>();
+
+        //iterate through each user, ignoring their UID
+        for (Map.Entry<String, Object> entry : users.entrySet()){
+
+            //Get user map
+            Map singleUser = (Map) entry.getValue();
+            //Get phone field and append to list
+            phoneNumbers.add((Long) singleUser.get("username"));
+        }
+
+        Log.d("aaa",phoneNumbers.toString());
     }
     @Override
     public void onPause(){

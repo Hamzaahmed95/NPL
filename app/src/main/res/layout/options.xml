@@ -5,15 +5,26 @@
     android:layout_width="match_parent"
     android:background="@drawable/sa2"
     android:gravity="center"
-    android:padding="10dp"
+    android:padding="5dp"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:paddingBottom="10dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
         android:id="@+id/logout"
         android:src="@drawable/logout"/>
-
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:id="@+id/showUsers"
+        android:src="@drawable/users"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +36,7 @@
             android:id="@+id/layout1"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="@color/purple"
+            android:background="@color/darkMaroon"
             android:layout_height="100dp">
             <ImageView
                 android:layout_width="wrap_content"
@@ -46,7 +57,7 @@
             android:layout_width="102dp"
             android:id="@+id/layout2"
             android:gravity="center"
-            android:background="@color/pink"
+            android:background="@color/bluesh"
             android:orientation="vertical"
             android:layout_height="100dp">
 
@@ -73,12 +84,12 @@
         android:gravity="center"
         android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="102dp"
+            android:layout_width="94dp"
             android:id="@+id/layout5"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="@color/bluesh"
-            android:layout_height="90dp">
+            android:background="@android:color/holo_red_dark"
+            android:layout_height="100dp">
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,14 +104,13 @@
                 android:text="Interview"/>
 
         </LinearLayout>
-
         <LinearLayout
-            android:layout_width="180dp"
-            android:id="@+id/layout6"
+            android:layout_width="94dp"
+            android:id="@+id/layout10"
             android:gravity="center"
-            android:background="@color/redshades1"
+            android:background="@color/yellow"
             android:orientation="vertical"
-            android:layout_height="90dp">
+            android:layout_height="100dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -113,7 +123,28 @@
                 android:fontFamily="sans-serif-condensed"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Points Table"/>
+                android:text="OP caps"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="94dp"
+            android:id="@+id/layout6"
+            android:gravity="center"
+            android:background="@color/blue1"
+            android:orientation="vertical"
+            android:layout_height="100dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/table"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Pts Table"/>
         </LinearLayout>
 
 
@@ -193,7 +224,7 @@
                 android:gravity="center"
                 android:id="@+id/layout7"
                 android:orientation="vertical"
-                android:background="@color/yellow"
+                android:background="@color/darkPurple"
                 android:layout_height="100dp">
                 <ImageView
                     android:layout_width="wrap_content"

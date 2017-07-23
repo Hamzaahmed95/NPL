@@ -7,6 +7,7 @@ import java.util.UUID;
  */
 
 public class Match {
+
     private Integer Image1Id;
     private Integer Image2Id;
     private String matchDate;

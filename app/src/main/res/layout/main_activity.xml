@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
-        android:background="@color/blue1"
+        android:background="@color/darkMaroon"
         android:orientation="horizontal">
 
         <ImageView

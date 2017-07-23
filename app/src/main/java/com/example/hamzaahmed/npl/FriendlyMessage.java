@@ -12,15 +12,25 @@ public class FriendlyMessage {
     private String photoUrl;
     private int color;
     private String date1;
+    private String side;
 
     public FriendlyMessage() {
     }
 
-    public FriendlyMessage(String text, String name, String photoUrl,String date) {
+    public FriendlyMessage(String text, String name, String photoUrl,String date,String side) {
         this.text = text;
         this.name = name;
         this.photoUrl = photoUrl;
         this.date1=date;
+        this.side=side;
+    }
+
+    public String getSide() {
+        return side;
+    }
+
+    public void setSide(String side) {
+        this.side = side;
     }
 
     public String getDate1() {

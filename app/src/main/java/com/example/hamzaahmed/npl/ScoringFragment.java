@@ -1,5 +1,6 @@
 package com.example.hamzaahmed.npl;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.auth.AuthUI;
@@ -36,8 +39,6 @@ import static com.example.hamzaahmed.npl.ProfileActivity.DEFAULT_MSG_LENGTH_LIMI
 
 public class ScoringFragment extends Fragment {
 
-    private RecyclerView recyclerView;
-    private ScoreAdapter adapter;
     private TextView Runs1;
     private TextView Overs1;
     private TextView Wicket1;
@@ -49,7 +50,7 @@ public class ScoringFragment extends Fragment {
     private TextView ball4;
     private TextView ball5;
     private TextView ball6;
-
+    private Button getScoreCard;
 
     private TextView Wicket2;
     private EditText scoreInput;
@@ -62,84 +63,94 @@ public class ScoringFragment extends Fragment {
     private FirebaseAuth.AuthStateListener mAuthStateListner;
     private String mUsername;
     private Button SendButton;
+    private ImageView backButton4;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.scorecard,container,false);
-        Runs1 = (TextView)view.findViewById(R.id.livsScoreRuns1);
-        Runs2 = (TextView)view.findViewById(R.id.livsScoreRuns2);
-        Overs1=(TextView)view.findViewById(R.id.livsScoreOvers1);
-        Overs2=(TextView)view.findViewById(R.id.livsScoreOvers2);
-        Wicket1=(TextView)view.findViewById(R.id.livsScoreWicket1);
-        Wicket2=(TextView)view.findViewById(R.id.livsScoreWicket2);
-        Runs1=(TextView)view.findViewById(R.id.livsScoreRuns1);
-        Runs1=(TextView)view.findViewById(R.id.livsScoreRuns1);
-        scoreInput=(EditText)view.findViewById(R.id.scoreUpdate);
-        SendButton = (Button)view.findViewById(R.id.scoreSendButton);
-        ball1=(TextView)view.findViewById(R.id.ball1);
-        ball2=(TextView)view.findViewById(R.id.ball2);
-        ball3=(TextView)view.findViewById(R.id.ball3);
-        ball4=(TextView)view.findViewById(R.id.ball4);
-        ball5=(TextView)view.findViewById(R.id.ball5);
-        ball6=(TextView)view.findViewById(R.id.ball6);
+        View view = inflater.inflate(R.layout.scorecard, container, false);
+        Runs1 = (TextView) view.findViewById(R.id.livsScoreRuns1);
+        Runs2 = (TextView) view.findViewById(R.id.livsScoreRuns2);
+        Overs1 = (TextView) view.findViewById(R.id.livsScoreOvers1);
+        Overs2 = (TextView) view.findViewById(R.id.livsScoreOvers2);
+        Wicket1 = (TextView) view.findViewById(R.id.livsScoreWicket1);
+        Wicket2 = (TextView) view.findViewById(R.id.livsScoreWicket2);
+        Runs1 = (TextView) view.findViewById(R.id.livsScoreRuns1);
+        Runs1 = (TextView) view.findViewById(R.id.livsScoreRuns1);
+        scoreInput = (EditText) view.findViewById(R.id.scoreUpdate);
+        SendButton = (Button) view.findViewById(R.id.scoreSendButton);
+        ball1 = (TextView) view.findViewById(R.id.ball1);
+        ball2 = (TextView) view.findViewById(R.id.ball2);
+        ball3 = (TextView) view.findViewById(R.id.ball3);
+        ball4 = (TextView) view.findViewById(R.id.ball4);
+        ball5 = (TextView) view.findViewById(R.id.ball5);
+        ball6 = (TextView) view.findViewById(R.id.ball6);
+        backButton4 =(ImageView) view.findViewById(R.id.backButton4);
 
+        backButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), OptionsActivity.class);
+                startActivity(i);
+            }
+        });
+
+        getScoreCard = (Button) view.findViewById(R.id.getFullScoreCard);
+        getScoreCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), FullScoreCard.class);
+                startActivity(i);
+            }
+        });
 
 
         mUsername = ANONYMOUS;
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
-        mScoreDatabaseReference =mFirebaseDatabase.getReference().child("score");
-        recyclerView = (RecyclerView)view.findViewById(R.id.listOfScoring);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mScoreDatabaseReference = mFirebaseDatabase.getReference().child("score");
         SendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String score = scoreInput.getText().toString();
-                String [] arr = score.split("-");
-                String runs=arr[0];
-                String wicket=arr[1];
+                String[] arr = score.split("-");
+                String runs = arr[0];
+                String wicket = arr[1];
                 String overs = arr[2];
-                String team=arr[3];
-                String balls=arr[4];
-                String ballNo=arr[5];
-                LiveScore liveScore = new LiveScore(Integer.parseInt(runs),Integer.parseInt(wicket),Float.parseFloat(overs),1,Integer.parseInt(team),Integer.parseInt(balls),Integer.parseInt(ballNo));
+                String team = arr[3];
+                String balls = arr[4];
+                String ballNo = arr[5];
+                LiveScore liveScore = new LiveScore(Integer.parseInt(runs), Integer.parseInt(wicket), Float.parseFloat(overs), 1, Integer.parseInt(team), Integer.parseInt(balls), Integer.parseInt(ballNo));
                 mScoreDatabaseReference.push().setValue(liveScore);
                 scoreInput.setText("");
-                if(Integer.parseInt(team)==1){
+                if (Integer.parseInt(team) == 1) {
                     Runs1.setText(runs);
                     Wicket1.setText(wicket);
                     Overs1.setText(overs);
-                }
-                else {
+                } else {
 
                     Runs2.setText(runs);
                     Wicket2.setText(wicket);
                     Overs2.setText(overs);
                 }
-                if(Integer.parseInt(ballNo)==1){
+                if (Integer.parseInt(ballNo) == 1) {
                     ball1.setText(balls);
-                }
-                else if(Integer.parseInt(ballNo)==2){
+                } else if (Integer.parseInt(ballNo) == 2) {
                     ball2.setText(balls);
-                }
-                else if(Integer.parseInt(ballNo)==3){
+                } else if (Integer.parseInt(ballNo) == 3) {
                     ball3.setText(balls);
-                }
-                else if(Integer.parseInt(ballNo)==4){
+                } else if (Integer.parseInt(ballNo) == 4) {
                     ball4.setText(balls);
-                }
-                else if(Integer.parseInt(ballNo)==5){
+                } else if (Integer.parseInt(ballNo) == 5) {
                     ball5.setText(balls);
-                }
-                else if(Integer.parseInt(ballNo)==6){
+                } else if (Integer.parseInt(ballNo) == 6) {
                     ball6.setText(balls);
                 }
 
 
             }
         });
-        if(scoreInput!=null) {
+        if (scoreInput != null) {
             scoreInput.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -167,17 +178,17 @@ public class ScoringFragment extends Fragment {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if(user!=null){
+                if (user != null) {
                     //user is signed in
                     onSignedInInitialize(user.getDisplayName());
-                    Log.d("user: ",user.getDisplayName());
-                    if(!user.getDisplayName().equals("K142805 Hamza Ahmed")){
+                    Log.d("user: ", user.getDisplayName());
+                    if (!user.getDisplayName().equals("K142805 Hamza Ahmed")) {
                         scoreInput.setVisibility(View.GONE);
                         SendButton.setVisibility(View.GONE);
                     }
 
 
-                }else{
+                } else {
                     //user is signed out
                     onSignedOutInitialize();
 
@@ -192,21 +203,15 @@ public class ScoringFragment extends Fragment {
                             RC_SIGN_IN);
 
                 }
-            };
+            }
+
+            ;
         };
 
 
-
-        updateUI();
+     ;
 
         return view;
-    }
-    public void updateUI(){
-        ScoringLab scoringLab = ScoringLab.get(getActivity());
-        List<ScoreCard> score=scoringLab.getBatsmans();
-        adapter = new ScoreAdapter(score);
-        recyclerView.setAdapter(adapter);
-
     }
 
 

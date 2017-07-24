@@ -9,7 +9,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
+
+import static android.R.attr.fragment;
 
 /**
  * Created by Hamza Ahmed on 14-Jul-17.
@@ -18,14 +22,14 @@ import java.util.ArrayList;
 public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder> {
     private ArrayList<Image> galleryList;
     private Context context;
-
+    private Image image1;
     public ImagesAdapter(Context context, ArrayList<Image> galleryList) {
         this.galleryList = galleryList;
         this.context = context;
     }
 
     @Override
-    public ImagesAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_image, viewGroup, false);
         return new ViewHolder(view);
     }
@@ -33,8 +37,8 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ImagesAdapter.ViewHolder viewHolder, int i) {
         // viewHolder.title.setText(galleryList.get(i).getImage_title());
-        viewHolder.img.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        viewHolder.img.setImageResource((galleryList.get(i).getImage_ID()));
+        Image image = galleryList.get(i);
+        viewHolder.bindDeals(image);
     }
 
     @Override
@@ -47,13 +51,23 @@ public class ImagesAdapter extends RecyclerView.Adapter<ImagesAdapter.ViewHolder
         private ImageView img;
         public ViewHolder(View view) {
             super(view);
-
             //title = (Button) view.findViewById(R.id.title);
             img = (ImageView) view.findViewById(R.id.img);
         }
-        @Override
+
+        public void bindDeals(Image image) {
+             image1= image;
+            System.out.println("imageid"+image1.getImage_ID());
+            Glide.with(img.getContext())
+                    .load(image1.getImage_ID())
+                    .into(img);
+        }
+
+            @Override
         public void onClick(View view) {
             Toast.makeText(context, "hello", Toast.LENGTH_SHORT).show();
         }
+
+
     }
 }

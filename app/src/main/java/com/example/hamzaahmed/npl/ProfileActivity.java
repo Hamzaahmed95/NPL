@@ -107,6 +107,7 @@ public class ProfileActivity extends AppCompatActivity {
     public String NAME;
 
     private static final int RC_PHOTO_PICKER =  2;
+    private static final int RC_PHOTO_PICKERStories=3;
 
     private String mUsername;
     private ImageView Button;
@@ -115,33 +116,35 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase;
 
     private DatabaseReference mMessageDatabaseReference;
+    private DatabaseReference mStoriesDatabaseReference;
+
     private DatabaseReference mUsersDatabaseReference;
 
     private ChildEventListener mChildEventListener;
+    private ChildEventListener mChildEventListener2;
 
     private FirebaseAuth mFirebaseAuth;
-
+    private ImagesAdapter adapter;
     private FirebaseAuth.AuthStateListener mAuthStateListner;
-
+    private ImageButton photoPickerButtonStories;
     private FirebaseStorage firebaseStorage;
     FirebaseUser user;
     private StorageReference mChatPhotoStorageReference;
+    private StorageReference mStoriesStorageReference;
     private String side2;
-
+    private RecyclerView recyclerView;
+    private ArrayList<Image> images;
     @Override
     protected void onCreate( final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.imagegallery);
+        recyclerView = (RecyclerView) findViewById(R.id.imagegallery);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        ArrayList<Image> Images = prepareData();
-        ImagesAdapter adapter = new ImagesAdapter(this, Images);
-        recyclerView.setAdapter(adapter);
         //l1=(LinearLayout)findViewById(R.id.rightLayout);
-
+        photoPickerButtonStories=(ImageButton)findViewById(R.id.photoPickerButtonStories);
         NAME=ANONYMOUS;
         Button =(ImageView) findViewById(R.id.backButton);
         mTextView = (TextView)findViewById(R.id.messageTextView);
@@ -164,7 +167,9 @@ public class ProfileActivity extends AppCompatActivity {
         firebaseStorage = FirebaseStorage.getInstance();
 
         mMessageDatabaseReference =mFirebaseDatabase.getReference().child("messages");
+        mStoriesDatabaseReference =mFirebaseDatabase.getReference().child("stories");
         mChatPhotoStorageReference =firebaseStorage.getReference().child("chat_photos");
+        mStoriesStorageReference =firebaseStorage.getReference().child("stories_pictures");
         mUsersDatabaseReference = mFirebaseDatabase.getReference().child("users");
         Log.d("oncreate ",mMessageDatabaseReference.getDatabase().toString());
 
@@ -176,6 +181,57 @@ public class ProfileActivity extends AppCompatActivity {
         mPhotoPickerButton = (ImageButton) findViewById(R.id.photoPickerButton);
         mMessageEditText = (EditText) findViewById(R.id.messageEditText);
         mSendButton = (Button) findViewById(R.id.sendButton);
+
+        Query mHouseDatabaseReference2 =mFirebaseDatabase.getReference().child("stories");
+
+        mHouseDatabaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // dataSnapshot is the "issue" node with all children with id 0
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                        // do something with the individual "issues"
+
+                        System.out.println(issue.child("image_ID").getValue());
+                        Image image1 = new Image();
+
+                        image1.setImage_ID(issue.child("image_ID").getValue().toString());
+                        images.add(image1);
+
+                       /* Match match = new Match();
+                        match.setImage1Id(Integer.parseInt(issue.child("image1Id").getValue().toString()));
+                        match.setImage2Id(Integer.parseInt(issue.child("image2Id").getValue().toString()));
+                        match.setMatchDate(issue.child("matchDate").getValue().toString());
+                        match.setMatchNo(issue.child("matchNo").getValue().toString());
+                        match.setVenue(issue.child("venue").getValue().toString());
+                        match.setMatchResult(issue.child("matchResult").getValue().toString());
+                        mMatch.add(match);
+                        //   System.out.println();
+                        //array[i]=issue.child("username").getValue().toString();
+                        //i++;
+                    }
+                    adapter.notifyDataSetChanged();
+                    adapter = new MatchAdapter(getmMatch());
+                    recyclerView.setAdapter(adapter);
+*/
+                    }
+
+                    adapter.notifyDataSetChanged();
+                    adapter = new ImagesAdapter(ProfileActivity.this,getmMatch());
+                    recyclerView.setAdapter(adapter);
+
+                    //for(int j=0;j<i;j++){
+                    //  System.out.println(j+""+array[j]);
+                    // }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         // Initialize message ListView and its adapter
 
@@ -196,6 +252,18 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+        if(photoPickerButtonStories!=null)
+            photoPickerButtonStories.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // TODO: Fire an intent to show an image picker
+                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                    intent.setType("image/jpeg");
+                    intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
+                    startActivityForResult(intent.createChooser(intent,"Complete action using"),RC_PHOTO_PICKERStories);
+
+                }
+            });
 
         // Enable Send button when there's text to send
         if(mMessageEditText!=null) {
@@ -253,6 +321,10 @@ public class ProfileActivity extends AppCompatActivity {
                     mMessageAdapter = new MessageAdapter(ProfileActivity.this, R.layout.item_message, friendlyMessages,NAME,notes);
                     if(mMessageListView!=null)
                         mMessageListView.setAdapter(mMessageAdapter);
+                    images = new ArrayList<>();
+                    adapter = new ImagesAdapter(ProfileActivity.this,images);
+                    if(recyclerView!=null)
+                        recyclerView.setAdapter(adapter);
 
                     Log.d("hamza here","this");
                     Log.d("check",NAME);
@@ -324,8 +396,12 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
     }
+    public ArrayList<Image> getmMatch(){
 
-    private ArrayList<Image> prepareData(){
+        return images;
+    }
+
+   /* private ArrayList<Image> prepareData(){
 
         ArrayList<Image> theimage = new ArrayList<>();
         for(int i = 0; i< image_ids.length; i++){
@@ -335,7 +411,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
         return theimage;
     }
-
+*/
  /*   @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -394,6 +470,22 @@ public class ProfileActivity extends AppCompatActivity {
                             FriendlyMessage friendlyMessage = new FriendlyMessage(null,mUsername,downloadURL.toString(),time,side2);
                             //System.out.println(side2);
                             mMessageDatabaseReference.push().setValue(friendlyMessage);
+
+                        }
+                    });
+        }
+        else if(requestCode == RC_PHOTO_PICKERStories && resultCode==RESULT_OK){
+            Uri selectedImageUri= data.getData();
+            StorageReference photoRef =
+                    mStoriesStorageReference.child(selectedImageUri.getLastPathSegment());
+            photoRef.putFile(selectedImageUri).addOnSuccessListener
+                    (this, new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Uri downloadURL =taskSnapshot.getDownloadUrl();
+                            Image image = new Image(null,downloadURL.toString());
+                            //System.out.println(side2);
+                            mStoriesDatabaseReference.push().setValue(image);
                         }
                     });
         }
@@ -424,8 +516,9 @@ public class ProfileActivity extends AppCompatActivity {
                     FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
                     String splited = friendlyMessage.getName();
                     String name=friendlyMessage.getName();
-
-
+                    Image image =dataSnapshot.getValue(Image.class);
+                    recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
                     mMessageAdapter.add(friendlyMessage);
 
                 }
@@ -461,6 +554,60 @@ public class ProfileActivity extends AppCompatActivity {
                         //Log.d("message ",""+note.getPhotoUrl());
 
                       //  notes.add(note);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+        if(mChildEventListener==null) {
+            mChildEventListener = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    FriendlyMessage friendlyMessage = dataSnapshot.getValue(FriendlyMessage.class);
+                    String splited = friendlyMessage.getName();
+                    String name=friendlyMessage.getName();
+                    Image image =dataSnapshot.getValue(Image.class);
+                    recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                    mMessageAdapter.add(friendlyMessage);
+
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                    FriendlyMessage f =dataSnapshot.getValue(FriendlyMessage.class);
+                    Log.d("ooo = ",f.getName());
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+            mMessageDatabaseReference.addChildEventListener(mChildEventListener);
+            mMessageDatabaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
+                        // FriendlyMessage note = noteDataSnapshot.getValue(FriendlyMessage.class);
+                        //Log.d("message ",""+note.getPhotoUrl());
+
+                        //  notes.add(note);
                     }
                 }
 

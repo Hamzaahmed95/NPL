@@ -303,6 +303,9 @@ public class ProfileActivity extends AppCompatActivity {
                     //user is signed in
                     onSignedInInitialize(user.getDisplayName());
                     NAME =user.getDisplayName();
+                    if(!NAME.equals("K142805 Hamza Ahmed")){
+                        photoPickerButtonStories.setVisibility(View.GONE);
+                    }
                     name.setText(user.getDisplayName());
                     final List<FriendlyMessage> friendlyMessages = new ArrayList<>();
                     mMessageAdapter = new MessageAdapter(ProfileActivity.this, R.layout.item_message, friendlyMessages,NAME,notes);

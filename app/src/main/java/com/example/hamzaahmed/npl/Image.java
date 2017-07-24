@@ -1,21 +1,32 @@
 package com.example.hamzaahmed.npl;
 
+import java.util.UUID;
+
 /**
  * Created by Hamza Ahmed on 14-Jul-17.
  */
 
 public class Image {
     private String image_title;
+    private UUID id;
     private String image_id;
 
     public Image(String img_title,String img_id){
+
         image_title=img_title;
         image_id=img_id;
     }
     public Image(){
-
+        id= UUID.randomUUID();
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
     public String getImage_title() {
         return image_title;

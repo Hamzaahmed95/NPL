@@ -76,20 +76,6 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView mTextView;
     private TextView name;
 
-    private final Integer image_ids[] = {
-            R.drawable.alibhai,
-            R.drawable.alibhai,
-            R.drawable.alibhai,
-            R.drawable.alibhai,
-            R.drawable.alibhai,
-            R.drawable.alibhai,
-            R.drawable.alibhai,
-            R.drawable.alibhai,
-            R.drawable.alibhai,
-            R.drawable.alibhai
-
-    };
-
     private MessageAdapter mMessageAdapter;
     List notes = new ArrayList<>();
     private String currentDateTimeString;
@@ -194,6 +180,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                         System.out.println(issue.child("image_ID").getValue());
                         Image image1 = new Image();
+                        System.out.println("id: "+image1.getId());
 
                         image1.setImage_ID(issue.child("image_ID").getValue().toString());
                         images.add(image1);

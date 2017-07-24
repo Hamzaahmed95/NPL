@@ -12,29 +12,41 @@ import java.util.UUID;
 
 public class MatchLab {
     private static MatchLab MatchLab;
+    private int count=0;
+    private String[] array1;
     private final Integer Team1[] = {
-         R.drawable.p5,
-            R.drawable.p1,
-            R.drawable.p1,
-            R.drawable.p2,
-            R.drawable.p6,
-            R.drawable.p4,
-            R.drawable.p2,
-            R.drawable.p3,
-            R.drawable.p4,
-            R.drawable.p5,
+            R.drawable.team4,
+            R.drawable.team7,
+            R.drawable.team7,
+            R.drawable.team3,
+            R.drawable.team7,
+            R.drawable.team6,
+            R.drawable.team6,
+            R.drawable.team2,
+            R.drawable.team6,
+            R.drawable.team4,
+            R.drawable.team5,
+            R.drawable.team2,
+            R.drawable.team3,
+            R.drawable.team2,
+            R.drawable.team5,
     };
     private final Integer Team2[] = {
-            R.drawable.p2,
-            R.drawable.p3,
-            R.drawable.p5,
-            R.drawable.p4,
-            R.drawable.p3,
-            R.drawable.p1,
-            R.drawable.p4,
-            R.drawable.p5,
-            R.drawable.p2,
-            R.drawable.p1,
+            R.drawable.team5,
+            R.drawable.team6,
+            R.drawable.team5,
+            R.drawable.team4,
+            R.drawable.team3,
+            R.drawable.team2,
+            R.drawable.team4,
+            R.drawable.team5,
+            R.drawable.team3,
+            R.drawable.team7,
+            R.drawable.team3,
+            R.drawable.team4,
+            R.drawable.team2,
+            R.drawable.team7,
+            R.drawable.team6,
     };
 
     private final String MatchDate[] = {
@@ -42,18 +54,28 @@ public class MatchLab {
             "2nd July,2017",
             "9th July 2017",
             "9th July 2017",
-            "Today",
-            "Today",
-            "Today",
-            "Today",
-            "Today",
-            "Today",
+            "16th July 2017",
+            "16th July 2017",
+            "23th July 2017",
+            "23th July 2017",
+            "30th July 2017",
+            "30th July 2017",
+            "6th Aug 2017",
+            "6th Aug 2017",
+            "15th Aug 2017",
+            "20th Aug 2017",
+            "20th Aug 2017",
     };
     private final String MatchResult[] = {
             "Nawait Janbaz won by 65 runs",
             "Nawait Royals won by 45 runs",
             "Nawait Janbaz won by 18 runs",
             "Shan e Nawait won by 4 wickets",
+            "Team1 won by 10 wickets",
+            "Team1 won by 10 wickets",
+            "Team1 won by 10 wickets",
+            "Team1 won by 10 wickets",
+            "Team1 won by 10 wickets",
             "Team1 won by 10 wickets",
             "Team1 won by 10 wickets",
             "Team1 won by 10 wickets",
@@ -72,6 +94,28 @@ public class MatchLab {
             "8th Match",
             "9th Match",
             "10th Match",
+            "11th Match",
+            "12th Match",
+            "13th Match",
+            "14th Match",
+            "15th Match",
+    };
+    private final String MatchVenue[] = {
+            "RLCA",
+            "RLCA",
+            "ANU BHAI PARK",
+            "ANU BHAI PARK",
+            "EASTERN STAR",
+            "EASTERN STAR",
+            "AL MANSOORA",
+            "AL MANSOORA",
+            "RLCA",
+            "RLCA",
+            "ANU BHAI PARK",
+            "ANU BHAI PARK",
+            "EIDGAH GROUND",
+            "EIDGAH GROUND",
+            "EIDGAH GROUND",
     };
     
     private List<Match> mMatch;
@@ -82,6 +126,26 @@ public class MatchLab {
         }
         return MatchLab;
     }
+    public MatchLab(Context context,String result){
+        array1 = result.split("-");
+        mMatch = new ArrayList<>();
+        for(int i=0;i<array1.length;i++){
+            System.out.println(i+" "+array1[i]);
+        }
+       // System.out.println(result);
+  //      System.out.println(match2.getMatchResult());
+        for(int i = 0; i< MatchNo.length; i++){
+            System.out.println(array1[i]);
+            Match match = new Match();
+            match.setImage1Id(Team1[i]);
+            match.setImage2Id(Team2[i]);
+            match.setMatchDate(MatchDate[i]);
+            match.setMatchNo(MatchNo[i]);
+            match.setVenue(MatchVenue[i]);
+           match.setMatchResult(array1[i]);
+            mMatch.add(match);
+        }
+    }
     private MatchLab(Context context){
         mMatch = new ArrayList<>();
         for(int i = 0; i< MatchNo.length; i++){
@@ -90,8 +154,8 @@ public class MatchLab {
             match.setImage2Id(Team2[i]);
             match.setMatchDate(MatchDate[i]);
             match.setMatchNo(MatchNo[i]);
+            match.setVenue(MatchVenue[i]);
             match.setMatchResult(MatchResult[i]);
-            
             mMatch.add(match);
         }
     }
@@ -100,12 +164,4 @@ public class MatchLab {
         return mMatch;
     }
 
-    public Match getmMatch(UUID id){
-        for(Match Match:mMatch){
-            if(Match.getId().equals(id)){
-                return Match;
-            }
-        }
-        return null;
-    }
 }

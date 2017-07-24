@@ -14,7 +14,15 @@ public class Match {
     private UUID Id;
     private String matchResult;
     private String matchNo;
+    private String venue;
 
+    public String getVenue() {
+        return venue;
+    }
+
+    public void setVenue(String venue) {
+        this.venue = venue;
+    }
 
     public UUID getId() {
         return Id;

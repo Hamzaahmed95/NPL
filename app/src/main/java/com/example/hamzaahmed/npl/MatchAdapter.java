@@ -91,6 +91,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         private TextView MatchDate;
         private TextView MatchResult;
         private TextView MatchNo;
+        private TextView MatchVenue;
         public ViewHolder(View view) {
             super(view);
             team1 =(ImageView) view.findViewById(R.id.image1);
@@ -98,6 +99,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
             MatchDate =(TextView)view.findViewById(R.id.MatchDate);
             MatchResult =(TextView)view.findViewById(R.id.matchResult);
             MatchNo =(TextView)view.findViewById(R.id.MatchNo);
+            MatchVenue =(TextView)view.findViewById(R.id.Venue);
         }
         public void bindDeals(Match Match){
             mMatch=Match;
@@ -108,6 +110,7 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
             MatchDate.setText(mMatch.getMatchDate());
             MatchResult.setText(mMatch.getMatchResult());
             MatchNo.setText(mMatch.getMatchNo());
+            MatchVenue.setText(mMatch.getVenue());
         }
     }
 }

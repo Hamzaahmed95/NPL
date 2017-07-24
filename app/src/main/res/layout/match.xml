@@ -28,14 +28,22 @@
         android:paddingRight="10dp"
         android:text="Recent Matches"/>
     </LinearLayout>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:id="@+id/result"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:id="@+id/resultButton"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listOfMatches"
         android:layout_width="wrap_content"
-        android:padding="40dp"
+        android:paddingTop="40dp"
+        android:paddingBottom="40dp"
         android:layout_height="wrap_content"
         xmlns:android="http://schemas.android.com/apk/res/android" />
-
-
-
 
 </LinearLayout>

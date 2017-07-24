@@ -31,6 +31,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -66,7 +67,7 @@ public class PointsTableFragment extends Fragment {
     private String checking;
     public static final String PREFS_NAME = "MyAppSharedPrefs";
     private FirebaseAuth.AuthStateListener mAuthStateListner;
-
+    String url1;
     private ImageView backButton5;
     ProgressBar mprogressBar;
     private static final int RC_PHOTO_PICKER =  2;
@@ -109,12 +110,47 @@ public class PointsTableFragment extends Fragment {
                 mPhotoPickerButton.setVisibility(View.GONE);
             }
         }
+
+        Query mHouseDatabaseReference2 =mFirebaseDatabase.getReference().child("pointstable").limitToLast(1);;
+
+        mHouseDatabaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // dataSnapshot is the "issue" node with all children with id 0
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                        // do something with the individual "issues"
+
+                        System.out.println(issue.child("photoUrl").getValue());
+                       // if(issue.child("photoUrl").getValue().toString()!=null)
+                        url1=issue.child("photoUrl").getValue().toString();
+                        Glide.with(imageView.getContext())
+                                .load(url1)
+                                .into(imageView);
+                        mprogressBar.setVisibility(View.GONE);
+                        //   System.out.println();
+                        //array[i]=issue.child("username").getValue().toString();
+                        //i++;
+                    }
+
+                    //for(int j=0;j<i;j++){
+                    //  System.out.println(j+""+array[j]);
+                    // }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
         pointTablePicture pointTablePicture1 = new pointTablePicture();
 
 
-        Glide.with(imageView.getContext())
-                .load(url)
-                .into(imageView);
+
 
 
         send1.setOnClickListener(new View.OnClickListener() {

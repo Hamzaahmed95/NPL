@@ -109,7 +109,8 @@ public class ScoringFragment extends Fragment {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
         mScoreDatabaseReference = mFirebaseDatabase.getReference().child("score");
-        SendButton.setOnClickListener(new View.OnClickListener() {
+        SendButton.setOnClickListener(
+                new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String score = scoreInput.getText().toString();
@@ -209,7 +210,7 @@ public class ScoringFragment extends Fragment {
         };
 
 
-     ;
+
 
         return view;
     }

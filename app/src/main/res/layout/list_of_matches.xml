@@ -2,7 +2,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="@android:color/white"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <LinearLayout
@@ -11,32 +10,39 @@
         android:orientation="horizontal">
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+
         android:orientation="horizontal">
 
     <ImageView
-        android:layout_width="75dp"
+        android:layout_width="70dp"
+        android:padding="10dp"
         android:id="@+id/image1"
-        android:layout_height="75dp"
+        android:layout_height="70dp"
         />
     <ImageView
-        android:layout_width="25dp"
-        android:layout_marginTop="20dp"
-        android:layout_height="25dp"
-        android:src="@drawable/vs1"/>
+        android:layout_width="15dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="30dp"
+        android:layout_height="15dp"
+        android:src="@drawable/vs2"/>
     <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="70dp"
+        android:padding="10dp"
+        android:layout_height="70dp"
         android:id="@+id/image2"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:padding="5dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/shape4"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:id="@+id/MatchDate"
+            android:textColor="@android:color/white"
             android:fontFamily="sans-serif-condensed"
             android:layout_height="wrap_content"
             android:text="Today"
@@ -44,7 +50,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:id="@+id/matchResult"
-            android:textColor="@color/blue"
+            android:textColor="@android:color/white"
             android:textStyle="bold"
             android:fontFamily="sans-serif-condensed"
             android:layout_height="wrap_content"
@@ -52,18 +58,28 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:fontFamily="sans-serif-condensed"
             android:id="@+id/MatchNo"
             android:text="3rd Match"/>
+    </LinearLayout>
+    </LinearLayout>
 
-    </LinearLayout>
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:id="@+id/Venue" />
+
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:background="@color/blue" />
-
-
+        android:layout_marginBottom="10dp"
+        android:background="@android:color/white" />
 
 </LinearLayout>

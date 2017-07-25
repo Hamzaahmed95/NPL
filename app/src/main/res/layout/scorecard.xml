@@ -1,142 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sa2"
-    android:gravity="center|top">
+    android:gravity="center|top"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="0dp">
 
 
-    <ImageView
-        android:id="@+id/backButton4"
-        android:src="@drawable/left"
-        android:layout_marginTop="10dp"
-        android:layout_width="20dp"
-        android:layout_height="20dp"/>
+        <ImageView
+            android:id="@+id/backButton4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/left" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:textColor="@android:color/white"
-        android:textSize="20dp"
-        android:fontFamily="sans-serif-condensed"
-        android:background="@color/bluesh"
-        android:text="Live"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@color/bluesh"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Live"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
         </LinearLayout>
 
     </LinearLayout>
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:fontFamily="sans-serif-condensed"
-        android:textColor="@android:color/white"
-        android:text="TEAM1 vs TEAM2 - 5th Match"/>
-
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:padding="20dp"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:fontFamily="sans-serif-condensed"
-        android:textColor="@android:color/white"
-        android:text="TEAM 1"/>
+
+        <ImageButton
+            android:id="@+id/photoPickerTeam1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/attach" />
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingBottom="10dp"
+            android:id="@+id/teamplaying1"
+            android:paddingRight="10dp"
+            android:src="@drawable/team2"
+            android:text="TEAM 1"
+            android:textColor="@android:color/white" />
+
         <ImageView
             android:layout_width="wrap_content"
-            android:paddingTop="10dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/vs"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:paddingTop="20dp"
+            android:src="@drawable/vs" />
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:fontFamily="sans-serif-condensed"
-            android:textSize="20dp"
-            android:padding="20dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:id="@+id/teamplaying2"
+            android:src="@drawable/team3"
+            android:text="TEAM 2"
             android:textColor="@android:color/white"
-            android:layout_height="wrap_content"
-            android:text="TEAM 2"/>
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/photoPickerTeam2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/attach" />
+
+
     </LinearLayout>
+
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:background="#ffffff" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:id="@+id/livsScoreRuns1"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textSize="40dp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:textSize="40dp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="/"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/livsScoreWicket1"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textColor="@android:color/white"
-                    android:textSize="40dp"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:id="@+id/livsScoreOvers1"
-                android:fontFamily="sans-serif-condensed"
-                android:textColor="@android:color/white"
-                android:layout_marginLeft="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textColor="@android:color/white"
-                    android:text=" overs"/>
-            </LinearLayout>
-        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -147,158 +115,487 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:id="@+id/livsScoreRuns2"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textSize="40dp"
-                    />
-                <TextView
+                    android:id="@+id/livsScoreRuns1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
-                    android:textSize="40dp"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="/"/>
+                    android:textColor="@android:color/white"
+                    android:textSize="40dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
                     android:fontFamily="sans-serif-condensed"
-                    android:id="@+id/livsScoreWicket2"
-                    android:textSize="40dp"
-                    />
+                    android:text="/"
+                    android:textColor="@android:color/white"
+                    android:textSize="40dp" />
+
+                <TextView
+                    android:id="@+id/livsScoreWicket1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@android:color/white"
+                    android:textSize="40dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/livsScoreOvers2"
-                android:textColor="@android:color/white"
-                android:fontFamily="sans-serif-condensed"
-                />
+
+                <TextView
+                    android:id="@+id/livsScoreOvers1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text=" overs"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="100dp"
+                android:background="#ffffff" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/livsScoreRuns2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed"
                     android:textColor="@android:color/white"
-                    android:text=" overs"/>
+                    android:textSize="40dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="/"
+                    android:textColor="@android:color/white"
+                    android:textSize="40dp" />
+
+                <TextView
+                    android:id="@+id/livsScoreWicket2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@android:color/white"
+                    android:textSize="40dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/livsScoreOvers2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text=" overs"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColorHint="@android:color/white"
-        android:textColor="@android:color/white"
-        android:hint="runs-wicket-overs-team(1or2)-ball-(ballno)"
-        android:id="@+id/scoreUpdate"/>
-        <Button
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send"
-            android:background="@color/bluesh"
-            android:textColor="@android:color/white"
-            android:fontFamily="sans-serif-condensed"
-            android:id="@+id/scoreSendButton"/>
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/batsmanOnCrease1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed"
+                        android:paddingRight="6dp"
+                        android:text="Batsman1"
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/runs1"
+                        android:text="18"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="("
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:id="@+id/balls1"
+                        android:text="15"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=")"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/batsmanOnCrease2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed"
+                        android:paddingRight="6dp"
+                        android:text="Batsman2"
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/runs2"
+                        android:text="18"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="("
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:id="@+id/balls2"
+                        android:text="15"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=")"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="60dp"
+                    android:background="#ffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/bowlerOnCreas1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed"
+                        android:paddingRight="20dp"
+                        android:text="bowler1"
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/runs3"
+                        android:text="18"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="("
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:id="@+id/balls3"
+                        android:text="15"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=")"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/bowlerOnCreas2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="start"
+                        android:paddingRight="20dp"
+                        android:text="bowler2"
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+
+                        android:id="@+id/runs4"
+                        android:layout_height="wrap_content"
+                        android:text="18"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="("
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:id="@+id/balls4"
+                        android:text="15"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=")"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        </LinearLayout>
     </LinearLayout>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#ffffff" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
-            android:layout_width="30dp"
             android:id="@+id/ball1"
-            android:layout_height="30dp"
-            android:background="@drawable/back"
-            android:layout_margin="10dp"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/darkMaroon"
-            android:gravity="center"
-            />
-        <TextView
             android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/back"
+            android:gravity="center"
+            android:textColor="@color/darkMaroon"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/ball2"
+            android:layout_width="30dp"
             android:layout_height="30dp"
-            android:textStyle="bold"
-            android:background="@drawable/back"
             android:layout_margin="10dp"
+            android:background="@drawable/back"
+            android:gravity="center"
             android:textColor="@color/darkMaroon"
             android:textSize="20dp"
-            android:gravity="center"
-            />
+            android:textStyle="bold" />
+
         <TextView
-        android:layout_width="30dp"
             android:id="@+id/ball3"
-        android:layout_height="30dp"
-            android:textStyle="bold"
-        android:background="@drawable/back"
-        android:layout_margin="10dp"
-        android:textSize="20dp"
-            android:textColor="@color/darkMaroon"
-        android:gravity="center"
-        />
-        <TextView
             android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/back"
+            android:gravity="center"
+            android:textColor="@color/darkMaroon"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/ball4"
-            android:layout_height="30dp"
-            android:textStyle="bold"
-            android:background="@drawable/back"
-            android:textSize="20dp"
-            android:layout_margin="10dp"
-            android:textColor="@color/darkMaroon"
-            android:gravity="center"
-            />
-        <TextView
             android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/back"
+            android:gravity="center"
+            android:textColor="@color/darkMaroon"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/ball5"
-            android:layout_height="30dp"
-            android:textStyle="bold"
-            android:background="@drawable/back"
-            android:layout_margin="10dp"
-            android:textSize="20dp"
-            android:textColor="@color/darkMaroon"
-            android:gravity="center" />
-        <TextView
             android:layout_width="30dp"
-            android:id="@+id/ball6"
             android:layout_height="30dp"
-            android:textStyle="bold"
-            android:background="@drawable/back"
             android:layout_margin="10dp"
-            android:textSize="20dp"
-            android:textColor="@color/darkMaroon"
+            android:background="@drawable/back"
             android:gravity="center"
-            />
+            android:textColor="@color/darkMaroon"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ball6"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/back"
+            android:gravity="center"
+            android:textColor="@color/darkMaroon"
+            android:textSize="20dp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:background="#ffffff" />
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:fontFamily="sans-serif-condensed"
-        android:background="@color/bluesh"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/scoreUpdate"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:hint="runs-wicket-overs-team(1or2)-ball-(ballno)"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white" />
+
+        <Button
+            android:id="@+id/scoreSendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bluesh"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Send"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/batsmanUpdate"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:hint="runs-wicket-overs-team(1or2)-ball-(ballno)"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white" />
+
+        <Button
+            android:id="@+id/batsmanSendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bluesh"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Send"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <Button
         android:id="@+id/getFullScoreCard"
-        android:text="Score Card"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/bluesh"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Score Card"
+        android:textColor="@android:color/white" />
 
 </LinearLayout>

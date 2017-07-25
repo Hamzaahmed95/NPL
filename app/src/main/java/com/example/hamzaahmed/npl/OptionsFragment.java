@@ -56,6 +56,7 @@ public class OptionsFragment extends Fragment {
     private LinearLayout getMatches1;
     private LinearLayout getTeams1;
     private LinearLayout MOM;
+    private LinearLayout OP;
     private ImageView signout;
     private String Name;
     String[] array;
@@ -100,6 +101,7 @@ public class OptionsFragment extends Fragment {
         getScore1 = (LinearLayout) view.findViewById(R.id.layout6);
         signout=(ImageView)view.findViewById(R.id.logout);
         layout01 = (LinearLayout)view.findViewById(R.id.layout01);
+        OP = (LinearLayout)view.findViewById(R.id.layout10);
         showUsers=(ImageView)view.findViewById(R.id.showUsers);
         array = new String[100];
         i=0;
@@ -180,6 +182,13 @@ public class OptionsFragment extends Fragment {
             }
         });
 
+        OP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),OP.class);
+                startActivity(i);
+            }
+        });
         getTeams.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

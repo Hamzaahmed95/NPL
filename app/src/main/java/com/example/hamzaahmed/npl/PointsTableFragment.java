@@ -206,6 +206,7 @@ public class PointsTableFragment extends Fragment {
                     //user is signed out
                     onSignedOutInitialize();
 
+
                     startActivityForResult(
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()

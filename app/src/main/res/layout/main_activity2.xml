@@ -60,7 +60,6 @@
             android:background="@color/darkMaroon"
             android:textSize="20dp"
             android:fontFamily="serif-monospace"
-            android:enabled="false"
             android:textColor="@android:color/white"
             android:text="Send"/>
 
@@ -68,7 +67,8 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        android:background="@color/purple"
+        android:indeterminateTint="@color/darkMaroon"
+        android:foregroundGravity="center"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

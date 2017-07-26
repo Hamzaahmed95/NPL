@@ -182,6 +182,14 @@ public class OptionsFragment extends Fragment {
             }
         });
 
+        getTeams1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),HashtagActivity.class);
+                i.putExtra("username",name.getText());
+                startActivity(i);
+            }
+        });
         OP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

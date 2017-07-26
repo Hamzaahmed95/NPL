@@ -46,6 +46,12 @@ public class Teams extends Activity {
     ProgressBar mprogressBar3;
     ProgressBar mprogressBar4;
     ProgressBar mprogressBar5;
+    Button Team;
+    Button Team1;
+    Button Team2;
+    Button Team3;
+    Button Team4;
+    Button Team5;
     private ImageView backButton6;
 
     @Override
@@ -67,33 +73,79 @@ public class Teams extends Activity {
         team4 = (ImageView)findViewById(R.id.team4);
         team5 = (ImageView)findViewById(R.id.team5);
         team6 = (ImageView)findViewById(R.id.team6);
-        mprogressBar = (ProgressBar) findViewById(R.id.progressBarTeam);
-        ObjectAnimator anim = ObjectAnimator.ofInt(mprogressBar, "progress", 0, 100);
+        Team = (Button)findViewById(R.id.ButtonTeam);
+        Team1 = (Button)findViewById(R.id.ButtonTeam1);
+        Team2 = (Button)findViewById(R.id.ButtonTeam2);
+        Team3 = (Button)findViewById(R.id.ButtonTeam3);
+        Team4 = (Button)findViewById(R.id.ButtonTeam4);
+        Team5 = (Button)findViewById(R.id.ButtonTeam5);
+
+
+        Team.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Teams.this,NawaitUnitedActivity.class);
+                startActivity(i);
+            }
+        });
+        Team1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Teams.this,ShaneNawaitActivity.class);
+                startActivity(i);
+            }
+        });
+        Team2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Teams.this,NawaitJanbazActivity.class);
+                startActivity(i);
+            }
+        });
+        Team3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Teams.this,NawaitRoyalsActivity.class);
+                startActivity(i);
+            }
+        });
+        Team4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Teams.this,NawaitAcesActivity.class);
+                startActivity(i);
+            }
+        });
+        Team5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Teams.this,NawaitSultanActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+      /*  ObjectAnimator anim = ObjectAnimator.ofInt(mprogressBar, "progress", 0, 100);
         anim.setDuration(4000);
         anim.setInterpolator(new DecelerateInterpolator());
         anim.start();
-        mprogressBar1 = (ProgressBar) findViewById(R.id.progressBarTeam1);
         ObjectAnimator anim1 = ObjectAnimator.ofInt(mprogressBar1, "progress", 0, 100);
         anim1.setDuration(4000);
         anim1.setInterpolator(new DecelerateInterpolator());
         anim1.start();
-        mprogressBar2 = (ProgressBar) findViewById(R.id.progressBarTeam2);
         ObjectAnimator anim2 = ObjectAnimator.ofInt(mprogressBar2, "progress", 0, 100);
         anim2.setDuration(4000);
         anim2.setInterpolator(new DecelerateInterpolator());
         anim2.start();
 
-        mprogressBar3 = (ProgressBar) findViewById(R.id.progressBarTeam3);
         ObjectAnimator anim3 = ObjectAnimator.ofInt(mprogressBar3, "progress", 0, 100);
         anim3.setDuration(4000);
         anim3.setInterpolator(new DecelerateInterpolator());
         anim3.start();
-        mprogressBar4 = (ProgressBar) findViewById(R.id.progressBarTeam4);
         ObjectAnimator anim4 = ObjectAnimator.ofInt(mprogressBar4, "progress", 0, 100);
         anim4.setDuration(4000);
         anim4.setInterpolator(new DecelerateInterpolator());
         anim4.start();
-        mprogressBar5 = (ProgressBar) findViewById(R.id.progressBarTeam5);
         ObjectAnimator anim5 = ObjectAnimator.ofInt(mprogressBar5, "progress", 0, 100);
         anim5.setDuration(4000);
         anim5.setInterpolator(new DecelerateInterpolator());
@@ -106,24 +158,7 @@ public class Teams extends Activity {
         NawaitAces="https://firebasestorage.googleapis.com/v0/b/npl2017-2bca3.appspot.com/o/point_table%2Fimage%3A7154?alt=media&token=ace7ae39-22f7-4d48-ac3f-e2de579e214b";
         NawaitSultan="https://firebasestorage.googleapis.com/v0/b/npl2017-2bca3.appspot.com/o/point_table%2Fimage%3A7178?alt=media&token=00f64b84-61f1-4fee-a465-7ba16b4300eb";
 
-
-
-        Handler handler = new Handler();
-        if (isFirstTime()) {
-
-
-
-            handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-
-                loadImages();
-
-            }
-        }, 3000);}
-        else{
-            loadImages();
-        }
+*/
 
         team1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,27 +186,27 @@ public class Teams extends Activity {
                 .load(NawaitSultan)
                 .into(team6);
 
-        mprogressBar5.setVisibility(View.INVISIBLE);
+//        mprogressBar5.setVisibility(View.INVISIBLE);
     }
 
         if(nawaitUnited!=null){
             Glide.with(team1.getContext())
                     .load(nawaitUnited)
                     .into(team1);
-            mprogressBar.setVisibility(View.INVISIBLE);
+  //          mprogressBar.setVisibility(View.INVISIBLE);
         }
         if(ShanENawait!=null) {
             Glide.with(team2.getContext())
                     .load(ShanENawait)
                     .into(team2);
 
-            mprogressBar1.setVisibility(View.INVISIBLE);
+    //        mprogressBar1.setVisibility(View.INVISIBLE);
         }
         if(NawaitJanbaz!=null) {
             Glide.with(team3.getContext())
                     .load(NawaitJanbaz)
                     .into(team3);
-            mprogressBar2.setVisibility(View.INVISIBLE);
+      //      mprogressBar2.setVisibility(View.INVISIBLE);
         }
 
         if(NawaitRoyals!=null) {
@@ -179,14 +214,14 @@ public class Teams extends Activity {
                     .load(NawaitRoyals)
                     .into(team4);
 
-            mprogressBar3.setVisibility(View.INVISIBLE);
+        //    mprogressBar3.setVisibility(View.INVISIBLE);
         }
         if(NawaitAces!=null) {
             Glide.with(team5.getContext())
                     .load(NawaitAces)
                     .into(team5);
 
-            mprogressBar4.setVisibility(View.INVISIBLE);
+          //  mprogressBar4.setVisibility(View.INVISIBLE);
         }
 
     }

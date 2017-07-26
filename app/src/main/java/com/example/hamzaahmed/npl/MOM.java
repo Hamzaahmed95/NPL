@@ -57,7 +57,7 @@ public class MOM extends AppCompatActivity {
     private ListView mmessageListViewMOM;
 
 
-    private ImageButton closeButton;
+    private ImageView closeButton;
 
     private MOMAdapter mMOMAdapter;
     
@@ -108,7 +108,7 @@ public class MOM extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
 
-        closeButton = (ImageButton) findViewById(R.id.closeButton);
+        closeButton = (ImageView) findViewById(R.id.backButtonMOM);
 
         mMessageDatabaseReference =mFirebaseDatabase.getReference().child("mom");
         mChatPhotoStorageReference =firebaseStorage.getReference().child("mom_photos");
@@ -136,9 +136,7 @@ public class MOM extends AppCompatActivity {
                 public void onClick(View view) {
                     // TODO: Fire an intent to show an image picker
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                    intent.setType("image/jpeg");
-                    intent.setType("image/png");
-                    intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
+                    intent.setType("image/*");
                     intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
                     startActivityForResult(intent.createChooser(intent,"Complete action using"),RC_PHOTO_PICKER);
 
@@ -193,7 +191,9 @@ public class MOM extends AppCompatActivity {
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mMessageDatabaseReference.removeValue();
+                Intent i = new Intent(MOM.this,OptionsActivity.class);
+                startActivity(i);
+                finish();
             }
         });
         Bundle extra =getIntent().getExtras();

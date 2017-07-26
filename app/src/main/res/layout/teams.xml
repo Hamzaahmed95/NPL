@@ -12,7 +12,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:padding="10dp"
-        android:background="@color/lightBlue"
+        android:background="@color/pink1"
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/backButton6"
@@ -27,7 +27,7 @@
             android:textSize="25dp"
             android:fontFamily="sans-serif-condensed"
             android:paddingRight="10dp"
-            android:text="Points Table"/>
+            android:text="Teams"/>
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
@@ -52,141 +52,135 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
             <ImageView
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:id="@+id/team1"
-                android:layout_margin="5dp"
-                android:layout_height="100dp" />
-            <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:padding="10dp"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:id="@+id/progressBarTeam"
-                android:max="48"
-                android:progress="1"
-                android:progressDrawable="@drawable/circulr_screen"
-                android:layout_gravity="center_horizontal"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" /></LinearLayout>
-            <LinearLayout
+                android:src="@drawable/team2"
+                android:layout_margin="10dp"
+                android:layout_height="80dp" />
+            <Button
+                android:text="Players"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@android:color/white"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_margin="5dp"
-                    android:layout_height="100dp"
-                    android:id="@+id/team2"/>
-                <ProgressBar
-                    style="?android:attr/progressBarStyleLarge"
-                    android:padding="10dp"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:id="@+id/progressBarTeam1"
-                    android:max="48"
-                    android:progress="1"
-                    android:progressDrawable="@drawable/circulr_screen"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" /></LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_margin="5dp"
-                android:id="@+id/team3"
-                android:layout_height="100dp"/>
-            <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:padding="10dp"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:id="@+id/progressBarTeam2"
-                android:max="48"
-                android:progress="1"
-                android:progressDrawable="@drawable/circulr_screen"
-                android:layout_gravity="center_horizontal"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" /></LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_margin="5dp"
-                    android:layout_height="100dp"
-                    android:id="@+id/team4"/>
-                <ProgressBar
-                    style="?android:attr/progressBarStyleLarge"
-                    android:padding="10dp"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:id="@+id/progressBarTeam3"
-                    android:max="48"
-                    android:progress="1"
-                    android:progressDrawable="@drawable/circulr_screen"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" /></LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_margin="5dp"
-                android:layout_height="100dp"
-                android:id="@+id/team5"/>
-            <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:padding="10dp"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:id="@+id/progressBarTeam4"
-                android:max="48"
-                android:progress="1"
-                android:progressDrawable="@drawable/circulr_screen"
-                android:layout_gravity="center_horizontal"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_height="30dp"
+                android:background="@color/pink1"
+                android:id="@+id/ButtonTeam"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <ImageView
-                    android:layout_width="100dp"
-                    android:layout_margin="5dp"
-                    android:layout_height="100dp"
+                    android:layout_width="80dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/team4"
+                    android:layout_height="80dp"
+                    android:id="@+id/team2"/>
+                <Button
+                    android:textColor="@android:color/white"
+                    android:text="Players"
+                    android:fontFamily="sans-serif-condensed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@color/pink1"
+                    android:id="@+id/ButtonTeam1"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/team5"
+                android:id="@+id/team3"
+                android:layout_height="80dp"/>
+                <Button
+                    android:textColor="@android:color/white"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Players"
+                    android:background="@color/pink1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/ButtonTeam2"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/team7"
+                    android:layout_height="80dp"
+                    android:id="@+id/team4"/>
+                <Button
+                    android:textColor="@android:color/white"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="Players"
+                    android:background="@color/pink1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/ButtonTeam3"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/team3"
+                android:layout_height="80dp"
+                android:id="@+id/team5"/>
+                <Button
+                    android:textColor="@android:color/white"
+                    android:text="Players"
+                    android:fontFamily="sans-serif-condensed"
+                    android:background="@color/pink1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/ButtonTeam4"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="80dp"
+                    android:src="@drawable/team6"
+                    android:layout_margin="10dp"
+                    android:layout_height="80dp"
                     android:id="@+id/team6"/>
-                <ProgressBar
-                    style="?android:attr/progressBarStyleLarge"
-                    android:padding="10dp"
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
-                    android:id="@+id/progressBarTeam5"
-                    android:max="48"
-                    android:progress="1"
-                    android:progressDrawable="@drawable/circulr_screen"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true" /></LinearLayout>
+                <Button
+                    android:text="Players"
+                    android:textColor="@android:color/white"
+                    android:fontFamily="sans-serif-condensed"
+                    android:background="@color/pink1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:id="@+id/ButtonTeam5"/>
+            </LinearLayout>
         </LinearLayout>
 
 

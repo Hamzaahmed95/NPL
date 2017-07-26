@@ -53,6 +53,7 @@ public class MOMAdapter extends ArrayAdapter<MOMCLASS> {
         if (isPhoto) {
             Glide.with(photoImageView.getContext())
                     .load(message.getPICTURE())
+                    .placeholder(R.drawable.circulr_screen)
                     .into(photoImageView);
             runsAndwicket.setText(message.getWicketsAndRuns());
             name.setText(message.getNAME());

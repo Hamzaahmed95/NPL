@@ -69,8 +69,8 @@ public class OptionsFragment extends Fragment {
     public static final String ANONYMOUS = "anonymous";
     private ChildEventListener mChildEventListener;
     private String mUsername;
-    private FirebaseAuth mFirebaseAuth;
     private String UserName;
+    private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListner;
     private ImageView showUsers;
 
@@ -194,6 +194,7 @@ public class OptionsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),OP.class);
+
                 startActivity(i);
             }
         });

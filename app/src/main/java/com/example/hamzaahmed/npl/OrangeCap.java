@@ -46,7 +46,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by Hamza Ahmed on 18-Jul-17.
  */
 
-public class PointsTableFragment extends Fragment {
+public class OrangeCap extends Fragment {
 
 
 
@@ -74,36 +74,38 @@ public class PointsTableFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.points_table, container, false);
+        View view = inflater.inflate(R.layout.orange_cap, container, false);
         url="https://firebasestorage.googleapis.com/v0/b/npl2017-2bca3.appspot.com/o/point_table%2Fimage%3A7283?alt=media&token=053c4777-df68-46be-be6e-d504791385ce";
         firebaseStorage = FirebaseStorage.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        PointsTableStorageReference =firebaseStorage.getReference().child("point_table");
-        mMessageDatabaseReference =mFirebaseDatabase.getReference().child("pointstable");
-            date1 =(EditText)view.findViewById(R.id.date1);
-        date2 =(TextView)view.findViewById(R.id.date2);
-        imageView =(ImageView)view.findViewById(R.id.photoImageView2);
+        PointsTableStorageReference =firebaseStorage.getReference().child("orange_cap");
+        mMessageDatabaseReference =mFirebaseDatabase.getReference().child("orangecap");
+        date1 =(EditText)view.findViewById(R.id.date1OC);
+        date2 =(TextView)view.findViewById(R.id.date2OC);
+        imageView =(ImageView)view.findViewById(R.id.photoImageViewOC2);
 
-        backButton5=(ImageView)view.findViewById(R.id.backButton5);
+        backButton5=(ImageView)view.findViewById(R.id.backButtonOC5);
         backButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(),OptionsActivity.class);
+                Intent i = new Intent(getActivity(),OP.class);
                 startActivity(i);
             }
         });
-        mprogressBar = (ProgressBar) view.findViewById(R.id.progressBarPT);
-        mPhotoPickerButton = (ImageButton) view.findViewById(R.id.photoPickerButton2);
+        mprogressBar = (ProgressBar) view.findViewById(R.id.progressBarOC);
+        mPhotoPickerButton = (ImageButton) view.findViewById(R.id.photoPickerButtonOC2);
         ObjectAnimator anim = ObjectAnimator.ofInt(mprogressBar, "progress", 0, 100);
         anim.setDuration(4000);
         anim.setInterpolator(new DecelerateInterpolator());
         anim.start();
         mFirebaseAuth = FirebaseAuth.getInstance();
+
+        send1=(Button)view.findViewById(R.id.send1OC);
+
         Bundle extra =getActivity().getIntent().getExtras();
         if(extra!=null) {
             String url2 = extra.getString("username");
-            Log.d("hamza: ",url2);
-            send1=(Button)view.findViewById(R.id.send1);
+            System.out.println("orangeCap: "+url2);
             if(!url2.equals("K142805 Hamza Ahmed")){
                 send1.setVisibility(View.GONE);
                 date1.setVisibility(View.GONE);
@@ -111,7 +113,7 @@ public class PointsTableFragment extends Fragment {
             }
         }
 
-        Query mHouseDatabaseReference2 =mFirebaseDatabase.getReference().child("pointstable").limitToLast(1);;
+        Query mHouseDatabaseReference2 =mFirebaseDatabase.getReference().child("orangecap").limitToLast(1);;
 
         mHouseDatabaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -122,7 +124,7 @@ public class PointsTableFragment extends Fragment {
                         // do something with the individual "issues"
 
                         System.out.println(issue.child("photoUrl").getValue());
-                       // if(issue.child("photoUrl").getValue().toString()!=null)
+                        // if(issue.child("photoUrl").getValue().toString()!=null)
                         url1=issue.child("photoUrl").getValue().toString();
                         Glide.with(imageView.getContext())
                                 .load(url1)
@@ -174,7 +176,7 @@ public class PointsTableFragment extends Fragment {
                     // TODO: Fire an intent to show an image picker
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.setType("image/jpeg");
-                   // intent.setType("image/png");
+                    // intent.setType("image/png");
                     intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
                     startActivityForResult(intent.createChooser(intent,"Complete action using"),RC_PHOTO_PICKER);
 
@@ -199,7 +201,7 @@ public class PointsTableFragment extends Fragment {
                         mPhotoPickerButton.setVisibility(View.GONE);
                     }
 
-                   ;
+                    ;
 
 
                 }else{
@@ -226,7 +228,8 @@ public class PointsTableFragment extends Fragment {
             };
         };
 
-        Log.d("Checking",""+checking);
+
+
         return view;
 
     }
@@ -234,7 +237,7 @@ public class PointsTableFragment extends Fragment {
     public void onActivityResult(int requestCode,int resultCode,Intent data){
         super.onActivityResult(requestCode,resultCode,data);
 
-         if(requestCode == RC_PHOTO_PICKER && resultCode==RESULT_OK){
+        if(requestCode == RC_PHOTO_PICKER && resultCode==RESULT_OK){
             Uri selectedImageUri= data.getData();
             StorageReference photoRef =
                     PointsTableStorageReference.child(selectedImageUri.getLastPathSegment());
@@ -256,7 +259,7 @@ public class PointsTableFragment extends Fragment {
                                         .into(imageView);
                                 mMessageDatabaseReference.push().setValue(pointTablePicture);
                             }
-                            checking=pointTablePicture.getPhotoUrl();
+
 
                             Log.d("pointTablePicture1",""+checking);
                         }
@@ -284,11 +287,11 @@ public class PointsTableFragment extends Fragment {
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     pointTablePicture pointTablePicture1 = dataSnapshot.getValue(pointTablePicture.class);
 
-                        date2.setText(pointTablePicture1.getUpdatedDate());
-                        imageView.setVisibility(View.VISIBLE);
-                        Glide.with(imageView.getContext())
-                                .load(pointTablePicture1.getPhotoUrl())
-                                .into(imageView);
+                    date2.setText(pointTablePicture1.getUpdatedDate());
+                    imageView.setVisibility(View.VISIBLE);
+                    Glide.with(imageView.getContext())
+                            .load(pointTablePicture1.getPhotoUrl())
+                            .into(imageView);
 
                 }
 

@@ -173,10 +173,26 @@ public class OptionsFragment extends Fragment {
         MOM = (LinearLayout) view.findViewById(R.id.layout9);
 
 
+        getMatches1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),Sponsor.class);
+                i.putExtra("username",name.getText());
+                startActivity(i);
+            }
+        });
         MOM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),MOM.class);
+                i.putExtra("username",name.getText());
+                startActivity(i);
+            }
+        });
+        Chat1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),Interview.class);
                 i.putExtra("username",name.getText());
                 startActivity(i);
             }

@@ -44,9 +44,9 @@ import java.util.List;
  * Created by Hamza Ahmed on 19-Jul-17.
  */
 
-public class MOM extends AppCompatActivity {
+public class Interview extends AppCompatActivity {
 
-    private static final String TAG = "MOM";
+    private static final String TAG = "Interview";
 
     public static final String ANONYMOUS = "anonymous";
 
@@ -54,23 +54,23 @@ public class MOM extends AppCompatActivity {
 
     public static final int RC_SIGN_IN =1;
 
-    private ListView mmessageListViewMOM;
+    private ListView mmessageListViewInterview;
 
 
     private ImageView closeButton;
 
-    private MOMAdapter mMOMAdapter;
-    
+    private InterviewAdapter mInterviewAdapter;
+
     private ProgressBar mProgressBar;
 
-    private ImageButton mphotoPickerButtonMOM;
+    private ImageButton mphotoPickerButtonInterview;
 
-    private EditText mmessageEditTextMOM;
+    private EditText mmessageEditTextInterview;
 
     private android.widget.Button mSendButton;
     public String NAME;
 
-    private static final int RC_PHOTO_PICKER =  2;
+    private static final int REQUEST_TAKE_GALLERY_VIDEO =  2;
 
     private String mUsername;
     private ImageView Button;
@@ -98,8 +98,8 @@ public class MOM extends AppCompatActivity {
     protected void onCreate( final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mom);
-        
+        setContentView(R.layout.interview);
+
         NAME=ANONYMOUS;
 
         notes = new ArrayList<String>();
@@ -108,20 +108,20 @@ public class MOM extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
 
-        closeButton = (ImageView) findViewById(R.id.backButtonMOM);
+        closeButton = (ImageView) findViewById(R.id.backButtonInterview);
 
-        mMessageDatabaseReference =mFirebaseDatabase.getReference().child("mom");
-        mChatPhotoStorageReference =firebaseStorage.getReference().child("mom_photos");
+        mMessageDatabaseReference =mFirebaseDatabase.getReference().child("Interview");
+        mChatPhotoStorageReference =firebaseStorage.getReference().child("Interview_photos");
         Log.d("oncreate ",mMessageDatabaseReference.getDatabase().toString());
 
 
 
         // Initialize references to views
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
-        mmessageListViewMOM = (ListView) findViewById(R.id.messageListViewMOM);
-        mphotoPickerButtonMOM = (ImageButton) findViewById(R.id.photoPickerButtonMOM);
-        mmessageEditTextMOM = (EditText) findViewById(R.id.messageEditTextMOM);
-        mSendButton = (Button) findViewById(R.id.sendButtonMOM);
+        mmessageListViewInterview = (ListView) findViewById(R.id.messageListViewInterview);
+        mphotoPickerButtonInterview = (ImageButton) findViewById(R.id.photoPickerButtonInterview);
+        mmessageEditTextInterview = (EditText) findViewById(R.id.messageEditTextInterview);
+        mSendButton = (Button) findViewById(R.id.sendButtonInterview);
 
         // Initialize message ListView and its adapter
 
@@ -130,22 +130,23 @@ public class MOM extends AppCompatActivity {
             mProgressBar.setVisibility(ProgressBar.INVISIBLE);
 
         // ImagePickerButton shows an image picker to upload a image for a message
-        if(mphotoPickerButtonMOM!=null)
-            mphotoPickerButtonMOM.setOnClickListener(new View.OnClickListener() {
+        if(mphotoPickerButtonInterview!=null)
+            mphotoPickerButtonInterview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     // TODO: Fire an intent to show an image picker
-                    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                    intent.setType("image/*");
-                    intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
-                    startActivityForResult(intent.createChooser(intent,"Complete action using"),RC_PHOTO_PICKER);
+                    // intent = new Intent(Intent.ACTION_GET_CONTENT);
+                    Intent myIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                    myIntent.setType("*/*");
+                    startActivityForResult(Intent.createChooser(myIntent,"Select File:-"),REQUEST_TAKE_GALLERY_VIDEO);
+
 
                 }
             });
 
         // Enable Send button when there's text to send
-        if(mmessageEditTextMOM!=null) {
-            mmessageEditTextMOM.addTextChangedListener(new TextWatcher() {
+        if(mmessageEditTextInterview!=null) {
+            mmessageEditTextInterview.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 }
@@ -164,7 +165,7 @@ public class MOM extends AppCompatActivity {
                 }
 
             });
-            mmessageEditTextMOM.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DEFAULT_MSG_LENGTH_LIMIT)});
+            mmessageEditTextInterview.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DEFAULT_MSG_LENGTH_LIMIT)});
         }
         // Send button sends a message and clears the EditText
         if(mSendButton!=null)
@@ -172,17 +173,17 @@ public class MOM extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    String score = mmessageEditTextMOM.getText().toString();
+                    String score = mmessageEditTextInterview.getText().toString();
                     String [] arr = score.split("-");
                     name=arr[0];
                     runs=arr[1];
 
                     // TODO: Send messages on click
-                    MOMCLASS MOMCLASS = new MOMCLASS(name,runs,null);
+                    InterviewClass InterviewClass = new InterviewClass(name,runs,null);
 
                     // Clear input box
-                    mMessageDatabaseReference.push().setValue(MOMCLASS);
-                    mmessageEditTextMOM.setText("");
+                    mMessageDatabaseReference.push().setValue(InterviewClass);
+                    mmessageEditTextInterview.setText("");
 
 
                 }
@@ -191,7 +192,7 @@ public class MOM extends AppCompatActivity {
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MOM.this,OptionsActivity.class);
+                Intent i = new Intent(Interview.this,OptionsActivity.class);
                 startActivity(i);
                 finish();
             }
@@ -203,8 +204,8 @@ public class MOM extends AppCompatActivity {
             if(!url2.equals("K142805 Hamza Ahmed")){
                 Log.d(TAG, ""+url2);
                 mSendButton.setVisibility(View.GONE);
-                mphotoPickerButtonMOM.setVisibility(View.GONE);
-                mmessageEditTextMOM.setVisibility(View.GONE);
+                mphotoPickerButtonInterview.setVisibility(View.GONE);
+                mmessageEditTextInterview.setVisibility(View.GONE);
             }
         }
 
@@ -216,10 +217,10 @@ public class MOM extends AppCompatActivity {
                 if(user!=null){
                     //user is signed in
                     onSignedInInitialize(user.getDisplayName());
-                    final List<MOMCLASS> momclasses = new ArrayList<>();
-                    mMOMAdapter = new MOMAdapter(MOM.this, R.layout.item_message, momclasses);
-                    if(mmessageListViewMOM!=null)
-                        mmessageListViewMOM.setAdapter(mMOMAdapter);
+                    final List<InterviewClass> InterviewClasses = new ArrayList<>();
+                    mInterviewAdapter = new InterviewAdapter(Interview.this, R.layout.item_interview, InterviewClasses);
+                    if(mmessageListViewInterview!=null)
+                        mmessageListViewInterview.setAdapter(mInterviewAdapter);
 
 
 
@@ -275,7 +276,7 @@ public class MOM extends AppCompatActivity {
             mFirebaseAuth.removeAuthStateListener(mAuthStateListner);
         }
         detachDatabaseReadListener();
-        mMOMAdapter.clear();
+        mInterviewAdapter.clear();
     }
 
     @Override
@@ -296,7 +297,7 @@ public class MOM extends AppCompatActivity {
 
             //upload file to firebase storage
         }
-        else if(requestCode == RC_PHOTO_PICKER && resultCode==RESULT_OK){
+        else if(requestCode == REQUEST_TAKE_GALLERY_VIDEO && resultCode==RESULT_OK){
             Uri selectedImageUri= data.getData();
             StorageReference photoRef =
                     mChatPhotoStorageReference.child(selectedImageUri.getLastPathSegment());
@@ -305,8 +306,8 @@ public class MOM extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Uri downloadURL =taskSnapshot.getDownloadUrl();
-                            MOMCLASS momclass = new MOMCLASS(null,null,downloadURL.toString());
-                            mMessageDatabaseReference.push().setValue(momclass);
+                            InterviewClass InterviewClass = new InterviewClass(null,null,downloadURL.toString());
+                            mMessageDatabaseReference.push().setValue(InterviewClass);
                         }
                     });
         }
@@ -325,7 +326,7 @@ public class MOM extends AppCompatActivity {
     }
     private void  onSignedOutInitialize(){
         mUsername = ANONYMOUS;
-        mMOMAdapter.clear();
+        mInterviewAdapter.clear();
 
         detachDatabaseReadListener();
     }
@@ -334,15 +335,15 @@ public class MOM extends AppCompatActivity {
             mChildEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    MOMCLASS momclass = dataSnapshot.getValue(MOMCLASS.class);
-                    if(momclass!=null)
-                    mMOMAdapter.add(momclass);
+                    InterviewClass InterviewClass = dataSnapshot.getValue(InterviewClass.class);
+                    if(InterviewClass!=null)
+                        mInterviewAdapter.add(InterviewClass);
 
                 }
 
                 @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                    MOMCLASS f =dataSnapshot.getValue(MOMCLASS.class);
+                    InterviewClass f =dataSnapshot.getValue(InterviewClass.class);
 
                 }
 
@@ -368,11 +369,11 @@ public class MOM extends AppCompatActivity {
 
                     for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
 
-                        MOMCLASS mom =noteDataSnapshot.getValue(MOMCLASS.class);
+                        InterviewClass Interview =noteDataSnapshot.getValue(InterviewClass.class);
                         String pictures[] = new String[100];
-                      //  Log.d("mom ",""+mom.getPICTURE());
+                        //  Log.d("Interview ",""+Interview.getPICTURE());
 
-                        notes.add(mom.getPICTURE());
+                        notes.add(Interview.getPICTURE());
                     }
                     for (String s:notes){
                         Log.d("hamza1234",s);

@@ -4,29 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:gravity="center|top"
-    android:layout_height="match_parent">
-        <LinearLayout
+    android:layout_height="match_parent"
+    tools:showIn="@layout/main_activity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/linearLayoutInterview"
+        android:layout_height="wrap_content"
+        android:background="@color/red">
+        <ImageView
+            android:id="@+id/backButtonInterview"
+            android:src="@drawable/left"
+            android:layout_width="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="20dp"/>
+        >
+        <TextView
             android:layout_width="match_parent"
-            android:id="@+id/linearLayout"
+            android:padding="10dp"
             android:layout_height="wrap_content"
-            android:background="@color/grayfinal">
-            <ImageView
-                android:id="@+id/backButtonMOM"
-                android:src="@drawable/left"
-                android:layout_width="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="10dp"
-                android:layout_height="20dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:padding="10dp"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:text="Sponsors"/></LinearLayout>
-
+            android:textColor="@android:color/white"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:text="Interviews"/>
+    </LinearLayout>
     <ProgressBar
         android:id="@+id/progressBar"
         android:background="@color/purple"
@@ -36,10 +38,10 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
     <ListView
-        android:id="@+id/messageListViewMOM"
+        android:id="@+id/messageListViewInterview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout"
+        android:layout_below="@+id/linearLayoutInterview"
         android:stackFromBottom="true"
         android:padding="10dp"
         android:divider="@android:color/transparent"
@@ -47,7 +49,7 @@
         tools:listitem="@layout/item_mom"/>
 
     <LinearLayout
-        android:id="@+id/linearLayoutMOM"
+        android:id="@+id/linearLayoutInterview1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -57,14 +59,14 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/photoPickerButtonMOM"
+            android:id="@+id/photoPickerButtonInterview"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:background="@android:drawable/ic_menu_gallery" />
 
 
         <EditText
-            android:id="@+id/messageEditTextMOM"
+            android:id="@+id/messageEditTextInterview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -77,7 +79,7 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/sendButtonMOM"
+            android:id="@+id/sendButtonInterview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

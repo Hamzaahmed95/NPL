@@ -7,6 +7,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -92,7 +93,7 @@ public class ProfileActivity extends AppCompatActivity {
     private String side2;
     private RecyclerView recyclerView;
     private ArrayList<Image> images;
-
+    MediaPlayer mp;
 
 
     @Override

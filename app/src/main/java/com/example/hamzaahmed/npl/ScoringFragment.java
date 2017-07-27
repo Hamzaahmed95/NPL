@@ -100,7 +100,7 @@ public class ScoringFragment extends Fragment {
     private Button SendButton;
     private Button SendButton2;
     private ImageView backButton4;
-
+    String name;
     String url1;
     String url2;
 
@@ -293,13 +293,7 @@ public class ScoringFragment extends Fragment {
         });
 
         getScoreCard = (Button) view.findViewById(R.id.getFullScoreCard);
-        getScoreCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), FullScoreCard.class);
-                startActivity(i);
-            }
-        });
+
 
 
         mUsername = ANONYMOUS;
@@ -439,6 +433,7 @@ public class ScoringFragment extends Fragment {
                     //user is signed in
                     onSignedInInitialize(user.getDisplayName());
                     Log.d("user: ", user.getDisplayName());
+                    name=user.getDisplayName();
                     if (!user.getDisplayName().equals("K142805 Hamza Ahmed")) {
                         scoreInput.setVisibility(View.GONE);
                         scoreInput2.setVisibility(View.GONE);
@@ -447,6 +442,14 @@ public class ScoringFragment extends Fragment {
                         SendButton.setVisibility(View.GONE);
                         SendButton2.setVisibility(View.GONE);
                     }
+                    getScoreCard.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent(getActivity(), FullScoreCard.class);
+                            i.putExtra("username",name);
+                            startActivity(i);
+                        }
+                    });
 
 
                 } else {

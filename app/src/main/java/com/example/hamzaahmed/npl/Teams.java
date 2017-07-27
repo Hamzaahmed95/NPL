@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -20,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * Created by Hamza Ahmed on 14-Jul-17.
@@ -52,13 +55,22 @@ public class Teams extends Activity {
     Button Team3;
     Button Team4;
     Button Team5;
+    Button Team6;
+    Button Team7;
+    Button Team8;
+    Button Team9;
+    Button Team10;
+    Button Team11;
     private ImageView backButton6;
-
+    String name1;
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teams);
         backButton6=(ImageView)findViewById(R.id.backButton6);
+        mFirebaseAuth = FirebaseAuth.getInstance();
 
         backButton6.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +91,12 @@ public class Teams extends Activity {
         Team3 = (Button)findViewById(R.id.ButtonTeam3);
         Team4 = (Button)findViewById(R.id.ButtonTeam4);
         Team5 = (Button)findViewById(R.id.ButtonTeam5);
+        Team6 = (Button)findViewById(R.id.ButtonTeam6);
+        Team7 = (Button)findViewById(R.id.ButtonTeam7);
+        Team8 = (Button)findViewById(R.id.ButtonTeam8);
+        Team9 = (Button)findViewById(R.id.ButtonTeam9);
+        Team10 = (Button)findViewById(R.id.ButtonTeam10);
+        Team11 = (Button)findViewById(R.id.ButtonTeam11);
 
 
         Team.setOnClickListener(new View.OnClickListener() {
@@ -125,40 +143,8 @@ public class Teams extends Activity {
         });
 
 
-      /*  ObjectAnimator anim = ObjectAnimator.ofInt(mprogressBar, "progress", 0, 100);
-        anim.setDuration(4000);
-        anim.setInterpolator(new DecelerateInterpolator());
-        anim.start();
-        ObjectAnimator anim1 = ObjectAnimator.ofInt(mprogressBar1, "progress", 0, 100);
-        anim1.setDuration(4000);
-        anim1.setInterpolator(new DecelerateInterpolator());
-        anim1.start();
-        ObjectAnimator anim2 = ObjectAnimator.ofInt(mprogressBar2, "progress", 0, 100);
-        anim2.setDuration(4000);
-        anim2.setInterpolator(new DecelerateInterpolator());
-        anim2.start();
 
-        ObjectAnimator anim3 = ObjectAnimator.ofInt(mprogressBar3, "progress", 0, 100);
-        anim3.setDuration(4000);
-        anim3.setInterpolator(new DecelerateInterpolator());
-        anim3.start();
-        ObjectAnimator anim4 = ObjectAnimator.ofInt(mprogressBar4, "progress", 0, 100);
-        anim4.setDuration(4000);
-        anim4.setInterpolator(new DecelerateInterpolator());
-        anim4.start();
-        ObjectAnimator anim5 = ObjectAnimator.ofInt(mprogressBar5, "progress", 0, 100);
-        anim5.setDuration(4000);
-        anim5.setInterpolator(new DecelerateInterpolator());
-        anim5.start();
 
-        nawaitUnited ="https://firebasestorage.googleapis.com/v0/b/npl2017-2bca3.appspot.com/o/point_table%2Fimage%3A7155?alt=media&token=3d0a6582-9735-48b8-aef9-ef1a89b82e58";
-        ShanENawait = "https://firebasestorage.googleapis.com/v0/b/npl2017-2bca3.appspot.com/o/point_table%2Fimage%3A7153?alt=media&token=9bd6b919-e305-40b6-96ca-5e719624932f";
-        NawaitJanbaz="https://firebasestorage.googleapis.com/v0/b/npl2017-2bca3.appspot.com/o/point_table%2Fimage%3A7150?alt=media&token=5ebdaf59-a262-42c8-94f4-9b268dd4662e";
-        NawaitRoyals="https://firebasestorage.googleapis.com/v0/b/npl2017-2bca3.appspot.com/o/point_table%2F7200?alt=media&token=99f626cf-fa35-4799-94f8-3496eb17b446";
-        NawaitAces="https://firebasestorage.googleapis.com/v0/b/npl2017-2bca3.appspot.com/o/point_table%2Fimage%3A7154?alt=media&token=ace7ae39-22f7-4d48-ac3f-e2de579e214b";
-        NawaitSultan="https://firebasestorage.googleapis.com/v0/b/npl2017-2bca3.appspot.com/o/point_table%2Fimage%3A7178?alt=media&token=00f64b84-61f1-4fee-a465-7ba16b4300eb";
-
-*/
 
         team1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +152,74 @@ public class Teams extends Activity {
                 showDialog();
             }
         });
+        mAuthStateListner = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                if(user!=null){
+                    //user is signed in
+                    name1 =user.getDisplayName();
+                    Team9.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent(Teams.this,RoyalStatsActivity.class);
+                            i.putExtra("username",name1);
+                            startActivity(i);
+                        }
+                    });
+                    Team6.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent(Teams.this,UnitedStatsActivity.class);
+                            i.putExtra("username",name1);
+                            startActivity(i);
+                        }
+                    });
+                    Team7.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent(Teams.this,ShanStatsActivity.class);
+                            i.putExtra("username",name1);
+                            startActivity(i);
+                        }
+                    });
+                    Team8.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent(Teams.this,JanbazStatsActivity.class);
+                            i.putExtra("username",name1);
+                            startActivity(i);
+                        }
+                    });
+                    ;
+                    Team10.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent(Teams.this,AcesStatsActivity.class);
+                            i.putExtra("username",name1);
+                            startActivity(i);
+                        }
+                    });
+                    Team11.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent i = new Intent(Teams.this,SultanStatsActivity.class);
+                            i.putExtra("username",name1);
+                            startActivity(i);
+                        }
+                    });
+
+
+                }
+                else{
+                    //user is signed out
+
+
+
+                }
+            };
+        };
 
 
     }
@@ -225,6 +279,18 @@ public class Teams extends Activity {
         }
 
     }
+    @Override
+    public void onPause(){
+        super.onPause();
+        if(mAuthStateListner!=null) {
+            mFirebaseAuth.removeAuthStateListener(mAuthStateListner);
+        }
+    }
+    public void onResume(){
+        super.onResume();
+        mFirebaseAuth.addAuthStateListener(mAuthStateListner);
+    }
+
     private void showDialog() {
         // custom dialog
         dialog = new Dialog(this);

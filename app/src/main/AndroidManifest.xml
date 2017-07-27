@@ -159,6 +159,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".UnitedStatsActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity><activity android:name=".ShanStatsActivity"
+        android:screenOrientation="portrait">
+        <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity><activity android:name=".JanbazStatsActivity"
+        android:screenOrientation="portrait">
+        <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity><activity android:name=".RoyalStatsActivity"
+        android:screenOrientation="portrait">
+        <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity><activity android:name=".AcesStatsActivity"
+        android:screenOrientation="portrait">
+        <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity><activity android:name=".SultanStatsActivity"
+        android:screenOrientation="portrait">
+        <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
     </application>
 
 

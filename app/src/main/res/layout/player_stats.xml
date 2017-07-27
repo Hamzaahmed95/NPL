@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@drawable/sa2"
+    android:layout_height="match_parent"
+    android:gravity="top|center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="@null"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/backButtonOC5"
+            android:src="@drawable/left"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingRight="10dp"
+            android:text="Details"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/photoPickerButtonOC2"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@android:drawable/ic_menu_gallery" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/l2"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/photoImageViewOC2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:padding="10dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:id="@+id/progressBarOC"
+            android:max="48"
+            android:progress="1"
+            android:progressDrawable="@drawable/circulr_screen"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:textColor="@color/authui_colorAccent"
+        android:layout_height="wrap_content"
+        android:id="@+id/date2OC"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="type date update"
+        android:id="@+id/date1OC"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/send1OC"
+        android:text="@string/button_text_send"/>
+
+</LinearLayout>

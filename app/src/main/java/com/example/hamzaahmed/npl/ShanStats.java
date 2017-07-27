@@ -46,11 +46,12 @@ import static android.app.Activity.RESULT_OK;
  * Created by Hamza Ahmed on 18-Jul-17.
  */
 
-public class FullScoreCardFragment extends Fragment {
+public class ShanStats extends Fragment {
 
 
 
     private FirebaseStorage firebaseStorage;
+    String name;
     private TextView date2;
     public static final String PREFS_NAME1 = "MyAppSharedPrefs";
     private StorageReference PointsTableStorageReference;
@@ -74,12 +75,12 @@ public class FullScoreCardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-        View view = inflater.inflate(R.layout.orange_cap, container, false);
+        View view = inflater.inflate(R.layout.player_stats, container, false);
         url="https://firebasestorage.googleapis.com/v0/b/npl2017-2bca3.appspot.com/o/point_table%2Fimage%3A7283?alt=media&token=053c4777-df68-46be-be6e-d504791385ce";
         firebaseStorage = FirebaseStorage.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        PointsTableStorageReference =firebaseStorage.getReference().child("full_score_card");
-        mMessageDatabaseReference =mFirebaseDatabase.getReference().child("fullscorecard");
+        PointsTableStorageReference =firebaseStorage.getReference().child("shan_stats");
+        mMessageDatabaseReference =mFirebaseDatabase.getReference().child("shanstats");
         date1 =(EditText)view.findViewById(R.id.date1OC);
         date2 =(TextView)view.findViewById(R.id.date2OC);
         imageView =(ImageView)view.findViewById(R.id.photoImageViewOC2);
@@ -88,10 +89,12 @@ public class FullScoreCardFragment extends Fragment {
         backButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(),ScoringActivity.class);
+                Intent i = new Intent(getActivity(),Teams.class);
                 startActivity(i);
             }
         });
+
+
         mprogressBar = (ProgressBar) view.findViewById(R.id.progressBarOC);
         mPhotoPickerButton = (ImageButton) view.findViewById(R.id.photoPickerButtonOC2);
         ObjectAnimator anim = ObjectAnimator.ofInt(mprogressBar, "progress", 0, 100);
@@ -101,19 +104,28 @@ public class FullScoreCardFragment extends Fragment {
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         send1=(Button)view.findViewById(R.id.send1OC);
-
         Bundle extra =getActivity().getIntent().getExtras();
         if(extra!=null) {
             String url2 = extra.getString("username");
-            System.out.println("FullScoreCardFragment: "+url2);
+            System.out.println("orangeCap: "+url2);
             if(!url2.equals("K142805 Hamza Ahmed")){
                 send1.setVisibility(View.GONE);
                 date1.setVisibility(View.GONE);
                 mPhotoPickerButton.setVisibility(View.GONE);
             }
         }
+       /* Bundle extra =getActivity().getIntent().getExtras();
+        if(extra!=null) {
+            String url2 = extra.getString("username");
+            Log.d("hamza: ",url2);
+            if(!url2.equals("K142805 Hamza Ahmed")){
+                send1.setVisibility(View.GONE);
+                date1.setVisibility(View.GONE);
+                mPhotoPickerButton.setVisibility(View.GONE);
+            }
+        }*/
 
-        Query mHouseDatabaseReference2 =mFirebaseDatabase.getReference().child("fullscorecard").limitToLast(1);;
+        Query mHouseDatabaseReference2 =mFirebaseDatabase.getReference().child("shanstats").limitToLast(1);;
 
         mHouseDatabaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -149,6 +161,12 @@ public class FullScoreCardFragment extends Fragment {
 
 
 
+        pointTablePicture pointTablePicture1 = new pointTablePicture();
+
+
+
+
+
         send1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -177,6 +195,9 @@ public class FullScoreCardFragment extends Fragment {
                 }
             });
 
+
+
+
         mAuthStateListner = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -186,6 +207,7 @@ public class FullScoreCardFragment extends Fragment {
                     onSignedInInitialize(user.getDisplayName());
                     pointTablePicture p1 = new pointTablePicture();
                     Log.d("hamza ahmed",user.getDisplayName());
+                    name=user.getDisplayName();
                     if(!user.getDisplayName().equals("K142805 Hamza Ahmed")){
                         imageView.setVisibility(View.GONE);
                         date1.setVisibility(View.GONE);

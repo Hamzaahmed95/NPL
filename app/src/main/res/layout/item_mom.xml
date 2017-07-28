@@ -33,6 +33,15 @@
             android:layout_weight="0"
             tools:text="Message" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:indeterminateTint="@android:color/black"
+            android:foregroundGravity="center"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
         <ImageView
             android:id="@+id/photoImageViewMOM"
             android:layout_width="350dp"

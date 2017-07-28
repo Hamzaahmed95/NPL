@@ -42,7 +42,7 @@ public class Teams extends Activity {
     private String NawaitRoyals;
     private String NawaitAces;
     private String NawaitSultan;
-    Dialog dialog;
+
     ProgressBar mprogressBar;
     ProgressBar mprogressBar1;
     ProgressBar mprogressBar2;
@@ -142,16 +142,6 @@ public class Teams extends Activity {
             }
         });
 
-
-
-
-
-        team1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showDialog();
-            }
-        });
         mAuthStateListner = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -291,39 +281,5 @@ public class Teams extends Activity {
         mFirebaseAuth.addAuthStateListener(mAuthStateListner);
     }
 
-    private void showDialog() {
-        // custom dialog
-        dialog = new Dialog(this);
-        dialog.setContentView(R.layout.text);
 
-        // set the custom dialog components - text, image and button
-
-        // Close Button
-
-        // Buy Button
-
-        ImageView v1 =(ImageView)dialog.findViewById(R.id.janbaz);
-
-        String url ="https://firebasestorage.googleapis.com/v0/b/npl2017-2bca3.appspot.com/o/point_table%2F7168?alt=media&token=d41424b6-c90c-4156-87f1-f2bac4a6e9e7";
-        if(url!=null) {
-            Glide.with(v1.getContext())
-                    .load(url)
-                    .into(v1);
-        }
-
-
-
-
-        ImageButton Close = (ImageButton) dialog.findViewById(R.id.close1);
-        Close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                dialog.dismiss();
-            }
-        });
-
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
-    }
 }

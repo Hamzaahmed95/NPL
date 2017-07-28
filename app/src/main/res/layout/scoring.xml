@@ -1,90 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@drawable/sa2"
-    android:paddingBottom="40dp"
-    android:gravity="center|top">
+    android:layout_height="match_parent"
+    android:gravity="top|center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="@null"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/backButtonOC5"
+            android:src="@drawable/left"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingRight="10dp"
+            android:text="Scorecard"/>
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/photoPickerButtonOC2"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@android:drawable/ic_menu_gallery" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left|center"
-        android:layout_marginLeft="10dp"
-        android:orientation="horizontal">
-
+        android:padding="10dp"
+        android:id="@+id/l2"
+        android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/backButton2"
-            android:src="@drawable/left"
-            android:layout_width="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="80dp"
-            android:layout_height="20dp"/>
+            android:id="@+id/photoImageViewOC2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:padding="10dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:id="@+id/progressBarOC"
+            android:max="48"
+            android:progress="1"
+            android:progressDrawable="@drawable/circulr_screen"
+            android:layout_gravity="center_horizontal"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
+
+
+
     <TextView
         android:layout_width="wrap_content"
+        android:textColor="@color/authui_colorAccent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp"
-        android:textSize="30dp"
-        android:textColor="@android:color/white"
-        android:fontFamily="sans-serif-condensed"
-        android:textStyle="bold"
-        android:text="SCORECARD"/>
-    </LinearLayout>
-
-
-    <LinearLayout
+        android:id="@+id/date2OC"/>
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:textSize="15dp"
-            android:textColor="@android:color/white"
-            android:fontFamily="sans-serif-condensed"
+        android:hint="type date update"
+        android:id="@+id/date1OC"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/send1OC"
+        android:text="@string/button_text_send"/>
 
-            android:paddingTop="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="Batsman"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:textSize="15dp"
-            android:textColor="@android:color/white"
-            android:fontFamily="sans-serif-condensed"
-
-            android:paddingTop="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:layout_height="wrap_content"
-            android:text="Out"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:textSize="15dp"
-            android:textColor="@android:color/white"
-            android:fontFamily="sans-serif-condensed"
-
-            android:paddingTop="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:layout_height="wrap_content"
-            android:text="Bowler"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:textSize="15dp"
-            android:textColor="@android:color/white"
-            android:fontFamily="sans-serif-condensed"
-
-            android:paddingTop="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:layout_height="wrap_content"
-            android:text="Runs"/>
-
-    </LinearLayout>
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/listOfScoring"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
-    </LinearLayout>
+</LinearLayout>

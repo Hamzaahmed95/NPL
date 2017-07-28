@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -46,6 +47,7 @@ public class MatchesFragment extends Fragment {
     private FirebaseAuth mFirebaseAuth;
     private DatabaseReference mRecentMatchesDatabaseReference;
     public static final int RC_SIGN_IN =1;
+    private ProgressBar mProgressBar;
     private ChildEventListener mChildEventListener;
     private FirebaseAuth.AuthStateListener mAuthStateListner;
     private String mUsername;
@@ -163,6 +165,7 @@ public class MatchesFragment extends Fragment {
         View view = inflater.inflate(R.layout.match,container,false);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mProgressBar = (ProgressBar)view.findViewById(R.id.progressBar);
         mRecentMatchesDatabaseReference = mFirebaseDatabase.getReference().child("recent_matches");
         mUsername = ANONYMOUS;
 
@@ -317,6 +320,7 @@ public class MatchesFragment extends Fragment {
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     Match match = dataSnapshot.getValue(Match.class);
                    // System.out.println("match "+match.);
+                    mProgressBar.setVisibility(View.GONE);
 
                     for (DataSnapshot issue : dataSnapshot.getChildren()) {
 

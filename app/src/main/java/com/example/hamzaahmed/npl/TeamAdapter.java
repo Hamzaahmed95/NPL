@@ -12,6 +12,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -32,6 +33,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     Dialog dialog;
     private Context context;
     private List<Image> l1;
+    ProgressBar mprogressBar;
     String[] array1 = new String[10];
 
     public TeamAdapter(Context context, ArrayList<Image> galleryList) {
@@ -66,6 +68,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
             super(view);
             //title = (Button) view.findViewById(R.id.title);
             img = (ImageView) view.findViewById(R.id.photoIndivisual);
+            mprogressBar = (ProgressBar) view.findViewById(R.id.progressBar);
             view.setOnClickListener(this);
         }
 
@@ -75,6 +78,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
             Glide.with(img.getContext())
                     .load(image1.getImage_ID())
                     .into(img);
+            mprogressBar.setVisibility(View.GONE);
             pos1 = pos;
             System.out.println("pos: " + pos1);
         }

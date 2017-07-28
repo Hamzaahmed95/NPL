@@ -126,8 +126,7 @@ public class MOM extends AppCompatActivity {
         // Initialize message ListView and its adapter
 
         // Initialize progress bar
-        if(mProgressBar!=null)
-            mProgressBar.setVisibility(ProgressBar.INVISIBLE);
+
 
         // ImagePickerButton shows an image picker to upload a image for a message
         if(mphotoPickerButtonMOM!=null)
@@ -337,6 +336,7 @@ public class MOM extends AppCompatActivity {
                     MOMCLASS momclass = dataSnapshot.getValue(MOMCLASS.class);
                     if(momclass!=null)
                     mMOMAdapter.add(momclass);
+                    mProgressBar.setVisibility(View.GONE);
 
                 }
 

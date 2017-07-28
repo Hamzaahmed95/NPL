@@ -25,14 +25,14 @@
                 android:fontFamily="sans-serif-condensed"
                 android:textSize="20dp"
                 android:gravity="center"
-                android:text="Sponsors"/></LinearLayout>
+                android:text="Man Of The Match"/></LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"
-        android:background="@color/purple"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:indeterminateTint="@color/grayfinal"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
     <ListView

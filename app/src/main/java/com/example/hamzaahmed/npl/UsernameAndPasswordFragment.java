@@ -59,6 +59,7 @@ public class UsernameAndPasswordFragment extends Fragment {
     private String mUsername;
     private String array[];
     private String house;
+    private String others;
     private String favouriteTeam;
     private String favouriteBatsman;
     int i;
@@ -120,7 +121,7 @@ public class UsernameAndPasswordFragment extends Fragment {
 
         BestTeam.setAdapter(adapter);
         BestTeam.setPrompt("select");
-        final String[] items2 = new String[]{"select","Saqib", "Ali", "Khateeb Mairaj","others"};
+        final String[] items2 = new String[]{"select","Bidchol Saqib", "Haji Ameen Ali", "Khateeb Mairaj","Sunny Adnan","others"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(getActivity(), R.layout.spinner_style, items2);
         Log.d("quantity",""+adapter2);
 
@@ -225,9 +226,14 @@ public class UsernameAndPasswordFragment extends Fragment {
                         SendButtonQuestion.setEnabled(true);
                         break;
                     case 4:
+                        Log.d("case : "," "+position);
+                        favouriteBatsman=items2[position];
+                        SendButtonQuestion.setTextColor(Color.BLACK);
+                        SendButtonQuestion.setEnabled(true);
+                        break;
+                    case 5:
                         SendButtonQuestion.setTextColor(Color.BLACK);
                         FavPlayer.setVisibility(View.VISIBLE);
-                        favouriteBatsman=items2[position];
                         SendButtonQuestion.setEnabled(true);
                         break;
 
@@ -250,8 +256,9 @@ public class UsernameAndPasswordFragment extends Fragment {
 
                 Log.d("Username:",mUsername);
                 Log.d("favourite player",favouriteBatsman);
-                Log.d("favourite team",favouriteTeam);
+                Log.d("favourite nota",favouriteTeam);
                 Log.d("house",house);
+                favouriteBatsman=FavPlayer.getText().toString();
 
                 House house1 = new House(mUsername,favouriteBatsman,favouriteTeam,house);
                 mHouseDatabaseReference.push().setValue(house1);

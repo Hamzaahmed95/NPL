@@ -288,7 +288,7 @@
                 android:fontFamily="sans-serif-condensed"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Hashtag"/>
+                android:text="Admin "/>
         </LinearLayout>
 
 

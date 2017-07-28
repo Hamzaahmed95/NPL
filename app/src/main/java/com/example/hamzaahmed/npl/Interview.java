@@ -13,6 +13,7 @@ import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -167,6 +168,12 @@ public class Interview extends AppCompatActivity {
             });
             mmessageEditTextInterview.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DEFAULT_MSG_LENGTH_LIMIT)});
         }
+        mmessageListViewInterview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println("pos"+i);
+            }
+        });
         // Send button sends a message and clears the EditText
         if(mSendButton!=null)
             mSendButton.setOnClickListener(new View.OnClickListener() {
@@ -221,6 +228,7 @@ public class Interview extends AppCompatActivity {
                     mInterviewAdapter = new InterviewAdapter(Interview.this, R.layout.item_interview, InterviewClasses);
                     if(mmessageListViewInterview!=null)
                         mmessageListViewInterview.setAdapter(mInterviewAdapter);
+
 
 
 

@@ -350,6 +350,18 @@ public class OptionsFragment extends Fragment {
 
 
     }
+    private boolean isFirstTime()
+    {
+        SharedPreferences preferences = getActivity().getPreferences(MODE_PRIVATE);
+        boolean ranBefore = preferences.getBoolean("RanBefore", false);
+        if (!ranBefore) {
+            // first time
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("RanBefore", true);
+            editor.commit();
+        }
+        return !ranBefore;
+    }
 
     @Override
     public void onPause(){
@@ -362,36 +374,36 @@ public class OptionsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        if(isFirstTime()) {
 
-
-        set = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip);
-        set2 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip1);
-        set.setTarget(Chat);
-        set2.setTarget(getScore);
-        set.start();
-        set2.start();
-        set3 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip2);
-        set4 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip4);
-        set3.setTarget(getMatches);
-        set4.setTarget(getTeams);
-        set3.start();
-        set4.start();
-        set5 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip3);
-        set6 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip5);
-        set5.setTarget(Chat1);
-        set6.setTarget(getScore1);
-        set5.start();
-        set6.start();
-        set7 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip6);
-        set8 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip7);
-        set7.setTarget(getMatches1);
-        set8.setTarget(getTeams1);
-        set7.start();
-        set8.start();
-        set9 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(),R.animator.flip8);
-        set9.setTarget(MOM);
-        set9.start();
-
+            set = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(), R.animator.flip);
+            set2 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(), R.animator.flip1);
+            set.setTarget(Chat);
+            set2.setTarget(getScore);
+            set.start();
+            set2.start();
+            set3 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(), R.animator.flip2);
+            set4 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(), R.animator.flip4);
+            set3.setTarget(getMatches);
+            set4.setTarget(getTeams);
+            set3.start();
+            set4.start();
+            set5 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(), R.animator.flip3);
+            set6 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(), R.animator.flip5);
+            set5.setTarget(Chat1);
+            set6.setTarget(getScore1);
+            set5.start();
+            set6.start();
+            set7 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(), R.animator.flip6);
+            set8 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(), R.animator.flip7);
+            set7.setTarget(getMatches1);
+            set8.setTarget(getTeams1);
+            set7.start();
+            set8.start();
+            set9 = (AnimatorSet) AnimatorInflater.loadAnimator(this.getContext(), R.animator.flip8);
+            set9.setTarget(MOM);
+            set9.start();
+        }
 
     }
     @Override

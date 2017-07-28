@@ -57,7 +57,7 @@ public class InterviewAdapter extends ArrayAdapter<InterviewClass> {
         anim.setDuration(4000);
         anim.setInterpolator(new DecelerateInterpolator());
         anim.start();
-
+        mprogressBar.setVisibility(View.GONE);
         boolean isVideo = message.getPICTURE() != null;
         if(isVideo) {
             mediaController = new MediaController(getContext());
@@ -79,7 +79,7 @@ public class InterviewAdapter extends ArrayAdapter<InterviewClass> {
                         public void onVideoSizeChanged(MediaPlayer mp, int arg1, int arg2) {
                             // TODO Auto-generated method stub
                             Log.e("hM", "Changed");
-                            mprogressBar.setVisibility(View.GONE);
+
                             mp.start();
                         }
                     });

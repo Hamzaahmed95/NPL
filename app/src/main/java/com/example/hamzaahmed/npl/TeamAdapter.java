@@ -77,6 +77,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
             //    System.out.println("imageid"+image1.getImage_ID());
             Glide.with(img.getContext())
                     .load(image1.getImage_ID())
+                    .placeholder(R.drawable.loading_spinner)
                     .into(img);
             mprogressBar.setVisibility(View.GONE);
             pos1 = pos;

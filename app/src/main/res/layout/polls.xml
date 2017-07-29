@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:background="@android:color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/sa2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Username"
+            android:text="Polling"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            android:fontFamily="sans-serif-condensed"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:hint="Set the Question ?"
+            android:id="@+id/pollAskQuestion"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:textColor="@color/darkMaroon"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/button_text_send"
+            android:id="@+id/sendButtonPolls2"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:paddingTop="20dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/lightBlue2"
+            android:textSize="20dp"
+            android:id="@+id/pollQuestion"
+            android:fontFamily="sans-serif-condensed"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/photoPickerPoll1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/attach" />
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingBottom="10dp"
+                android:id="@+id/pollTeam1"
+                android:paddingRight="10dp"
+                android:src="@drawable/team2"
+                android:text="TEAM 1"
+                android:textColor="@android:color/white" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:src="@drawable/vs" />
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:id="@+id/pollTeam2"
+                android:src="@drawable/team3"
+                android:text="TEAM 2"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <ImageButton
+                android:id="@+id/photoPickerPoll2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/attach" />
+
+
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:hint="Enter your answer ?"
+            android:id="@+id/pollAnswer1"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/photoPickerPoll3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/attach" />
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingBottom="10dp"
+                android:id="@+id/pollTeam3"
+                android:paddingRight="10dp"
+                android:src="@drawable/team2"
+                android:text="TEAM 1"
+                android:textColor="@android:color/white" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:src="@drawable/vs" />
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:id="@+id/pollTeam4"
+                android:src="@drawable/team3"
+                android:text="TEAM 2"
+                android:textColor="@android:color/white"
+                android:textSize="20dp" />
+
+            <ImageButton
+                android:id="@+id/photoPickerPoll4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/attach" />
+
+
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white"
+            android:hint="Enter your answer ?"
+            android:id="@+id/pollAnswer2"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@android:color/white"
+            android:textColor="@color/darkMaroon"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/button_text_send"
+            android:id="@+id/sendButtonPolls"/>
+    </LinearLayout>
+</LinearLayout>

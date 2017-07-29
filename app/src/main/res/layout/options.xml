@@ -32,7 +32,7 @@
         android:gravity="center"
         android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="180dp"
+            android:layout_width="94dp"
             android:id="@+id/layout1"
             android:gravity="center"
             android:orientation="vertical"
@@ -52,9 +52,30 @@
             android:text="Chat"/>
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="94dp"
+            android:id="@+id/layout11"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@color/new1"
+            android:layout_height="90dp">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/p1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:fontFamily="sans-serif-condensed"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="polls"/>
+
+        </LinearLayout>
 
         <LinearLayout
-            android:layout_width="102dp"
+            android:layout_width="94dp"
             android:id="@+id/layout2"
             android:gravity="center"
             android:background="@color/bluesh2"

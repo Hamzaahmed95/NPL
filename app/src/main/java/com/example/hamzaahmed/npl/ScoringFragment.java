@@ -162,12 +162,12 @@ public class ScoringFragment extends Fragment {
                         // do something with the individual "issues"
 
                         System.out.println("hamza here"+issue.getValue());
-                         if(issue.child("url1").getValue().toString()!=null)
-                        url1=issue.child("url1").getValue().toString();
+                        if(issue.child("url1").getValue().toString()!=null)
+                            url1=issue.child("url1").getValue().toString();
                         Glide.with(imageView.getContext())
                                 .load(url1)
                                 .into(imageView);
-                     //   mprogressBar.setVisibility(View.GONE);
+                        //   mprogressBar.setVisibility(View.GONE);
                         //   System.out.println();
                         //array[i]=issue.child("username").getValue().toString();
                         //i++;
@@ -299,60 +299,60 @@ public class ScoringFragment extends Fragment {
         mUsername = ANONYMOUS;
         SendButton.setOnClickListener(
                 new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String score = scoreInput.getText().toString();
-                String[] arr = score.split("-");
-                String runs = arr[0];
-                String wicket = arr[1];
-                String overs = arr[2];
-                String team = arr[3];
-                String balls = arr[4];
-                String ballNo = arr[5];
-                String batsmanRuns1 = arr[6];
-                String batsmanRuns2= arr[7];
-                String batsmanBalls1 = arr[8];
-                String batsmanBalls2 = arr[9];
-                LiveScore liveScore = new LiveScore(Integer.parseInt(runs), Integer.parseInt(wicket), Float.parseFloat(overs), 1, Integer.parseInt(team), Integer.parseInt(balls), Integer.parseInt(ballNo),
-                        Integer.parseInt(batsmanRuns1), Integer.parseInt(batsmanRuns2), Integer.parseInt(batsmanBalls1), Integer.parseInt(batsmanBalls2));
-                mScoreDatabaseReference.push().setValue(liveScore);
-                scoreInput.setText("");
-                if (Integer.parseInt(team) == 1) {
-                    Runs1.setText(runs);
-                    Wicket1.setText(wicket);
-                    Overs1.setText(overs);
-                    BatsmanRuns1.setText(batsmanRuns1);
-                    BatsmanRuns2.setText(batsmanRuns2);
-                    BatsmanBalls1.setText(batsmanBalls1);
-                    BatsmanBalls2.setText(batsmanBalls2);
+                    @Override
+                    public void onClick(View view) {
+                        String score = scoreInput.getText().toString();
+                        String[] arr = score.split("-");
+                        String runs = arr[0];
+                        String wicket = arr[1];
+                        String overs = arr[2];
+                        String team = arr[3];
+                        String balls = arr[4];
+                        String ballNo = arr[5];
+                        String batsmanRuns1 = arr[6];
+                        String batsmanRuns2= arr[7];
+                        String batsmanBalls1 = arr[8];
+                        String batsmanBalls2 = arr[9];
+                        LiveScore liveScore = new LiveScore(Integer.parseInt(runs), Integer.parseInt(wicket), Float.parseFloat(overs), 1, Integer.parseInt(team), Integer.parseInt(balls), Integer.parseInt(ballNo),
+                                Integer.parseInt(batsmanRuns1), Integer.parseInt(batsmanRuns2), Integer.parseInt(batsmanBalls1), Integer.parseInt(batsmanBalls2));
+                        mScoreDatabaseReference.push().setValue(liveScore);
+                        scoreInput.setText("");
+                        if (Integer.parseInt(team) == 1) {
+                            Runs1.setText(runs);
+                            Wicket1.setText(wicket);
+                            Overs1.setText(overs);
+                            BatsmanRuns1.setText(batsmanRuns1);
+                            BatsmanRuns2.setText(batsmanRuns2);
+                            BatsmanBalls1.setText(batsmanBalls1);
+                            BatsmanBalls2.setText(batsmanBalls2);
 
-                } else {
+                        } else {
 
-                    Runs2.setText(runs);
-                    Wicket2.setText(wicket);
-                    Overs2.setText(overs);
-                    BatsmanRuns3.setText(batsmanRuns1);
-                    BatsmanRuns4.setText(batsmanRuns2);
-                    BatsmanBalls3.setText(batsmanBalls1);
-                    BatsmanBalls4.setText(batsmanBalls2);
-                }
-                if (Integer.parseInt(ballNo) == 1) {
-                    ball1.setText(balls);
-                } else if (Integer.parseInt(ballNo) == 2) {
-                    ball2.setText(balls);
-                } else if (Integer.parseInt(ballNo) == 3) {
-                    ball3.setText(balls);
-                } else if (Integer.parseInt(ballNo) == 4) {
-                    ball4.setText(balls);
-                } else if (Integer.parseInt(ballNo) == 5) {
-                    ball5.setText(balls);
-                } else if (Integer.parseInt(ballNo) == 6) {
-                    ball6.setText(balls);
-                }
+                            Runs2.setText(runs);
+                            Wicket2.setText(wicket);
+                            Overs2.setText(overs);
+                            BatsmanRuns3.setText(batsmanRuns1);
+                            BatsmanRuns4.setText(batsmanRuns2);
+                            BatsmanBalls3.setText(batsmanBalls1);
+                            BatsmanBalls4.setText(batsmanBalls2);
+                        }
+                        if (Integer.parseInt(ballNo) == 1) {
+                            ball1.setText(balls);
+                        } else if (Integer.parseInt(ballNo) == 2) {
+                            ball2.setText(balls);
+                        } else if (Integer.parseInt(ballNo) == 3) {
+                            ball3.setText(balls);
+                        } else if (Integer.parseInt(ballNo) == 4) {
+                            ball4.setText(balls);
+                        } else if (Integer.parseInt(ballNo) == 5) {
+                            ball5.setText(balls);
+                        } else if (Integer.parseInt(ballNo) == 6) {
+                            ball6.setText(balls);
+                        }
 
 
-            }
-        });
+                    }
+                });
         if (scoreInput != null) {
             scoreInput.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -496,13 +496,13 @@ public class ScoringFragment extends Fragment {
                             boolean isPhoto = downloadURL.toString() != null;
                             if (isPhoto) {
                                 Toast.makeText(getActivity(), "Loading your picture!!", Toast.LENGTH_SHORT).show();
-                                 imageView.setVisibility(View.VISIBLE);
+                                imageView.setVisibility(View.VISIBLE);
                                 Glide.with(imageView.getContext())
                                         .load(batsmanBowler.getUrl1())
                                         .into(imageView);
                                 mScoreDatabaseReference3.push().setValue(batsmanBowler);
                             }
-                          }
+                        }
                     });
         }
         else  if(requestCode == RC_PHOTO_PICKER2 && resultCode==RESULT_OK){
@@ -549,7 +549,7 @@ public class ScoringFragment extends Fragment {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     LiveScore liveScore = dataSnapshot.getValue(LiveScore.class);
-                 //   BatsmanBowler batsmanBowler = dataSnapshot.getValue(BatsmanBowler.class);
+                    //   BatsmanBowler batsmanBowler = dataSnapshot.getValue(BatsmanBowler.class);
                     if(liveScore.getTeam()!=null) {
                         if (liveScore.getTeam() == 1) {
                             Runs1.setText(String.valueOf(liveScore.getRuns()));
@@ -568,7 +568,7 @@ public class ScoringFragment extends Fragment {
                             BatsmanBalls3.setText(String.valueOf(liveScore.getBall1()));
                             BatsmanBalls4.setText(String.valueOf(liveScore.getBall2()));
                         }
-                      }
+                    }
                     if(liveScore.getBallNo()!=null) {
                         if (liveScore.getBallNo() == 1) {
                             ball1.setText(String.valueOf(liveScore.getBalls()));
@@ -590,8 +590,8 @@ public class ScoringFragment extends Fragment {
 
                 @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                  //  FriendlyMessage f =dataSnapshot.getValue(FriendlyMessage.class);
-                   // Log.d("ooo = ",f.getName());
+                    //  FriendlyMessage f =dataSnapshot.getValue(FriendlyMessage.class);
+                    // Log.d("ooo = ",f.getName());
                 }
 
                 @Override

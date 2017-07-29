@@ -47,7 +47,7 @@
         <ImageView
             android:layout_width="210dp"
             android:layout_height="210dp"
-            android:src="@drawable/p"
+            android:src="@drawable/p1"
             android:id="@+id/pic2"/>
 
 

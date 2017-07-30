@@ -26,7 +26,7 @@
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="20dp"
-            android:text="Players Details"
+            android:text="Players"
             android:fontFamily="sans-serif-condensed"/>
 
     </LinearLayout>

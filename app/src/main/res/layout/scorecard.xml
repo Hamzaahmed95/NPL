@@ -61,7 +61,6 @@
             android:paddingBottom="10dp"
             android:id="@+id/teamplaying1"
             android:paddingRight="10dp"
-            android:src="@drawable/team2"
             android:text="TEAM 1"
             android:textColor="@android:color/white" />
 
@@ -78,7 +77,6 @@
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
             android:id="@+id/teamplaying2"
-            android:src="@drawable/team3"
             android:text="TEAM 2"
             android:textColor="@android:color/white"
             android:textSize="20dp" />
@@ -238,6 +236,16 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -266,7 +274,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed"
                         android:paddingRight="6dp"
-                        android:text="Batsman1"
+
                         android:textColor="@android:color/white"
                         android:textSize="20dp" />
 
@@ -274,7 +282,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/runs1"
-                        android:text="18"
                         android:textColor="@android:color/white" />
 
                     <TextView
@@ -288,7 +295,6 @@
                         android:layout_height="wrap_content"
 
                         android:id="@+id/balls1"
-                        android:text="15"
                         android:textColor="@android:color/white" />
 
                     <TextView
@@ -310,7 +316,6 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed"
                         android:paddingRight="6dp"
-                        android:text="Batsman2"
                         android:textColor="@android:color/white"
                         android:textSize="20dp" />
 
@@ -318,7 +323,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/runs2"
-                        android:text="18"
                         android:textColor="@android:color/white" />
 
                     <TextView
@@ -332,7 +336,6 @@
                         android:layout_height="wrap_content"
 
                         android:id="@+id/balls2"
-                        android:text="15"
                         android:textColor="@android:color/white" />
 
                     <TextView
@@ -342,18 +345,6 @@
                         android:textColor="@android:color/white" />
                 </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="70dp"
-                    android:background="#ffffff" />
-
-            </LinearLayout>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -371,7 +362,6 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed"
                         android:paddingRight="20dp"
-                        android:text="bowler1"
                         android:textColor="@android:color/white"
                         android:textSize="20dp" />
 
@@ -379,13 +369,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/runs3"
-                        android:text="18"
                         android:textColor="@android:color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="("
+                        android:text="-"
                         android:textColor="@android:color/white" />
 
                     <TextView
@@ -393,13 +382,6 @@
                         android:layout_height="wrap_content"
 
                         android:id="@+id/balls3"
-                        android:text="15"
-                        android:textColor="@android:color/white" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=")"
                         android:textColor="@android:color/white" />
                 </LinearLayout>
 
@@ -417,7 +399,6 @@
                         android:fontFamily="sans-serif-condensed"
                         android:gravity="start"
                         android:paddingRight="20dp"
-                        android:text="bowler2"
                         android:textColor="@android:color/white"
                         android:textSize="20dp" />
 
@@ -426,13 +407,11 @@
 
                         android:id="@+id/runs4"
                         android:layout_height="wrap_content"
-                        android:text="18"
                         android:textColor="@android:color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="("
                         android:textColor="@android:color/white" />
 
                     <TextView
@@ -440,13 +419,11 @@
                         android:layout_height="wrap_content"
 
                         android:id="@+id/balls4"
-                        android:text="15"
                         android:textColor="@android:color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=")"
                         android:textColor="@android:color/white" />
                 </LinearLayout>
             </LinearLayout>
@@ -592,12 +569,13 @@
 
     <Button
         android:id="@+id/getFullScoreCard"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:enabled="false"
         android:background="@color/bluesh"
         android:fontFamily="sans-serif-condensed"
-        android:text="Score Card"
+        android:text="Scorecard will be uploaded after the match"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

@@ -26,7 +26,7 @@
             android:textSize="25dp"
             android:fontFamily="sans-serif-condensed"
             android:paddingRight="10dp"
-            android:text="Best Of Three"/>
+            android:text="Top Three"/>
 
     </LinearLayout>
 

@@ -49,6 +49,50 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840530113674:android:3c25e581b88409d4",
+        "android_client_info": {
+          "package_name": "myApp.hamza.npl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840530113674-nnfso4ffl7am7mmkn04lfcdsjrjld32q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "myApp.hamza.npl",
+            "certificate_hash": "189d73010a9d6a1c96a2213019e79becfb428bdf"
+          }
+        },
+        {
+          "client_id": "840530113674-acsfavtp3jukhvj7isj51gm9k3s1gufp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS51F8Cs3Ys9ME9k5wSPIGXub9MWESWNQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840530113674-acsfavtp3jukhvj7isj51gm9k3s1gufp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"

@@ -35,7 +35,7 @@
 
         <ProgressBar
             android:id="@+id/progressBar"
-            android:indeterminateTint="@android:color/black"
+            android:indeterminateTint="@android:color/white"
             android:foregroundGravity="center"
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"

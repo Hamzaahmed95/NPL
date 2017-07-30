@@ -80,7 +80,7 @@
         android:fontFamily="sans-serif-condensed"
 
         android:layout_height="wrap_content"
-        android:text='"A'/>
+        android:text='"O'/>
         <TextView
             android:layout_width="wrap_content"
             android:textSize="20dp"
@@ -89,7 +89,7 @@
             android:fontFamily="sans-serif-condensed"
 
             android:layout_height="wrap_content"
-            android:text="ttan "/>
+            android:text="NE "/>
         <TextView
             android:layout_width="wrap_content"
             android:textSize="30dp"
@@ -98,7 +98,7 @@
             android:fontFamily="sans-serif-condensed"
 
             android:layout_height="wrap_content"
-            android:text="K"/>
+            android:text="T"/>
         <TextView
             android:layout_width="wrap_content"
             android:textSize="20dp"
@@ -107,7 +107,7 @@
             android:fontFamily="sans-serif-condensed"
 
             android:layout_height="wrap_content"
-            android:text="hailun "/>
+            android:text="EAM, "/>
         <TextView
             android:layout_width="wrap_content"
             android:textSize="30dp"
@@ -116,7 +116,7 @@
             android:fontFamily="sans-serif-condensed"
 
             android:layout_height="wrap_content"
-            android:text="D"/>
+            android:text="O"/>
         <TextView
             android:layout_width="wrap_content"
             android:textSize="20dp"
@@ -125,7 +125,25 @@
             android:fontFamily="sans-serif-condensed"
 
             android:layout_height="wrap_content"
-            android:text='akharh"'/>
+            android:text='NE '/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="30dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+
+            android:layout_height="wrap_content"
+            android:text='D'/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed"
+
+            android:layout_height="wrap_content"
+            android:text='REAM"'/>
     </LinearLayout>
 <LinearLayout
     android:layout_width="wrap_content"

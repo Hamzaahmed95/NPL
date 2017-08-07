@@ -9,6 +9,6 @@ import android.support.v4.app.Fragment;
 public class ScoringActivity extends SingleFragmentActivity{
     @Override
     protected Fragment createFragment(){
-        return new ScoringFragment();
+        return new NewScoreCard();
     }
 }

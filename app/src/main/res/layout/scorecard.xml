@@ -514,6 +514,11 @@
             android:textColor="@color/darkMaroon"
             android:textSize="20dp"
             android:textStyle="bold" />
+        <Button
+            android:layout_width="wrap_content"
+            android:id="@+id/clearBalls"
+            android:layout_height="wrap_content"
+            android:text="send"/>
     </LinearLayout>
 
     <View

@@ -226,7 +226,7 @@ public class ScoringFragment extends Fragment {
                         BatsmanOnCrease1.setText(issue.child("batsman1").getValue().toString());
                         BatsmanOnCrease2.setText(issue.child("batsman2").getValue().toString());
                         BowlerOnCrease1.setText(issue.child("bowler1").getValue().toString());
-                      //  BowlerOnCrease2.setText(issue.child("bowler2").getValue().toString());
+                        //  BowlerOnCrease2.setText(issue.child("bowler2").getValue().toString());
 
 
                         //   mprogressBar.setVisibility(View.GONE);
@@ -258,11 +258,9 @@ public class ScoringFragment extends Fragment {
                         String Batsman2 = arr[1];
                         String Bowler1 = arr[2];
                         String Bowler2 = arr[3];
-
                         BatsmanBowler batsmanBowler = new BatsmanBowler(Batsman1,Batsman2,Bowler1,Bowler2,null,null);
                         mScoreDatabaseReference2.push().setValue(batsmanBowler);
                         scoreInput2.setText("");
-
                         BatsmanOnCrease1.setText(Batsman1);
                         BatsmanOnCrease2.setText(Batsman2);
                         BowlerOnCrease1.setText(Bowler1);
@@ -322,9 +320,9 @@ public class ScoringFragment extends Fragment {
                             Wicket2.setText(wicket);
                             Overs2.setText(overs);
                             BatsmanRuns3.setText(batsmanRuns1);
-                         //   BatsmanRuns4.setText(batsmanRuns2);
+                            //   BatsmanRuns4.setText(batsmanRuns2);
                             BatsmanBalls3.setText(batsmanBalls1);
-                           // BatsmanBalls4.setText(batsmanBalls2);
+                            // BatsmanBalls4.setText(batsmanBalls2);
                         }
                         if (Integer.parseInt(ballNo) == 1) {
                             ball1.setText(balls);
@@ -554,9 +552,9 @@ public class ScoringFragment extends Fragment {
                             Wicket2.setText(String.valueOf(liveScore.getWicket()));
                             Overs2.setText(String.valueOf(liveScore.getOvers()));
                             BatsmanRuns3.setText(String.valueOf(liveScore.getRuns1()));
-                           // BatsmanRuns4.setText(String.valueOf(liveScore.getRuns2()));
+                            // BatsmanRuns4.setText(String.valueOf(liveScore.getRuns2()));
                             BatsmanBalls3.setText(String.valueOf(liveScore.getBall1()));
-                           //
+                            //
                             // BatsmanBalls4.setText(String.valueOf(liveScore.getBall2()));
                         }
                     }

@@ -25,7 +25,7 @@ public class LiveScore {
 
     public LiveScore(Integer runs,Integer wicket,float overs, Integer ball,Integer team,Integer balls,Integer ballNo,
                      Integer runs1,Integer runs2,Integer Balls1,Integer Balls2
-                     ){
+    ){
         Runs=runs;
         Wicket=wicket;
         Overs=overs;

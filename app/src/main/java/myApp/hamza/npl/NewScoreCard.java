@@ -9,10 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.auth.AuthUI;
@@ -65,6 +68,7 @@ public class NewScoreCard extends Fragment {
     private TextView ball4;
     private TextView ball5;
     private TextView ball6;
+    private Button enableButton;
     private EditText scoreInput2;
     private Button SendButton2;
     private ImageView backButton4;
@@ -90,7 +94,9 @@ public class NewScoreCard extends Fragment {
     private DatabaseReference mScoreDatabaseReference18;
     private DatabaseReference mScoreDatabaseReference19;
     private DatabaseReference mScoreDatabaseReference20;
-
+    private DatabaseReference mScoreDatabaseReference21;
+    private DatabaseReference mScoreDatabaseReference22;
+    private LinearLayout l1;
     public static final int RC_SIGN_IN =1;
     private ChildEventListener mChildEventListener;
     private FirebaseAuth.AuthStateListener mAuthStateListner;
@@ -161,12 +167,14 @@ public class NewScoreCard extends Fragment {
     private int Ball6num2;
     private TextView hide1;
     private TextView hide2;
-
+    private ToggleButton toggle;
+    private Button matchUpdate;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.new_scorecard, container, false);
         hide1 = (TextView)view.findViewById(R.id.overhide1);
+        matchUpdate = (Button)view.findViewById(R.id.noMatchInProgress);
         hide2 = (TextView)view.findViewById(R.id.overhide2);
         mPhotoPickerButton1 = (ImageButton) view.findViewById(R.id.photoPickerTeam1);
         mPhotoPickerButton2 = (ImageButton) view.findViewById(R.id.photoPickerTeam2);
@@ -196,6 +204,7 @@ public class NewScoreCard extends Fragment {
         ball5 = (TextView) view.findViewById(R.id.ball5);
         ball6 = (TextView) view.findViewById(R.id.ball6);
         SendButton2 = (Button)view.findViewById(R.id.batsmanSendButton);
+        l1 = (LinearLayout)view.findViewById(R.id.hide);
         scoreInput2 = (EditText) view.findViewById(R.id.batsmanUpdate);
         backButton4 =(ImageView) view.findViewById(R.id.backButton4);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -220,6 +229,74 @@ public class NewScoreCard extends Fragment {
         mScoreDatabaseReference16 = mFirebaseDatabase.getReference().child("Ball4");
         mScoreDatabaseReference17 = mFirebaseDatabase.getReference().child("Ball5");
         mScoreDatabaseReference18 = mFirebaseDatabase.getReference().child("Ball6");
+        mScoreDatabaseReference21 = mFirebaseDatabase.getReference().child("BatsmanBowler");
+        mScoreDatabaseReference22 = mFirebaseDatabase.getReference().child("onOf");
+        toggle = (ToggleButton) view.findViewById(R.id.toggleButton);
+
+
+
+        Query mHouseDatabaseReference23 =mFirebaseDatabase.getReference().child("onOf").limitToLast(1);;
+
+        mHouseDatabaseReference23.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // dataSnapshot is the "issue" node with all children with id 0
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+
+                        if (issue.child("bit").getValue().equals("1")){
+                            l1.setVisibility(View.GONE);
+                            matchUpdate.setText("No Match is in Progress");
+                        }
+                        else{
+                            l1.setVisibility(View.VISIBLE);
+                            matchUpdate.setText("Match is in Progress");
+                        }
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        Query mHouseDatabaseReference22 =mFirebaseDatabase.getReference().child("BatsmanBowler").limitToLast(1);;
+
+        mHouseDatabaseReference22.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // dataSnapshot is the "issue" node with all children with id 0
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                        // do something with the individual "issues"
+
+                        System.out.println("hamza here2"+issue.getValue());
+                        BatsmanOnCrease1.setText(issue.child("batsman1").getValue().toString());
+                        BatsmanOnCrease2.setText(issue.child("batsman2").getValue().toString());
+                        BowlerOnCrease1.setText(issue.child("bowler1").getValue().toString());
+                        //  BowlerOnCrease2.setText(issue.child("bowler2").getValue().toString());
+
+
+                        //   mprogressBar.setVisibility(View.GONE);
+                        //   System.out.println();
+                        //array[i]=issue.child("username").getValue().toString();
+                        //i++;
+                    }
+
+                    //for(int j=0;j<i;j++){
+                    //  System.out.println(j+""+array[j]);
+                    // }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         Query e1=mFirebaseDatabase.getReference().child("db").limitToLast(1);
 
@@ -1022,6 +1099,42 @@ public class NewScoreCard extends Fragment {
             }
         });
 
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // The toggle is enabled
+                    onOff onOff = new onOff("1");
+                    mScoreDatabaseReference22.push().setValue(onOff);
+
+                } else {
+                    // The toggle is disabled
+                    onOff onOff = new onOff("0");
+
+                    mScoreDatabaseReference22.push().setValue(onOff);
+
+                }
+            }
+        });
+        SendButton2.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String score = scoreInput2.getText().toString();
+                        String[] arr = score.split("-");
+                        String Batsman1 = arr[0];
+                        String Batsman2 = arr[1];
+                        String Bowler1 = arr[2];
+                        String Bowler2 = arr[3];
+                        BatsmanBowler batsmanBowler = new BatsmanBowler(Batsman1,Batsman2,Bowler1,Bowler2,null,null);
+                        mScoreDatabaseReference21.push().setValue(batsmanBowler);
+                        scoreInput2.setText("");
+                        BatsmanOnCrease1.setText(Batsman1);
+                        BatsmanOnCrease2.setText(Batsman2);
+                        BowlerOnCrease1.setText(Bowler1);
+
+                    }
+                });
+
         mUsername = ANONYMOUS;
 
         if(mPhotoPickerButton1!=null)
@@ -1056,6 +1169,7 @@ public class NewScoreCard extends Fragment {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     //user is signed in
+
                     onSignedInInitialize(user.getDisplayName());
                     Log.d("user: ", user.getDisplayName());
                     name=user.getDisplayName();
@@ -1107,8 +1221,7 @@ public class NewScoreCard extends Fragment {
                         DecrementBowlerWicket.setVisibility(View.GONE);
                         IncrementBowlerRuns.setVisibility(View.GONE);
                         DecrementBowlerRuns.setVisibility(View.GONE);
-
-
+                        toggle.setVisibility(View.GONE);
                         SendButton2.setVisibility(View.GONE);
                     }
                     else{
@@ -1200,7 +1313,6 @@ public class NewScoreCard extends Fragment {
                    }else if(ball.getTurn() ==20) {
                        Overs22.setText(String.valueOf(ball.getBall()));
                    }
-
                 }
 
                 @Override
@@ -1244,6 +1356,8 @@ public class NewScoreCard extends Fragment {
             mScoreDatabaseReference18.addChildEventListener(mChildEventListener);
             mScoreDatabaseReference19.addChildEventListener(mChildEventListener);
             mScoreDatabaseReference20.addChildEventListener(mChildEventListener);
+            mScoreDatabaseReference21.addChildEventListener(mChildEventListener);
+            mScoreDatabaseReference22.addChildEventListener(mChildEventListener);
         }
     }
     private void detachDatabaseReadListener(){
@@ -1268,6 +1382,8 @@ public class NewScoreCard extends Fragment {
         mScoreDatabaseReference18.removeEventListener(mChildEventListener);
         mScoreDatabaseReference19.removeEventListener(mChildEventListener);
         mScoreDatabaseReference20.removeEventListener(mChildEventListener);
+        mScoreDatabaseReference21.removeEventListener(mChildEventListener);
+        mScoreDatabaseReference22.removeEventListener(mChildEventListener);
         mChildEventListener=null;
     }
     @Override

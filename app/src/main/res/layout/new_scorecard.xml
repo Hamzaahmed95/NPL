@@ -6,6 +6,16 @@
     android:background="@drawable/sa2"
     android:gravity="center|top"
     android:orientation="vertical">
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggleButton"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center|top"
+        android:id="@+id/hide"
+        android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +41,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:id="@+id/buttonEnable"
                 android:background="@color/bluesh"
                 android:fontFamily="sans-serif-condensed"
                 android:text="Live"
@@ -939,16 +949,17 @@
             android:text="Send"
             android:textColor="@android:color/white" />
     </LinearLayout>
-
+    </LinearLayout>
     <Button
-        android:id="@+id/getFullScoreCard"
+        android:id="@+id/noMatchInProgress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:enabled="false"
         android:background="@color/bluesh"
         android:fontFamily="sans-serif-condensed"
-        android:text="Scorecard will be uploaded after the match"
+        android:text=""
         android:textColor="@android:color/white" />
+
 
 </LinearLayout>

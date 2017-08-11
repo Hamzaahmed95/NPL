@@ -427,8 +427,37 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/scorecard1"
+                android:background="@color/blue1"
+                android:text="ScoreCard"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="100dp"
+                android:background="#ffffff" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:text="ScoreCard"
+                android:background="@color/blue1"
+                android:textColor="@android:color/white"
+                android:id="@+id/scorecard2"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
         <View
             android:layout_width="fill_parent"

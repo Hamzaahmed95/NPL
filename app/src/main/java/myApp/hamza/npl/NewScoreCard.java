@@ -43,6 +43,7 @@ public class NewScoreCard extends Fragment {
     private ImageView imageView;
     private ImageView imageView2;
     private Button buttonEnable;
+    private Button buttonEnable2;
     private TextView Runs1;
     private TextView Overs1;
     private TextView hamzaAhmed;
@@ -175,7 +176,8 @@ public class NewScoreCard extends Fragment {
 
         View view = inflater.inflate(R.layout.new_scorecard, container, false);
         hide1 = (TextView)view.findViewById(R.id.overhide1);
-        buttonEnable = (Button)view.findViewById(R.id.buttonEnable);
+        buttonEnable = (Button)view.findViewById(R.id.scorecard1);
+        buttonEnable2 = (Button)view.findViewById(R.id.scorecard2);
         matchUpdate = (Button)view.findViewById(R.id.noMatchInProgress);
         hide2 = (TextView)view.findViewById(R.id.overhide2);
         mPhotoPickerButton1 = (ImageButton) view.findViewById(R.id.photoPickerTeam1);
@@ -269,10 +271,26 @@ public class NewScoreCard extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),FullScorecard2.class);
+                i.putExtra("runs1",Runs1.getText().toString());
+                i.putExtra("overs1",Overs1.getText().toString());
+                i.putExtra("hamza",hamzaAhmed.getText().toString());
+                i.putExtra("wickets1",Wicket1.getText().toString());
+                i.putExtra("id","1");
                 startActivity(i);
             }
         });
-
+        buttonEnable2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),FullScorecard2.class);
+                i.putExtra("runs2",Runs2.getText().toString());
+                i.putExtra("overs2",Overs2.getText().toString());
+                i.putExtra("overs22",Overs22.getText().toString());
+                i.putExtra("wickets2",Wicket2.getText().toString());
+                i.putExtra("id","2");
+                startActivity(i);
+            }
+        });
         Query mHouseDatabaseReference22 =mFirebaseDatabase.getReference().child("BatsmanBowler").limitToLast(1);;
 
         mHouseDatabaseReference22.addListenerForSingleValueEvent(new ValueEventListener() {

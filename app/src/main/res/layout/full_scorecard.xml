@@ -1,228 +1,322 @@
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:gravity="center|top"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     android:background="@drawable/sa2"
-    android:layout_height="match_parent">
+    android:gravity="center|top"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:gravity="center|top"
         android:orientation="vertical"
-        android:gravity="center|top">
+        android:padding="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:fontFamily="sans-serif-condensed"
-        android:textColor="@android:color/white"
-        android:text="Scorecard"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
+                android:text="Scorecard"
+                android:textColor="@android:color/white"
+                android:textSize="30dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <EditText
+            android:id="@+id/scoring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Batsman-Type-R-B-4s-6s-SR"
+            android:textColorHint="@android:color/white" />
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:gravity="right|top"
-        android:layout_marginTop="20dp"
-        android:background="@color/blue1"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:padding="10dp"
-        android:layout_height="wrap_content"
-        android:stretchColumns="2">
+        <Button
+            android:id="@+id/sendScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="send"
+            android:textColor="@android:color/white" />
+        </LinearLayout>
 
-        <TableRow>
-            <TextView
-                android:text="BATSMEN"
-                android:textSize="15dp"
-                android:fontFamily="sans-serif-condensed"
-                android:gravity="left"
-                android:textColor="@android:color/white"
-                android:padding="3dip" />
-            <TextView
-                android:text=" "
-                android:gravity="left"
-                android:fontFamily="sans-serif-condensed"
-                android:textColor="@android:color/white"
-                android:padding="3dip" />
-            <TextView
-                android:text="R"
-                android:gravity="right"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="sans-serif-condensed"
-                android:textColor="@android:color/white"
-                android:padding="4dip" />
-            <TextView
-                android:text="B"
-                android:gravity="right"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="sans-serif-condensed"
-                android:textColor="@android:color/white"
-                android:padding="4dip" />
-            <TextView
-                android:text="4s"
-                android:gravity="right"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="sans-serif-condensed"
-                android:textColor="@android:color/white"
-                android:padding="4dip" />
-            <TextView
-                android:text="6s"
-                android:gravity="right"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="sans-serif-condensed"
-                android:textColor="@android:color/white"
-                android:padding="4dip" />
-            <TextView
-                android:text="SR"
-                android:fontFamily="sans-serif-condensed"
-                android:gravity="right"
-                android:layout_marginLeft="5dp"
-                android:textColor="@android:color/white"
-                android:padding="4dip" />
-        </TableRow>
-        <View
-            android:layout_height="2dip"
-            android:background="#ffffff"/>
-    </TableLayout>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Batsman-Type-R-B-4s-6s-SR"
-        android:textColorHint="@android:color/white"
-        android:id="@+id/scoring"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:text="send"
-        android:id="@+id/sendScore"/>
-    <ListView
-        android:id="@+id/ScoreListView"
-        android:layout_width="match_parent"
-        android:background="@color/blue1"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_height="wrap_content"
-        android:stackFromBottom="true"
-        android:divider="@android:color/transparent"
-        android:transcriptMode="alwaysScroll"
-        tools:listitem="@layout/table_layout_recylerview"/>
-            </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:orientation="vertical">
-    <TableLayout
-        android:layout_width="match_parent"
-        android:gravity="right|top"
-        android:layout_marginTop="20dp"
-        android:background="@color/blue1"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:padding="10dp"
-        android:layout_height="wrap_content"
-        android:stretchColumns="1">
 
-        <TableRow>
-            <TextView
-                android:text="BOWLER"
-                android:gravity="left"
-                android:fontFamily="sans-serif-condensed"
-                android:textColor="@android:color/white"
-                android:padding="3dip" />
-            <TextView
-                android:text="O"
-                android:fontFamily="sans-serif-condensed"
-                android:gravity="right"
-                android:textColor="@android:color/white"
-                android:padding="3dip" />
-            <TextView
-                android:text="M"
-                android:fontFamily="sans-serif-condensed"
-                android:gravity="right"
-                android:textColor="@android:color/white"
-                android:padding="4dip" />
-            <TextView
-                android:text="R"
-                android:fontFamily="sans-serif-condensed"
-                android:gravity="right"
-                android:textColor="@android:color/white"
-                android:padding="4dip" />
-            <TextView
-                android:text="W"
-                android:fontFamily="sans-serif-condensed"
-                android:gravity="right"
-                android:textColor="@android:color/white"
-                android:padding="4dip" />
-            <TextView
-                android:text="EC"
-                android:fontFamily="sans-serif-condensed"
-                android:gravity="right"
-                android:textColor="@android:color/white"
-                android:padding="4dip" />
-            <TextView
-                android:text="Os"
-                android:gravity="right"
-                android:fontFamily="sans-serif-condensed"
-                android:textColor="@android:color/white"
-                android:padding="4dip" />
-            <TextView
-                android:text="WD"
-                android:gravity="right"
-                android:fontFamily="sans-serif-condensed"
-                android:textColor="@android:color/white"
-                android:padding="4dip" />
-            <TextView
-                android:text="NB"
-                android:gravity="right"
-                android:fontFamily="sans-serif-condensed"
-                android:textColor="@android:color/white"
-                android:padding="4dip" />
-        </TableRow>
-        <View
-            android:layout_height="2dip"
-            android:background="#ffffff"/>
-    </TableLayout>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Batsman-Type-R-B-4s-6s-SR"
-        android:textColorHint="@android:color/white"
-        android:id="@+id/scoring2"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:text="send"
-        android:id="@+id/sendScore2"/>
-    <ListView
-        android:id="@+id/ScoreListView2"
-        android:layout_width="match_parent"
-        android:background="@color/blue1"
-        android:padding="10dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="20dp"
-        android:layout_height="wrap_content"
-        android:stackFromBottom="true"
-        android:divider="@android:color/transparent"
-        android:transcriptMode="alwaysScroll"
-        tools:listitem="@layout/table_layout_recylerview2"/>
-    </LinearLayout>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/blue1"
+                android:gravity="right|top"
+                android:padding="10dp"
+                android:stretchColumns="2">
+
+                <TableRow>
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="left"
+                        android:padding="3dip"
+                        android:text="BATSMEN"
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="left"
+                        android:padding="3dip"
+                        android:text=" "
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="4dip"
+                        android:text="R"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="4dip"
+                        android:text="B"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="4dip"
+                        android:text="4s"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="4dip"
+                        android:text="6s"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="4dip"
+                        android:text="SR"
+                        android:textColor="@android:color/white" />
+                </TableRow>
+
+                <View
+                    android:layout_height="2dip"
+                    android:background="#ffffff" />
+            </TableLayout>
+
+
+            <ListView
+                android:id="@+id/ScoreListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/blue1"
+                android:divider="@android:color/transparent"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:stackFromBottom="true"
+                android:transcriptMode="alwaysScroll"
+                tools:listitem="@layout/table_layout_recylerview" />
+
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:stretchColumns="1">
+
+                <TableRow>
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:padding="3dip"
+                        android:text="Extras"
+                        android:textColor="@android:color/black"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:id="@+id/extras"
+                        android:padding="3dip"
+                        android:text="hello "
+                        android:textColor="@android:color/black" />
+                </TableRow>
+                <View
+                    android:layout_height="2dip"
+                    android:background="#000000" />
+                <TableRow>
+
+                <TextView
+                    android:fontFamily="sans-serif-condensed"
+                    android:padding="3dip"
+                    android:text="Total"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="right"
+                    android:padding="3dip"
+                    android:id="@+id/total"
+                    android:text="hello "
+                    android:textColor="@android:color/black" />
+            </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <EditText
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="3dip"
+            android:textColorHint="@android:color/white"
+            android:id="@+id/editExtras"
+            android:hint="extras"
+            android:textColor="@android:color/white"
+            android:textSize="15dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <EditText
+            android:id="@+id/scoring2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Bowler-O-M-R-W-EC-Os-WD-NB"
+            android:textColorHint="@android:color/white" />
+
+        <Button
+            android:id="@+id/sendScore2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="send"
+            android:textColor="@android:color/white" /></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:orientation="vertical">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/blue1"
+                android:gravity="right|top"
+                android:padding="10dp"
+                android:stretchColumns="1">
+
+                <TableRow>
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="left"
+                        android:padding="3dip"
+                        android:text="BOWLER"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="3dip"
+                        android:text="O"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="4dip"
+                        android:text="M"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="4dip"
+                        android:text="R"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="4dip"
+                        android:text="W"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="4dip"
+                        android:text="EC"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="4dip"
+                        android:text="Os"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="4dip"
+                        android:text="WD"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="right"
+                        android:padding="4dip"
+                        android:text="NB"
+                        android:textColor="@android:color/white" />
+                </TableRow>
+
+                <View
+                    android:layout_height="2dip"
+                    android:background="#ffffff" />
+            </TableLayout>
+
+            <ListView
+                android:id="@+id/ScoreListView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/blue1"
+                android:divider="@android:color/transparent"
+                android:padding="10dp"
+                android:stackFromBottom="true"
+                android:transcriptMode="alwaysScroll"
+                tools:listitem="@layout/table_layout_recylerview2" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

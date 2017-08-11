@@ -12,6 +12,6 @@ public class PollingActivity extends SingleFragmentActivity {
 
     @Override
     protected Fragment createFragment(){
-        return new PollingFragment();
+        return new PollingSecond();
     }
 }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableRecyclerView"
+    android:layout_width="match_parent"
+    android:gravity="right|top"
+    android:background="@null"
+    android:layout_height="wrap_content"
+    android:stretchColumns="2">
+
+    <TableRow>
+        <TextView
+            android:text="hello"
+            android:id="@+id/Batsman"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@android:color/white"
+            android:padding="3dip" />
+        <TextView
+            android:text="hello"
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/Type1"
+            android:textSize="10dp"
+            android:gravity="left"
+            android:textColor="@android:color/white"
+            android:padding="3dip" />
+        <TextView
+            android:text="hello"
+            android:id="@+id/R1"
+            android:gravity="right"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@android:color/white"
+            android:padding="7dip" />
+        <TextView
+            android:text="hello"
+            android:gravity="right"
+            android:id="@+id/B"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="@android:color/white"
+            android:padding="7dip" />
+        <TextView
+            android:text="hello"
+            android:id="@+id/f4"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="right"
+            android:textColor="@android:color/white"
+            android:padding="7dip" />
+        <TextView
+            android:text="hello"
+            android:id="@+id/s6"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="right"
+            android:textColor="@android:color/white"
+            android:padding="7dip" />
+        <TextView
+            android:text="hello"
+            android:gravity="right"
+            android:fontFamily="sans-serif-condensed"
+            android:id="@+id/SS"
+            android:textColor="@android:color/white"
+            android:padding="7dip" />
+    </TableRow>
+    <View
+        android:layout_height="2dip"
+        android:background="#ffffff"/>
+</TableLayout>

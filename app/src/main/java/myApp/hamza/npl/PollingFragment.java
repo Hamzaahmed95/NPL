@@ -55,7 +55,7 @@ public class PollingFragment extends Fragment {
     private DatabaseReference mPollDatabaseReference4;
     private DatabaseReference mPollDatabaseReference5;
     private DatabaseReference mPollDatabaseReference6;
-    public static final int RC_SIGN_IN =1;
+    public static final int RC_SIGN_IN = 1;
     private ChildEventListener mChildEventListener;
     private FirebaseAuth.AuthStateListener mAuthStateListner;
     private TextView username;
@@ -80,44 +80,43 @@ public class PollingFragment extends Fragment {
     private String url3;
     private String url4;
     private String questionS;
-    private String ans1;
-    private String ans2;
-    private Boolean truel=true;
+    private Boolean truel = true;
     private int count1;
     private int count2;
-    private Boolean true2=true;
+    private Boolean true2 = true;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.polls, container, false);
         firebaseStorage = FirebaseStorage.getInstance();
-        TeamPlayingStorageReference =firebaseStorage.getReference().child("polls");
+        TeamPlayingStorageReference = firebaseStorage.getReference().child("polls");
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
         mPollDatabaseReference = mFirebaseDatabase.getReference().child("poll1");
-        mPollDatabaseReference2 = mFirebaseDatabase.getReference().child("poll2");
+        mPollDatabaseReference2 = mFirebaseDatabase.getReference().child("Poll2");
         mPollDatabaseReference3 = mFirebaseDatabase.getReference().child("poll3");
         mPollDatabaseReference4 = mFirebaseDatabase.getReference().child("poll4");
         mPollDatabaseReference5 = mFirebaseDatabase.getReference().child("poll5");
         mPollDatabaseReference6 = mFirebaseDatabase.getReference().child("poll6");
-        username= (TextView)view.findViewById(R.id.Username);
-        pollQuestion = (TextView)view.findViewById(R.id.pollQuestion);
-        pollAskQuestion=(EditText)view.findViewById(R.id.pollAskQuestion);
-        PollAns1=(EditText)view.findViewById(R.id.pollAnswer1);
-        count1=0;
-        count2=0;
-        PollAns2=(EditText)view.findViewById(R.id.pollAnswer2);
-        mPhotoPickerButton1=(ImageButton)view.findViewById(R.id.photoPickerPoll1);
-        mPhotoPickerButton2=(ImageButton)view.findViewById(R.id.photoPickerPoll2);
-        mPhotoPickerButton3=(ImageButton)view.findViewById(R.id.photoPickerPoll3);
-        mPhotoPickerButton4=(ImageButton)view.findViewById(R.id.photoPickerPoll4);
-        pollTeam1=(ImageView)view.findViewById(R.id.pollTeam1);
-        pollTeam2=(ImageView)view.findViewById(R.id.pollTeam2);
-        pollTeam3=(ImageView)view.findViewById(R.id.pollTeam3);
-        pollTeam4=(ImageView)view.findViewById(R.id.pollTeam4);
-        sendButton=(Button)view.findViewById(R.id.sendButtonPolls);
-        sendButton2=(Button)view.findViewById(R.id.sendButtonPolls2);
-        username1= ProfileActivity.ANONYMOUS;
+        username = (TextView) view.findViewById(R.id.Username);
+        pollQuestion = (TextView) view.findViewById(R.id.pollQuestion);
+        pollAskQuestion = (EditText) view.findViewById(R.id.pollAskQuestion);
+        PollAns1 = (EditText) view.findViewById(R.id.pollAnswer1);
+        count1 = 0;
+        count2 = 0;
+        PollAns2 = (EditText) view.findViewById(R.id.pollAnswer2);
+        mPhotoPickerButton1 = (ImageButton) view.findViewById(R.id.photoPickerPoll1);
+        mPhotoPickerButton2 = (ImageButton) view.findViewById(R.id.photoPickerPoll2);
+        mPhotoPickerButton3 = (ImageButton) view.findViewById(R.id.photoPickerPoll3);
+        mPhotoPickerButton4 = (ImageButton) view.findViewById(R.id.photoPickerPoll4);
+        pollTeam1 = (ImageView) view.findViewById(R.id.pollTeam1);
+        pollTeam2 = (ImageView) view.findViewById(R.id.pollTeam2);
+        pollTeam3 = (ImageView) view.findViewById(R.id.pollTeam3);
+        pollTeam4 = (ImageView) view.findViewById(R.id.pollTeam4);
+        sendButton = (Button) view.findViewById(R.id.sendButtonPolls);
+        sendButton2 = (Button) view.findViewById(R.id.sendButtonPolls2);
+        username1 = ProfileActivity.ANONYMOUS;
 
 /*
         Query mHouseDatabaseReference1 =mFirebaseDatabase.getReference().child("poll1").limitToLast(1);;
@@ -154,7 +153,8 @@ public class PollingFragment extends Fragment {
 
             */
 
-        Query mHouseDatabaseReference1 =mFirebaseDatabase.getReference().child("poll1").limitToLast(1);;
+        Query mHouseDatabaseReference1 = mFirebaseDatabase.getReference().child("poll1").limitToLast(1);
+        ;
 
         mHouseDatabaseReference1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -164,16 +164,11 @@ public class PollingFragment extends Fragment {
                     for (DataSnapshot issue : dataSnapshot.getChildren()) {
                         // do something with the individual "issues"
 
-                        if(issue.child("questionSet").getValue().toString()!=null){
-                            questionS=issue.child("questionSet").getValue().toString();
+                        if (issue.child("questionSet").getValue().toString() != null) {
+                            questionS = issue.child("questionSet").getValue().toString();
                             pollQuestion.setText(questionS);
                         }
 
-
-                                                //   mprogressBar.setVisibility(View.GONE);
-                        //   System.out.println();
-                        //array[i]=issue.child("username").getValue().toString();
-                        //i++;
                     }
 
                     //for(int j=0;j<i;j++){
@@ -188,31 +183,21 @@ public class PollingFragment extends Fragment {
             }
         });
 
-        Query mHouseDatabaseReference3 =mFirebaseDatabase.getReference().child("poll3").limitToLast(1);;
+        Query mHouseDatabaseReference3 = mFirebaseDatabase.getReference().child("poll3").limitToLast(1);
+        ;
 
         mHouseDatabaseReference3.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    // dataSnapshot is the "issue" node with all children with id 0
                     for (DataSnapshot issue : dataSnapshot.getChildren()) {
-                        // do something with the individual "issues"
-
-                        System.out.println("hamza here"+issue.getValue());
-                        if(issue.child("url1").getValue().toString()!=null)
-                            url1=issue.child("url1").getValue().toString();
+                        System.out.println("hamza here" + issue.getValue());
+                        if (issue.child("url1").getValue().toString() != null)
+                            url1 = issue.child("url1").getValue().toString();
                         Glide.with(pollTeam1.getContext())
                                 .load(url1)
                                 .into(pollTeam1);
-                        //   mprogressBar.setVisibility(View.GONE);
-                        //   System.out.println();
-                        //array[i]=issue.child("username").getValue().toString();
-                        //i++;
                     }
-
-                    //for(int j=0;j<i;j++){
-                    //  System.out.println(j+""+array[j]);
-                    // }
                 }
             }
 
@@ -221,7 +206,8 @@ public class PollingFragment extends Fragment {
 
             }
         });
-        Query mHouseDatabaseReference4 =mFirebaseDatabase.getReference().child("poll4").limitToLast(1);;
+        Query mHouseDatabaseReference4 = mFirebaseDatabase.getReference().child("poll4").limitToLast(1);
+        ;
 
         mHouseDatabaseReference4.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -231,9 +217,9 @@ public class PollingFragment extends Fragment {
                     for (DataSnapshot issue : dataSnapshot.getChildren()) {
                         // do something with the individual "issues"
 
-                        System.out.println("hamza here"+issue.getValue());
-                        if(issue.child("url2").getValue().toString()!=null)
-                            url2=issue.child("url2").getValue().toString();
+                        System.out.println("hamza here" + issue.getValue());
+                        if (issue.child("url2").getValue().toString() != null)
+                            url2 = issue.child("url2").getValue().toString();
                         Glide.with(pollTeam2.getContext())
                                 .load(url2)
                                 .into(pollTeam2);
@@ -254,7 +240,8 @@ public class PollingFragment extends Fragment {
 
             }
         });
-        Query mHouseDatabaseReference5 =mFirebaseDatabase.getReference().child("poll5").limitToLast(1);;
+        Query mHouseDatabaseReference5 = mFirebaseDatabase.getReference().child("poll5").limitToLast(1);
+        ;
 
         mHouseDatabaseReference5.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -264,9 +251,9 @@ public class PollingFragment extends Fragment {
                     for (DataSnapshot issue : dataSnapshot.getChildren()) {
                         // do something with the individual "issues"
 
-                        System.out.println("hamza here"+issue.getValue());
-                        if(issue.child("url3").getValue().toString()!=null)
-                            url3=issue.child("url3").getValue().toString();
+                        System.out.println("hamza here" + issue.getValue());
+                        if (issue.child("url3").getValue().toString() != null)
+                            url3 = issue.child("url3").getValue().toString();
                         Glide.with(pollTeam3.getContext())
                                 .load(url3)
                                 .into(pollTeam3);
@@ -287,7 +274,8 @@ public class PollingFragment extends Fragment {
 
             }
         });
-        Query mHouseDatabaseReference6 =mFirebaseDatabase.getReference().child("poll6").limitToLast(1);;
+        Query mHouseDatabaseReference6 = mFirebaseDatabase.getReference().child("poll6").limitToLast(1);
+        ;
 
         mHouseDatabaseReference6.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -297,13 +285,13 @@ public class PollingFragment extends Fragment {
                     for (DataSnapshot issue : dataSnapshot.getChildren()) {
                         // do something with the individual "issues"
 
-                        System.out.println("hamza here"+issue.getValue());
-                        if(issue.child("url4").getValue().toString()!=null)
-                            url4=issue.child("url4").getValue().toString();
+                        System.out.println("hamza here" + issue.getValue());
+                        if (issue.child("url4").getValue().toString() != null)
+                            url4 = issue.child("url4").getValue().toString();
                         Glide.with(pollTeam4.getContext())
                                 .load(url4)
                                 .into(pollTeam4);
-                        //   mprogressBar.setVisibility(View.GONE);
+                           //mprogressBar.setVisibility(View.GONE);
                         //   System.out.println();
                         //array[i]=issue.child("username").getValue().toString();
                         //i++;
@@ -322,9 +310,7 @@ public class PollingFragment extends Fragment {
         });
 
 
-
-
-        if(mPhotoPickerButton1!=null)
+        if (mPhotoPickerButton1 != null)
             mPhotoPickerButton1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -332,12 +318,12 @@ public class PollingFragment extends Fragment {
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.setType("image/*");
                     // intent.setType("image/png");
-                    intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
-                    startActivityForResult(intent.createChooser(intent,"Complete action using"),RC_PHOTO_PICKER);
+                    intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                    startActivityForResult(intent.createChooser(intent, "Complete action using"), RC_PHOTO_PICKER);
 
                 }
             });
-        if(mPhotoPickerButton2!=null)
+        if (mPhotoPickerButton2 != null)
             mPhotoPickerButton2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -345,12 +331,12 @@ public class PollingFragment extends Fragment {
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.setType("image/*");
                     // intent.setType("image/png");
-                    intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
-                    startActivityForResult(intent.createChooser(intent,"Complete action using"),RC_PHOTO_PICKER2);
+                    intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                    startActivityForResult(intent.createChooser(intent, "Complete action using"), RC_PHOTO_PICKER2);
 
                 }
             });
-        if(mPhotoPickerButton3!=null)
+        if (mPhotoPickerButton3 != null)
             mPhotoPickerButton3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -358,11 +344,12 @@ public class PollingFragment extends Fragment {
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.setType("image/*");
                     // intent.setType("image/png");
-                    intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
-                    startActivityForResult(intent.createChooser(intent,"Complete action using"),RC_PHOTO_PICKER3);
+                    intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                    startActivityForResult(intent.createChooser(intent, "Complete action using"), RC_PHOTO_PICKER3);
 
                 }
-            });  if(mPhotoPickerButton4!=null)
+            });
+        if (mPhotoPickerButton4 != null)
             mPhotoPickerButton4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -370,8 +357,8 @@ public class PollingFragment extends Fragment {
                     Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                     intent.setType("image/*");
                     // intent.setType("image/png");
-                    intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
-                    startActivityForResult(intent.createChooser(intent,"Complete action using"),RC_PHOTO_PICKER4);
+                    intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+                    startActivityForResult(intent.createChooser(intent, "Complete action using"), RC_PHOTO_PICKER4);
 
                 }
             });
@@ -383,16 +370,16 @@ public class PollingFragment extends Fragment {
                 if (user != null) {
                     //user is signed in
                     onSignedInInitialize(user.getDisplayName());
-                    username1=user.getDisplayName();
-                    if(!username1.equals("K142805 Hamza Ahmed")) {
-                    pollAskQuestion.setVisibility(View.GONE);
+                    username1 = user.getDisplayName();
+                    if (!username1.equals("K142805 Hamza Ahmed")) {
+                        pollAskQuestion.setVisibility(View.GONE);
                         sendButton2.setVisibility(View.GONE);
                         mPhotoPickerButton1.setVisibility(View.GONE);
                         mPhotoPickerButton2.setVisibility(View.GONE);
                         mPhotoPickerButton3.setVisibility(View.GONE);
                         mPhotoPickerButton4.setVisibility(View.GONE);
                     }
-                   
+
 
                 } else {
                     //user is signed out
@@ -416,59 +403,57 @@ public class PollingFragment extends Fragment {
         sendButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String question =pollAskQuestion.getText().toString();
-                Poll poll = new Poll(username1,question,null,null,null,null,null,null);
+                String question = pollAskQuestion.getText().toString();
+                Poll poll = new Poll(username1, question, null, null, null, null, null, null);
                 mPollDatabaseReference.push().setValue(poll);
 
             }
         });
 
 
+        if (PollAns1 != null) {
+            PollAns1.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                }
 
-
-            if (PollAns1 != null ) {
-                PollAns1.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    if (charSequence.toString().trim().length() > 0) {
+                        count1 = 2;
+                    } else {
+                        count1 = 1;
                     }
+                }
 
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                        if (charSequence.toString().trim().length() > 0) {
-                            count1=2;
-                        } else {
-                            count1=1;
-                        }
+                @Override
+                public void afterTextChanged(Editable editable) {
+                }
+
+            });
+            //mMessageEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DEFAULT_MSG_LENGTH_LIMIT)});
+        }
+        if (PollAns2 != null) {
+            PollAns2.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    if (charSequence.toString().trim().length() > 0) {
+                        count2 = 2;
+                    } else {
+                        count2 = 1;
                     }
+                }
 
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                    }
+                @Override
+                public void afterTextChanged(Editable editable) {
+                }
 
-                });
-                //mMessageEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DEFAULT_MSG_LENGTH_LIMIT)});
-            }
-            if (PollAns2 != null) {
-                PollAns2.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                        if (charSequence.toString().trim().length() > 0) {
-                            count2=2;
-                        } else {
-                            count2=1;
-                        }
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                    }
-
-                });
-                //mMessageEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DEFAULT_MSG_LENGTH_LIMIT)});
+            });
+            //mMessageEditText.setFilters(new InputFilter[]{new InputFilter.LengthFilter(DEFAULT_MSG_LENGTH_LIMIT)});
 
         }
 
@@ -483,18 +468,17 @@ public class PollingFragment extends Fragment {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("count1= "+count1);
-                System.out.println("count2= "+count2);
-                if(count1==2 && count2==2) {
+                System.out.println("count1= " + count1);
+                System.out.println("count2= " + count2);
+                if (count1 == 2 && count2 == 2) {
                     String ans1 = PollAns1.getText().toString();
                     String ans2 = PollAns2.getText().toString();
                     Poll poll = new Poll(username1, null, ans1, ans2, null, null, null, null);
                     mPollDatabaseReference2.push().setValue(poll);
                     Intent i = new Intent(getActivity(), OptionsActivity.class);
                     startActivity(i);
-                }
-                else{
-                    Toast.makeText(getContext(),"please fill the answers",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "please fill the answers", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -502,19 +486,19 @@ public class PollingFragment extends Fragment {
     }
 
     @Override
-    public void onActivityResult(int requestCode,int resultCode,Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == RC_PHOTO_PICKER && resultCode==RESULT_OK){
-            Uri selectedImageUri= data.getData();
+        if (requestCode == RC_PHOTO_PICKER && resultCode == RESULT_OK) {
+            Uri selectedImageUri = data.getData();
             StorageReference photoRef =
                     TeamPlayingStorageReference.child(selectedImageUri.getLastPathSegment());
             photoRef.putFile(selectedImageUri).addOnSuccessListener
                     (getActivity(), new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Uri downloadURL =taskSnapshot.getDownloadUrl();
-                            Poll poll = new Poll(null,null,null,null,downloadURL.toString(),null,null,null);
+                            Uri downloadURL = taskSnapshot.getDownloadUrl();
+                            Poll poll = new Poll(null, null, null, null, downloadURL.toString(), null, null, null);
                             //Log.d("Musername","here-> "+pointTablePicture.getName().substring(7));
 
                             boolean isPhoto = downloadURL.toString() != null;
@@ -528,17 +512,16 @@ public class PollingFragment extends Fragment {
                             }
                         }
                     });
-        }
-        else  if(requestCode == RC_PHOTO_PICKER2 && resultCode==RESULT_OK){
-            Uri selectedImageUri= data.getData();
+        } else if (requestCode == RC_PHOTO_PICKER2 && resultCode == RESULT_OK) {
+            Uri selectedImageUri = data.getData();
             StorageReference photoRef =
                     TeamPlayingStorageReference.child(selectedImageUri.getLastPathSegment());
             photoRef.putFile(selectedImageUri).addOnSuccessListener
                     (getActivity(), new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Uri downloadURL =taskSnapshot.getDownloadUrl();
-                            Poll poll = new Poll(null,null,null,null,null,downloadURL.toString(),null,null);
+                            Uri downloadURL = taskSnapshot.getDownloadUrl();
+                            Poll poll = new Poll(null, null, null, null, null, downloadURL.toString(), null, null);
                             //Log.d("Musername","here-> "+pointTablePicture.getName().substring(7));
 
                             boolean isPhoto = downloadURL.toString() != null;
@@ -552,17 +535,16 @@ public class PollingFragment extends Fragment {
                             }
                         }
                     });
-        }
-        else  if(requestCode == RC_PHOTO_PICKER3 && resultCode==RESULT_OK){
-            Uri selectedImageUri= data.getData();
+        } else if (requestCode == RC_PHOTO_PICKER3 && resultCode == RESULT_OK) {
+            Uri selectedImageUri = data.getData();
             StorageReference photoRef =
                     TeamPlayingStorageReference.child(selectedImageUri.getLastPathSegment());
             photoRef.putFile(selectedImageUri).addOnSuccessListener
                     (getActivity(), new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Uri downloadURL =taskSnapshot.getDownloadUrl();
-                            Poll poll = new Poll(null,null,null,null,null,null,downloadURL.toString(),null);
+                            Uri downloadURL = taskSnapshot.getDownloadUrl();
+                            Poll poll = new Poll(null, null, null, null, null, null, downloadURL.toString(), null);
                             //Log.d("Musername","here-> "+pointTablePicture.getName().substring(7));
 
                             boolean isPhoto = downloadURL.toString() != null;
@@ -576,16 +558,16 @@ public class PollingFragment extends Fragment {
                             }
                         }
                     });
-        }   else  if(requestCode == RC_PHOTO_PICKER4 && resultCode==RESULT_OK){
-            Uri selectedImageUri= data.getData();
+        } else if (requestCode == RC_PHOTO_PICKER4 && resultCode == RESULT_OK) {
+            Uri selectedImageUri = data.getData();
             StorageReference photoRef =
                     TeamPlayingStorageReference.child(selectedImageUri.getLastPathSegment());
             photoRef.putFile(selectedImageUri).addOnSuccessListener
                     (getActivity(), new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Uri downloadURL =taskSnapshot.getDownloadUrl();
-                            Poll poll = new Poll(null,null,null,null,null,null,null,downloadURL.toString());
+                            Uri downloadURL = taskSnapshot.getDownloadUrl();
+                            Poll poll = new Poll(null, null, null, null, null, null, null, downloadURL.toString());
                             //Log.d("Musername","here-> "+pointTablePicture.getName().substring(7));
 
                             boolean isPhoto = downloadURL.toString() != null;
@@ -603,24 +585,25 @@ public class PollingFragment extends Fragment {
 
     }
 
-    private void  onSignedInInitialize(String username){
+    private void onSignedInInitialize(String username) {
         mUsername = username;
         attachDatabaseReadListener();
 
     }
-    private void  onSignedOutInitialize(){
+
+    private void onSignedOutInitialize() {
         mUsername = ProfileActivity.ANONYMOUS;
 
         detachDatabaseReadListener();
     }
 
-    private void attachDatabaseReadListener(){
-        if(mChildEventListener==null) {
+    private void attachDatabaseReadListener() {
+        if (mChildEventListener == null) {
             mChildEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     Poll poll = dataSnapshot.getValue(Poll.class);
-                   // pollQuestion.setText(poll.getQuestionSet());
+                    // pollQuestion.setText(poll.getQuestionSet());
                     //   BatsmanBowler batsmanBowler = dataSnapshot.getValue(BatsmanBowler.class);
 
 
@@ -655,26 +638,29 @@ public class PollingFragment extends Fragment {
             mPollDatabaseReference6.addChildEventListener(mChildEventListener);
         }
     }
-    private void detachDatabaseReadListener(){
-        if(mChildEventListener!=null)
+
+    private void detachDatabaseReadListener() {
+        if (mChildEventListener != null)
             mPollDatabaseReference.removeEventListener(mChildEventListener);
         mPollDatabaseReference2.removeEventListener(mChildEventListener);
         mPollDatabaseReference3.addChildEventListener(mChildEventListener);
         mPollDatabaseReference4.addChildEventListener(mChildEventListener);
         mPollDatabaseReference5.addChildEventListener(mChildEventListener);
         mPollDatabaseReference6.addChildEventListener(mChildEventListener);
-        mChildEventListener=null;
+        mChildEventListener = null;
     }
+
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
-        if(mAuthStateListner!=null) {
+        if (mAuthStateListner != null) {
             mFirebaseAuth.removeAuthStateListener(mAuthStateListner);
         }
         detachDatabaseReadListener();
     }
+
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         mFirebaseAuth.addAuthStateListener(mAuthStateListner);
     }

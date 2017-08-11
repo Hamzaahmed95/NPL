@@ -42,6 +42,7 @@ public class NewScoreCard extends Fragment {
     private ImageButton mPhotoPickerButton2;
     private ImageView imageView;
     private ImageView imageView2;
+    private Button buttonEnable;
     private TextView Runs1;
     private TextView Overs1;
     private TextView hamzaAhmed;
@@ -174,6 +175,7 @@ public class NewScoreCard extends Fragment {
 
         View view = inflater.inflate(R.layout.new_scorecard, container, false);
         hide1 = (TextView)view.findViewById(R.id.overhide1);
+        buttonEnable = (Button)view.findViewById(R.id.buttonEnable);
         matchUpdate = (Button)view.findViewById(R.id.noMatchInProgress);
         hide2 = (TextView)view.findViewById(R.id.overhide2);
         mPhotoPickerButton1 = (ImageButton) view.findViewById(R.id.photoPickerTeam1);
@@ -260,6 +262,14 @@ public class NewScoreCard extends Fragment {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        buttonEnable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),FullScorecard2.class);
+                startActivity(i);
             }
         });
 

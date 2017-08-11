@@ -17,6 +17,7 @@ public class Users extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private UserAdapter adapter;
+
     @Override
     protected void onCreate( final Bundle savedInstanceState) {
 
@@ -29,7 +30,7 @@ public class Users extends AppCompatActivity {
         array = new HashSet<String>(Arrays.asList(array)).toArray(new String[0]);
         int count1 =array.length;
         for(int j=0;j<count1;j++){
-            System.out.println("Users: "+array[j]);
+            System.out.println("Users:"+j+" "+array[j]);
         }
         recyclerView = (RecyclerView)findViewById(R.id.listOfUsers);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

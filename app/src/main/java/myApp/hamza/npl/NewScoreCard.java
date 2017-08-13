@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -250,7 +251,12 @@ public class NewScoreCard extends Fragment {
 
                         if (issue.child("bit").getValue().equals("1")){
                             l1.setVisibility(View.GONE);
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                            params.weight = 2.0f;
+                            params.gravity = Gravity.CENTER;
+
                             matchUpdate.setText("No Match is in Progress");
+                            matchUpdate.setLayoutParams(params);
                         }
                         else{
                             l1.setVisibility(View.VISIBLE);
@@ -595,6 +601,29 @@ public class NewScoreCard extends Fragment {
                         System.out.println("hello"+issue.child("ball").getValue());
                         WicketINCTeam2=Integer.parseInt(issue.child("ball").getValue().toString());
                         Wicket2.setText(issue.child("ball").getValue().toString());
+
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        Query mHouseDatabaseReferenc8 =mFirebaseDatabase.getReference().child("Team1Runs").limitToLast(1);
+
+        mHouseDatabaseReferenc8.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // dataSnapshot is the "issue" node with all children with id 0
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+                        // do something with the individual "issues"
+
+                        System.out.println("hello"+issue.child("ball").getValue());
+                        RunsINCTeam1=Integer.parseInt(issue.child("ball").getValue().toString());
+                        Runs1.setText(issue.child("ball").getValue().toString());
 
                     }
                 }
@@ -1054,7 +1083,7 @@ public class NewScoreCard extends Fragment {
         IncrementBatsmanBalls1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Ball ball = new Ball(++BatsIncRuns1,13);
+                Ball ball = new Ball(++BatsIncBalls1,13);
                 mScoreDatabaseReference9.push().setValue(ball);
 
             }
@@ -1206,6 +1235,7 @@ public class NewScoreCard extends Fragment {
                         mPhotoPickerButton1.setVisibility(View.GONE);
                         mPhotoPickerButton2.setVisibility(View.GONE);
                         IncrementBall1.setVisibility(View.GONE);
+
                         IncrementBall2.setVisibility(View.GONE);
                         IncrementBall3.setVisibility(View.GONE);
                         IncrementBall4.setVisibility(View.GONE);
@@ -1255,6 +1285,7 @@ public class NewScoreCard extends Fragment {
                     else{
                         hide2.setVisibility(View.GONE);
                         hide1.setVisibility(View.GONE);
+                        BowlerOnCrease1.setVisibility(View.GONE);
                     }
                 } else {
                     //user is signed out

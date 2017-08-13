@@ -9,17 +9,21 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.auth.AuthUI;
@@ -56,9 +60,12 @@ public class PollingSecond extends Fragment {
     private Button send1;
     private DatabaseReference mMessageDatabaseReference;
     private DatabaseReference mMessageDatabaseReference2;
+    private DatabaseReference mScoreDatabaseReference22;
     private FirebaseDatabase mFirebaseDatabase;
     private EditText date1;
     private ChildEventListener mChildEventListener;
+    private ChildEventListener mChildEventListener2;
+    private ChildEventListener mChildEventListener3;
     private ImageButton mPhotoPickerButton;
     private ImageView imageView;
     public static final int RC_SIGN_IN =1;
@@ -70,10 +77,14 @@ public class PollingSecond extends Fragment {
     String url1;
     private String username1;
     private ImageView backButton5;
+
+    private LinearLayout l1;
     ProgressBar mprogressBar;
     private String mUsername;
     String url2;
     private int count1;
+    private Button matchUpdate;
+    private ToggleButton toggle;
     private static final int RC_PHOTO_PICKER =  2;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -81,15 +92,19 @@ public class PollingSecond extends Fragment {
         View view = inflater.inflate(R.layout.polling, container, false);
         firebaseStorage = FirebaseStorage.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
+        l1 = (LinearLayout)view.findViewById(R.id.hide);
         PointsTableStorageReference =firebaseStorage.getReference().child("polling_picture");
         mMessageDatabaseReference =mFirebaseDatabase.getReference().child("polling_2");
         mMessageDatabaseReference2 =mFirebaseDatabase.getReference().child("polling_1");
+        mScoreDatabaseReference22 = mFirebaseDatabase.getReference().child("onOfPolling");
         date1 =(EditText)view.findViewById(R.id.date1);
        // date2 =(TextView)view.findViewById(R.id.date2);
         imageView =(ImageView)view.findViewById(R.id.photoImageView2);
         username1 = ProfileActivity.ANONYMOUS;
         mUsername = ANONYMOUS;
         count1 = 0;
+        matchUpdate = (Button)view.findViewById(R.id.status);
+        toggle = (ToggleButton) view.findViewById(R.id.toggleButton);
         backButton5=(ImageView)view.findViewById(R.id.backButton5);
         backButton5.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,11 +130,46 @@ public class PollingSecond extends Fragment {
                // send1.setVisibility(View.GONE);
                 System.out.println("here!!");
               //  date1.setVisibility(View.GONE);
+                toggle.setVisibility(View.GONE);
                 mPhotoPickerButton.setVisibility(View.GONE);
             }
         }
+        Query mHouseDatabaseReference23 =mFirebaseDatabase.getReference().child("onOfPolling").limitToLast(1);;
 
-        Query mHouseDatabaseReference2 =mFirebaseDatabase.getReference().child("polling2").limitToLast(1);;
+        mHouseDatabaseReference23.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // dataSnapshot is the "issue" node with all children with id 0
+                    for (DataSnapshot issue : dataSnapshot.getChildren()) {
+
+                        if (issue.child("bit").getValue().equals("1")){
+                            l1.setVisibility(View.GONE);
+
+
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                            params.weight = 1.0f;
+                            params.gravity = Gravity.CENTER;
+                            matchUpdate.setText("Polling Time has closed!");
+                            matchUpdate.setLayoutParams(params);
+                        }
+                        else{
+                            l1.setVisibility(View.VISIBLE);
+                            matchUpdate.setText("Polling is active now!");
+                        }
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+        Query mHouseDatabaseReference2 =mFirebaseDatabase.getReference().child("polling_1").limitToLast(1);;
 
         mHouseDatabaseReference2.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -259,6 +309,7 @@ public class PollingSecond extends Fragment {
                     if(!user.getDisplayName().equals("K142805 Hamza Ahmed")){
                       //  imageView.setVisibility(View.GONE);
                        // date1.setVisibility(View.GONE);
+                        toggle.setVisibility(View.GONE);
                         mPhotoPickerButton.setVisibility(View.GONE);
                     }
 
@@ -286,6 +337,22 @@ public class PollingSecond extends Fragment {
                 }
             };
         };
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // The toggle is enabled
+                    onOff onOff = new onOff("1");
+                    mScoreDatabaseReference22.push().setValue(onOff);
+
+                } else {
+                    // The toggle is disabled
+                    onOff onOff = new onOff("0");
+
+                    mScoreDatabaseReference22.push().setValue(onOff);
+
+                }
+            }
+        });
 
         return view;
 
@@ -376,8 +443,115 @@ public class PollingSecond extends Fragment {
                 }
             };
             mMessageDatabaseReference.addChildEventListener(mChildEventListener);
-            mMessageDatabaseReference2.addChildEventListener(mChildEventListener);
+
             mMessageDatabaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
+                        Poll2 note = noteDataSnapshot.getValue(Poll2.class);
+                        imageView.setVisibility(View.VISIBLE);
+                        Glide.with(imageView.getContext())
+                                .load(note.getPhotoUrl())
+                                .into(imageView);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+        if(mChildEventListener2==null) {
+            mChildEventListener2 = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Poll2 Poll21 = dataSnapshot.getValue(Poll2.class);
+
+//                    date2.setText(Poll21.getUpdatedDate());
+                    imageView.setVisibility(View.VISIBLE);
+                    Glide.with(imageView.getContext())
+                            .load(Poll21.getPhotoUrl())
+                            .into(imageView);
+
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                    Poll2 f =dataSnapshot.getValue(Poll2.class);
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+            mMessageDatabaseReference2.addChildEventListener(mChildEventListener2);
+
+            mMessageDatabaseReference2.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
+                        Poll2 note = noteDataSnapshot.getValue(Poll2.class);
+                        imageView.setVisibility(View.VISIBLE);
+                        Glide.with(imageView.getContext())
+                                .load(note.getPhotoUrl())
+                                .into(imageView);
+
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        } if(mChildEventListener3==null) {
+            mChildEventListener3 = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Poll2 Poll21 = dataSnapshot.getValue(Poll2.class);
+
+//                    date2.setText(Poll21.getUpdatedDate());
+
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                    Poll2 f =dataSnapshot.getValue(Poll2.class);
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+            mScoreDatabaseReference22.addChildEventListener(mChildEventListener3);
+            mScoreDatabaseReference22.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -398,7 +572,8 @@ public class PollingSecond extends Fragment {
     private void detachDatabaseReadListener(){
         if(mChildEventListener!=null)
             mMessageDatabaseReference.removeEventListener(mChildEventListener);
-        mMessageDatabaseReference2.removeEventListener(mChildEventListener);
+            mMessageDatabaseReference2.removeEventListener(mChildEventListener2);
+            mScoreDatabaseReference22.removeEventListener(mChildEventListener3);
         mChildEventListener=null;
     }
     @Override

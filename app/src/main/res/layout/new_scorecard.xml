@@ -985,7 +985,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:enabled="false"
-        android:background="@color/bluesh"
+        android:background="@null"
         android:fontFamily="sans-serif-condensed"
         android:text=""
         android:textColor="@android:color/white" />

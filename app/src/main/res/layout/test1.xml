@@ -15,14 +15,13 @@
                 android:layout_width="wrap_content"
                 android:adjustViewBounds="true"
                 android:layout_height="170dp"
-                android:id="@+id/image1"
-                android:src="@drawable/check"/>
+
+                android:id="@+id/image1"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:adjustViewBounds="true"
                 android:layout_height="170dp"
-                android:id="@+id/image2"
-                android:src="@drawable/check"/>
+                android:id="@+id/image2"/>
 
     </LinearLayout>
     <LinearLayout
@@ -53,14 +52,12 @@
             android:layout_width="wrap_content"
             android:adjustViewBounds="true"
             android:id="@+id/image3"
-            android:layout_height="170dp"
-            android:src="@drawable/check"/>
+            android:layout_height="170dp"/>
         <ImageView
             android:layout_width="wrap_content"
             android:adjustViewBounds="true"
             android:layout_height="170dp"
-            android:id="@+id/image4"
-            android:src="@drawable/check"/>
+            android:id="@+id/image4"/>
 
     </LinearLayout>
 
@@ -92,14 +89,12 @@
         android:layout_width="wrap_content"
         android:adjustViewBounds="true"
         android:id="@+id/image5"
-        android:layout_height="170dp"
-        android:src="@drawable/check"/>
+        android:layout_height="170dp"/>
     <ImageView
         android:layout_width="wrap_content"
         android:adjustViewBounds="true"
         android:layout_height="170dp"
-        android:id="@+id/image6"
-        android:src="@drawable/check"/>
+        android:id="@+id/image6"/>
 
 </LinearLayout>
 
@@ -119,8 +114,8 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:background="@android:drawable/ic_menu_gallery" />
-
     </LinearLayout>
+
 </LinearLayout>
 
 

@@ -4,11 +4,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@drawable/sa2"
-    android:layout_height="match_parent"
-    android:gravity="top|center">
+    android:gravity="center|top"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
+        android:layout_gravity="center"
         android:gravity="center"
         android:padding="10dp"
         android:background="@color/blue1"
@@ -16,6 +17,7 @@
         <ImageView
             android:id="@+id/backButton5"
             android:src="@drawable/left"
+            android:layout_gravity="center"
             android:layout_width="20dp"
             android:layout_height="20dp"/>
         <TextView
@@ -28,11 +30,20 @@
             android:paddingRight="10dp"
             android:text="Points Table"/>
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="60dp"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/photoPickerButton2"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@android:drawable/ic_menu_gallery" />
     <ImageView
         android:id="@+id/photoImageView2"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
         android:adjustViewBounds="true" />
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"
@@ -48,25 +59,7 @@
         android:layout_centerHorizontal="true" />
 
 
-    <ImageButton
-        android:id="@+id/photoPickerButton2"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:background="@android:drawable/ic_menu_gallery" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:textColor="@color/authui_colorAccent"
-        android:layout_height="wrap_content"
-        android:id="@+id/date2"/>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="type date update"
-        android:id="@+id/date1"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/send1"
-        android:text="@string/button_text_send"/>
 
+
+    </LinearLayout>
 </LinearLayout>

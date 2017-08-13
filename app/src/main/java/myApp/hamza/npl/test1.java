@@ -1,6 +1,7 @@
 package myApp.hamza.npl;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -353,6 +354,8 @@ public class test1  extends AppCompatActivity {
 
                 }
             });
+
+
         Bundle extra =this.getIntent().getExtras();
 
         if(extra!=null) {

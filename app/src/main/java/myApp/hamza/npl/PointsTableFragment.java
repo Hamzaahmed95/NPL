@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,13 +49,10 @@ public class PointsTableFragment extends Fragment {
 
 
     private FirebaseStorage firebaseStorage;
-    private TextView date2;
     public static final String PREFS_NAME1 = "MyAppSharedPrefs";
     private StorageReference PointsTableStorageReference;
-    private Button send1;
     private DatabaseReference mMessageDatabaseReference;
     private FirebaseDatabase mFirebaseDatabase;
-    private EditText date1;
     private ChildEventListener mChildEventListener;
     private ImageButton mPhotoPickerButton;
     private ImageView imageView;
@@ -75,8 +75,6 @@ public class PointsTableFragment extends Fragment {
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         PointsTableStorageReference =firebaseStorage.getReference().child("point_table");
         mMessageDatabaseReference =mFirebaseDatabase.getReference().child("pointstable");
-            date1 =(EditText)view.findViewById(R.id.date1);
-        date2 =(TextView)view.findViewById(R.id.date2);
         imageView =(ImageView)view.findViewById(R.id.photoImageView2);
 
         backButton5=(ImageView)view.findViewById(R.id.backButton5);
@@ -98,10 +96,7 @@ public class PointsTableFragment extends Fragment {
         if(extra!=null) {
             String url2 = extra.getString("username");
             Log.d("hamza: ",url2);
-            send1=(Button)view.findViewById(R.id.send1);
             if(!url2.equals("K142805 Hamza Ahmed")){
-                send1.setVisibility(View.GONE);
-                date1.setVisibility(View.GONE);
                 mPhotoPickerButton.setVisibility(View.GONE);
             }
         }
@@ -148,18 +143,6 @@ public class PointsTableFragment extends Fragment {
 
 
 
-        send1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pointTablePicture pointTablePicture = new pointTablePicture(null,date1.getText().toString());
-                // Clear input box
-                mMessageDatabaseReference.push().setValue(pointTablePicture);
-
-                date2.setText(pointTablePicture.getUpdatedDate());
-                date1.setText("");
-
-            }
-        });
 
 
         if(mPhotoPickerButton!=null)
@@ -190,7 +173,6 @@ public class PointsTableFragment extends Fragment {
                     Log.d("hamza ahmed",user.getDisplayName());
                     if(!user.getDisplayName().equals("K142805 Hamza Ahmed")){
                         imageView.setVisibility(View.GONE);
-                        date1.setVisibility(View.GONE);
                         mPhotoPickerButton.setVisibility(View.GONE);
                     }
 
@@ -279,7 +261,6 @@ public class PointsTableFragment extends Fragment {
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     pointTablePicture pointTablePicture1 = dataSnapshot.getValue(pointTablePicture.class);
 
-                        date2.setText(pointTablePicture1.getUpdatedDate());
                         imageView.setVisibility(View.VISIBLE);
                         Glide.with(imageView.getContext())
                                 .load(pointTablePicture1.getPhotoUrl())

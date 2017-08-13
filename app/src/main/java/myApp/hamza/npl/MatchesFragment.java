@@ -96,7 +96,7 @@ public class MatchesFragment extends Fragment {
             "30th July 2017",
             "6th Aug 2017",
             "6th Aug 2017",
-            "15th Aug 2017",
+            "14th Aug 2017",
             "20th Aug 2017",
             "20th Aug 2017",
     };

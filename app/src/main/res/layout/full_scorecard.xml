@@ -34,6 +34,7 @@
             android:id="@+id/scoring"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
             android:hint="Batsman-Type-R-B-4s-6s-SR"
             android:textColorHint="@android:color/white" />
 
@@ -166,7 +167,6 @@
                     android:gravity="right"
                     android:id="@+id/extras"
                     android:padding="3dip"
-                    android:text="hello "
                     android:textColor="@android:color/black" />
             </TableRow>
             <View
@@ -186,7 +186,6 @@
                     android:gravity="right"
                     android:padding="3dip"
                     android:id="@+id/total"
-                    android:text="hello "
                     android:textColor="@android:color/black" />
             </TableRow>
         </TableLayout>
@@ -207,6 +206,7 @@
         <EditText
             android:id="@+id/scoring2"
             android:layout_width="wrap_content"
+            android:textColor="@android:color/white"
             android:layout_height="wrap_content"
             android:hint="Bowler-O-M-R-W-EC-Os-WD-NB"
             android:textColorHint="@android:color/white" />

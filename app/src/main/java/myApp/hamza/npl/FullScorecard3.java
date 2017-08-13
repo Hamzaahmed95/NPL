@@ -45,9 +45,9 @@ import java.util.List;
 
 
 
-public class FullScorecard2 extends AppCompatActivity {
+public class FullScorecard3 extends AppCompatActivity {
 
-    private static final String TAG = "FullScorecard2";
+    private static final String TAG = "FullScorecard3";
     private static final String ANONYMOUS ="anonymous" ;
     private ListView mMessageListView;
     private ListView mMessageListView2;
@@ -92,12 +92,12 @@ public class FullScorecard2 extends AppCompatActivity {
         mUsername = ANONYMOUS;
         editExtras = (EditText) findViewById(R.id.editExtras);
         firebaseStorage = FirebaseStorage.getInstance();
-        mMessageDatabaseReference = mFirebaseDatabase.getReference().child("liveScoring");
-        mMessageDatabaseReference2 = mFirebaseDatabase.getReference().child("liveScoring2");
-        mMessageDatabaseReference1 = mFirebaseDatabase.getReference().child("extras");
+        mMessageDatabaseReference = mFirebaseDatabase.getReference().child("liveScoring3");
+        mMessageDatabaseReference2 = mFirebaseDatabase.getReference().child("liveScoring4");
+        mMessageDatabaseReference1 = mFirebaseDatabase.getReference().child("extras2");
 
-        Query mHouseDatabaseReference = mFirebaseDatabase.getReference().child("extras").limitToLast(1);
-        ;
+        Query mHouseDatabaseReference = mFirebaseDatabase.getReference().child("extras2").limitToLast(1);
+
 
         mHouseDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -233,12 +233,12 @@ public class FullScorecard2 extends AppCompatActivity {
                     }
 
                     final List<FullScoringClass> FullScoreCardClass = new ArrayList<>();
-                    mScoringAdapter = new ScoringAdapter(FullScorecard2.this, R.layout.table_layout_recylerview, FullScoreCardClass, NAME);
+                    mScoringAdapter = new ScoringAdapter(FullScorecard3.this, R.layout.table_layout_recylerview, FullScoreCardClass, NAME);
                     if (mMessageListView != null)
                         mMessageListView.setAdapter(mScoringAdapter);
 
                     final List<FullScoringClass2> FullScoreCardClass2 = new ArrayList<>();
-                    mScoringAdapter2 = new ScoringAdapter2(FullScorecard2.this, R.layout.table_layout_recylerview2, FullScoreCardClass2, NAME);
+                    mScoringAdapter2 = new ScoringAdapter2(FullScorecard3.this, R.layout.table_layout_recylerview2, FullScoreCardClass2, NAME);
 
 
                     if (mMessageListView2 != null)
@@ -265,14 +265,14 @@ public class FullScorecard2 extends AppCompatActivity {
 
         Bundle extra = this.getIntent().getExtras();
         if (extra != null) {
-            String runs1 = extra.getString("runs1");
-            String wicket1 = extra.getString("wickets1");
-            String overs1 = extra.getString("overs1");
-            String hamza = extra.getString("hamza");
-            String score1=""+runs1+"/"+wicket1+"("+overs1+"."+hamza+") Overs";
-            System.out.println("score = >"+score1);
+            String runs2 = extra.getString("runs2");
+            String wicket2 = extra.getString("wickets2");
+            String overs22 = extra.getString("overs22");
+            String overs2 = extra.getString("overs2");
+            String score2=""+runs2+"/"+wicket2+"("+overs2+"."+overs22+") Overs";
+            System.out.println("score2 = >"+score2);
 
-                total.setText(score1);
+                total.setText(score2);
 
 
         }
@@ -404,7 +404,7 @@ public class FullScorecard2 extends AppCompatActivity {
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     FullScoringClass FullScoringClass = dataSnapshot.getValue(FullScoringClass.class);
                     mScoringAdapter.add(FullScoringClass);
-                  }
+                }
 
                 @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {

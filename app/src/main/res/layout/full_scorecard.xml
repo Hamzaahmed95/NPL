@@ -142,35 +142,37 @@
                 tools:listitem="@layout/table_layout_recylerview" />
 
 
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:stretchColumns="1">
 
-                <TableRow>
+        </LinearLayout>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:stretchColumns="1">
 
-                    <TextView
-                        android:fontFamily="sans-serif-condensed"
-                        android:padding="3dip"
-                        android:text="Extras"
-                        android:textColor="@android:color/black"
-                        android:textSize="15dp" />
+            <TableRow>
 
-                    <TextView
-                        android:fontFamily="sans-serif-condensed"
-                        android:gravity="right"
-                        android:id="@+id/extras"
-                        android:padding="3dip"
-                        android:text="hello "
-                        android:textColor="@android:color/black" />
-                </TableRow>
-                <View
-                    android:layout_height="2dip"
-                    android:background="#000000" />
-                <TableRow>
+                <TextView
+                    android:fontFamily="sans-serif-condensed"
+                    android:padding="3dip"
+                    android:text="Extras"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="right"
+                    android:id="@+id/extras"
+                    android:padding="3dip"
+                    android:text="hello "
+                    android:textColor="@android:color/black" />
+            </TableRow>
+            <View
+                android:layout_height="2dip"
+                android:background="#000000" />
+            <TableRow>
 
                 <TextView
                     android:fontFamily="sans-serif-condensed"
@@ -187,9 +189,7 @@
                     android:text="hello "
                     android:textColor="@android:color/black" />
             </TableRow>
-            </TableLayout>
-        </LinearLayout>
-
+        </TableLayout>
         <EditText
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"

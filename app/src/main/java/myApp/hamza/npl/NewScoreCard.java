@@ -282,7 +282,7 @@ public class NewScoreCard extends Fragment {
         buttonEnable2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(),FullScorecard2.class);
+                Intent i = new Intent(getActivity(),FullScorecard3.class);
                 i.putExtra("runs2",Runs2.getText().toString());
                 i.putExtra("overs2",Overs2.getText().toString());
                 i.putExtra("overs22",Overs22.getText().toString());

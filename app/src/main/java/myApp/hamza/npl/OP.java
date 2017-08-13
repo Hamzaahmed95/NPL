@@ -85,7 +85,7 @@ public class OP extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
 
-                            Intent i = new Intent(OP.this,OrangeCapActivity.class);
+                            Intent i = new Intent(OP.this,test2.class);
                             i.putExtra("username",name1);
                             startActivity(i);
                         }
@@ -94,7 +94,7 @@ public class OP extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
 
-                            Intent i = new Intent(OP.this,PurpleCapActivity.class);
+                            Intent i = new Intent(OP.this,test1.class);
                             i.putExtra("username",name1);
                             startActivity(i);
                         }
